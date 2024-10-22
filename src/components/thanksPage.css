@@ -1,0 +1,25 @@
+.thanks{
+    text-align: center;
+    line-height: auto;
+    background-color: rgb(52, 49, 43);
+}
+.thanks h1{
+    color: rgb(226, 160, 36);
+}
+.thanks h4{
+    color: rgba(105, 105, 105, 0.4);
+    font-size: 16px;
+}
+.thanks .name-list{
+    background-color: #474747;
+}
+.thanks span{
+    color: rgb(175, 175, 175);
+    white-space: pre-wrap;
+    /* word-wrap: break-word; */
+    line-height: 2.2em;
+    text-align: left;
+}
+#footer-span{
+    color: rgb(199, 140, 30);
+}

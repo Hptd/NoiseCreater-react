@@ -1,0 +1,22 @@
+.update-page{
+    text-align: center;
+    line-height: auto;
+    background-color: rgb(52, 49, 43);
+}
+.update-page h1{
+    color: rgb(226, 160, 36);
+}
+.update-list{
+    background-color: #474747;
+}
+.update-span{
+    color: rgb(175, 175, 175);
+    white-space: pre-wrap;
+}
+.update-footer-span{
+    color: rgb(199, 140, 30);
+}
+.update-page hr{
+    border: 1px solid rgba(175, 175, 175, 0.3);
+    width: 150px;
+}
