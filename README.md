@@ -125,3 +125,4 @@ export default function MainCanvas({ VertShader, FragShader }) {
 4. 根据 1 中的引用数据名字，增加 `NoiseNameParamsSlice.js` 文件；
 5. 根据 2 中的文件名字，在 `store.js` 内做相应的引用配置；
 6. 更新 `PropsUniforms.js` 和 `FrameUniforms.js`。
+7. 在 `NoiseDetail.jsx` 内增加特性Noise参数组件，并通过函数和switch进行选择性加载。

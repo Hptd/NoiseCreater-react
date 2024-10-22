@@ -22,7 +22,7 @@ export default function NoiseCommonProps() {
       <InputCheck checkName='动画：开始 | 暂停' checkDefaultIn={noiseCommonProps.noiseAnimationOC} dispatchFunc={setNoiseAnimationOC} />
       
       <InputLabel labelName='导出尺寸(先确认效果再修改尺寸保存)' placeholder='默认1024*1024' defaultInputValue={noiseCommonProps.downLoadSize} resetValue={1024} dispatchFunc={setDownLoadSize} />
-      <InputLabel labelName='每秒导出序列帧数量(不可大于当前帧率)' placeholder='默认10帧/秒' defaultInputValue={noiseCommonProps.noiseSequenceFrame} resetValue={10} dispatchFunc={setNoiseSequenceFrame} />
+      <InputLabel labelName='每秒导出序列帧数量(fps)' placeholder='默认10帧/秒' defaultInputValue={noiseCommonProps.noiseSequenceFrame} resetValue={10} dispatchFunc={setNoiseSequenceFrame} />
     </div>
 
   )
