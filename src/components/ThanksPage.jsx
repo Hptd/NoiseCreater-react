@@ -14,7 +14,7 @@ export default function ThanksPage() {
         <br />
         M*L, M*n, *桃,
         <br />
-        D*n, *猫
+        D*n, *猫, *鸡
       </span></div>
       <span id='footer-span'>
         感谢上述赞助者的支持!
