@@ -171,6 +171,7 @@ export function PropsUniforms(noiseName, noiseSpecialProps, hexToRgb) {
         onlyBri: { value: noiseSpecialProps.noiseOnlyBright },
         colorRem: { value: noiseSpecialProps.noiseRemoveCol }
       }
+      break;
 
     case "circleNoiseC":
       noiseUniforms = {

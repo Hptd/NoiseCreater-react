@@ -1,5 +1,5 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { useState, useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { FrameUniforms } from '../canvasUniformFrame/FrameUniform.js'
 import { PropsUniforms } from '../canvasUniformFrame/PropsUniforms.js'
@@ -16,7 +16,9 @@ function Mesh({ VertShader, FragShader, noiseName }) {
 				g: parseInt(result[2], 16),       
 				b: parseInt(result[3], 16)   
 		} : null;
-		return new THREE.Vector3(result.r/256, result.g/256, result.b/256)
+		// 非法颜色输入（空串/三位简写等）兜底为白色，避免渲染循环崩溃
+		if (!result) return new THREE.Vector3(1, 1, 1)
+		return new THREE.Vector3(result.r/255, result.g/255, result.b/255)
 	}
 
 	/*
@@ -53,7 +55,7 @@ function Mesh({ VertShader, FragShader, noiseName }) {
 		...PropsUniforms(noiseName, noiseSpecialProps, hexToRgb)
 	}), [])
 
-	useFrame((state) => {
+	useFrame((state, delta) => {
 		// useRef()特性，每次渲染时，material.current都会更新，初始值为undefined，所以需要判断
 		if (material.current) {
 			// 每一帧都会更新uniforms.noiseBright.value
@@ -67,7 +69,8 @@ function Mesh({ VertShader, FragShader, noiseName }) {
 			material.current.uniforms.brightness.value = noiseCommonProps.noiseBright
 
 			if (noiseCommonProps.noiseAnimationOC) {
-				material.current.uniforms.iTime.value += 0.01
+				// 用 delta（真实流逝秒数）推进，避免动画速度依赖显示器刷新率
+				material.current.uniforms.iTime.value += delta
 			}
 
 			FrameUniforms(material, noiseSpecialProps, noiseName, hexToRgb)
@@ -101,18 +104,21 @@ function FileSave({ clickedImg, videoDownload, noiseName }) {
 	}, [clickedImg])
 
 	// 序列帧保存逻辑
-	const [ frameCount, setFrameCount ] = useState(0)
-	const [ imageCount, setImageCount ] = useState(0)
+	const imageCount = useRef(0)
+	const frameAccumulator = useRef(0)
 	const fps = useSelector(state => state.noiseCommonProps.noiseSequenceFrame)
-	useFrame(() => {
+	useFrame((state, delta) => {
 		if (videoDownload) {
-			if(frameCount % (120/fps) === 0){
+			// 按真实流逝时间累加，导出速度与显示器刷新率无关
+			frameAccumulator.current += delta
+			const interval = 1 / fps
+			while (frameAccumulator.current >= interval) {
+				frameAccumulator.current -= interval
+				imageCount.current += 1
 				gl.render(scene, camera)
 				const url = gl.domElement.toDataURL('image/png')
-				setImageCount(imageCount + 1)
-				saveAs(url, `${noiseName}_${imageCount}.png`)
+				saveAs(url, `${noiseName}_${imageCount.current}.png`)
 			}
-			setFrameCount(frameCount + 1)
 		}
 	})
 

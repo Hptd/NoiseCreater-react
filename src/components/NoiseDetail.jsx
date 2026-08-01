@@ -1,8 +1,9 @@
-import { useLocation } from "react-router-dom"
+import { useLocation, useParams, Link } from "react-router-dom"
 import NoiseCommonProps from "./NoiseCommonProps.jsx"
 import Sponsor from "./Sponsor.jsx"
 import noiseListInformations from '../../public/mySQL/noiseList.json'
 import { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
 
 import MainCanvas from "./MainCanvas.jsx"
 import VertShader from '../../public/glsl/NoiseVertexShader.js'
@@ -126,18 +127,25 @@ function SpecialComponentChoose({ noiseName }) {
 
 export default function NoiseDetail() {
   const location = useLocation()
-  const id = location.state.id
-  const noiseName = location.state.noiseName
+  const { name } = useParams()
+  // 直接输入URL/刷新/收藏时 location.state 为 undefined，回退用路由 :name 参数反查
+  const noiseName = location.state?.noiseName ?? name
+  const noiseInfo = noiseListInformations.find(item => item.routeHref === `noiseDetail/${noiseName}`)
+  const id = location.state?.id ?? noiseInfo?.id
+  // 未找到时的提示框尺寸与画布一致，占据画布位置
+  const canvasSize = useSelector(state => state.noiseCommonProps.downLoadSize) / 2
 
   const [fragmentShader, setFragmentShader] = useState()
   const [isLoading, setIsLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     const fetchShader = async () => {
       setIsLoading(true);
       try {
-        const specialNoiseFragShaderPath = noiseListInformations.find(item => item.id === id).FragmentShaderPath
-        const response = await fetch(specialNoiseFragShaderPath)
+        const info = noiseListInformations.find(item => item.id === id)
+        if (!info) { setNotFound(true); return }
+        const response = await fetch(info.FragmentShaderPath)
         const text = await response.text()
         const startIndex = text.indexOf('`') + 1
       const endIndex = text.lastIndexOf('`')
@@ -180,7 +188,8 @@ export default function NoiseDetail() {
       <Sponsor />
 
       {isLoading ? <div>Loading...</div> :
-        <MainCanvas VertShader={`${VertShader}`} FragShader={`${fragmentShader}`} noiseName={noiseName} clickedImg={clicked} videoDownload={videoDownload} />}
+        notFound ? <div className="noise-not-found" style={{ width: canvasSize, height: canvasSize }}>未找到该噪波，请返回<Link to="/" className="back-home">首页</Link></div> :
+          <MainCanvas VertShader={`${VertShader}`} FragShader={`${fragmentShader}`} noiseName={noiseName} clickedImg={clicked} videoDownload={videoDownload} />}
     </>
   )
 }
