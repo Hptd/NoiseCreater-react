@@ -1,123 +1,110 @@
-# 进度表
-## 20241003 进度 && 使用说明 && 后续工作安排
+# NoiseCreaterReact — 噪波 / 着色器参数可视化工具
 
-# 20241011 学习记录
-## 一、 Hooks的相关知识和特性
-### 1. useState()
-- useState() 是一个Hook，它可以让函数组件中的 state 变量拥有内部的状态，并且可以触发重新渲染。
-- useState() 返回一个数组，数组的第一个元素是当前的 state 值，第二个元素是一个函数，可以用来更新 state 值。
-- useState() 调用次数多于一次时，会返回多个 state 值。
-- useState() 不会在组件的生命周期中重新渲染，除非 state 值发生变化。
+一个基于 WebGL 的噪波 / 着色器参数可视化工具：用 `react-three-fiber` 将 **41 个 GLSL 片段着色器**渲染到 plane 平面上，通过 Redux 控制每个着色器的 uniform 参数，支持**实时预览、动画播放、PNG 与序列帧导出**。
 
-### 2. useEffect()
-- useEffect() 是一个Hook，它可以让函数组件在渲染后执行某些操作，并且可以触发重新渲染。
-- useEffect() 可以用来处理副作用，比如订阅和取消订阅，设置定时器，以及执行清理操作。
-- useEffect() 通常就是用于根据某个值的变化，产生一些连锁反应，比如请求数据，设置状态，触发重新渲染等。
-- 注意：useEffect() 和函数区域内的函数触发顺序为：
-    - 优先函数组件区域内的函数；
-    - 其次useEffect() 内的函数；
-    - 最后useEffect() 外的函数重新执行。
-- 基于上述的注意，一般需要在 useEffect() 内使用时加一层判断，这样避免读取到的是空数值或者是无效的函数等等，避免报错。同时需要注意 useEffect() 内的函数的执行时机，useEffect() 内的函数只会在组件渲染后执行一次，如果需要在每次渲染后都执行，需要设置第二个参数为 []。
+## ✨ 功能特性
 
-### 3. useRef()
-- useRef() 是一个Hook，它可以保存一个可变的 ref 对象，并返回该对象。
-- useRef() 返回的对象保存了对最近渲染过的组件实例或 HTML 元素的引用。
-    - 当使用它时，如果直接在函数区域调用"console.log(ref.current)"，则会输出 null。原因是 ref 对象在组件渲染后才被创建，而函数区域在组件渲染前就执行。
-    - 所以，如果需要在函数区域使用 ref 对象，需要在 useEffect() 里进行处理。
-    - 另外，如果 ref 对象在函数区域被修改，则会触发组件的重新渲染。
-    - 注意：不要在 useEffect() 里修改 ref 对象，否则会造成死循环。
-    - 一般使用如下代码预先进行处理和判定操作：
-        ``` js
-        const ref = useRef();
-        if (ref.current)
-        {
-            // 处理 ref 对象
-        }
-        return(
-            <div ref={ref}>
-                // 组件内容
-            </div>
-        )
-        ...
-        ```
-### 4. useMemo()
-- useMemo() 是一个Hook，它可以缓存函数的执行结果，避免重复计算。
-- useMemo() 和ThreeJs结合使用，当从redux的数据传输过来之后，可以用useMemo()缓存数据，避免每次渲染都重新计算。
+### 1. 内置噪波库（41 种预设）
 
-另外，useMemo() 的关联更新值为['空白']，这样只在第一次组件渲染的时候进行数据的加载和存储，之后如果数据没有变化，ThreeJS则会持续的从内存内读取 uniforms 数据。
+首页以卡片形式展示全部噪波，点击任意卡片即可进入对应详情页实时调节。噪波大致可分为几类：
 
-当需要更新值，需要配合 react-three/fiber 的 useFrame() 进行更新。相关代码如下：
+| 分类 | 包含噪波 |
+| --- | --- |
+| 水波纹 | voronoi / tileable / caustics / glare / forked / rain Water Noise |
+| 采样噪波 | Sample Noise / Sample Color Noise / Cloud Noise / sample Noise_A、_B |
+| 程序化图案 | cell、circle、knit、honeycomp、brush、grid、voro、silk、smoke、isovalues、banding Gradients、squircle color |
+| 火焰 / 以太特效 | fire Noise_A、_B / ether Noise_A、_B、_C |
+| 文化趣味 | 太极阴阳鱼 / eye |
 
-``` js
-import { Canvas, useFrame } from '@react-three/fiber'
-import { useMemo, useRef } from 'react'
-import { useSelector } from 'react-redux'
-import * as THREE from 'three'
+此外还有 **致谢名单** 与 **更新日志** 两个辅助页面。
 
+### 2. 实时参数调节（所见即所得）
 
-function Mesh({ VertShader, FragShader }) {
-	const noiseCommonProps = useSelector(state => state.noiseCommonProps)
-	const material = useRef()
-	/*
-	console.log(material.current)
-	
-	上述代码直接通过useRef()获取到material的实例，但是此时的material.current为undefined，所以无法直接修改uniforms.noiseBright.value
-	所以需要在useFrame()中更新uniforms.noiseBright.value
+每个噪波详情页都包含：
 
-	一般此Hook配合useEffect()一起使用。
-	*/
-	
-	// useMemo()特性:
-	// 1. 只在组件渲染时执行一次，返回值会被缓存，避免每次渲染都重新生成
-	// 2. 更新依赖值为空，也就是在初始化时，一次将所有依赖值都计算出来，然后缓存起来，之后只要依赖值不变，就直接使用缓存的结果
-	//    避免了每次渲染都重新生成新的函数，提高性能，同时为threeJS提供稳定的uniforms
-	const uniforms = useMemo(() => ({
-		noiseBright: { value: noiseCommonProps.noiseBright },
-	}), [])
+- **专属参数面板** —— 针对该噪波的独有 uniform（如水的波纹强度、太极的旋转速度等），每个噪波独立配置。
+- **公共参数面板** —— 所有噪波共享的通用调节项：
+  - 噪波尺寸、横向 / 纵向位移、横向 / 纵向缩放（UV 变换）
+  - 整体明暗
+  - 颜色取反
+  - 开启 Alpha 通道
+  - 动画：开始 / 暂停
+  - 导出尺寸（默认 1024 × 1024）
+  - 每秒导出序列帧数量 fps（默认 10 帧/秒）
 
-	useFrame(() => {
-		// useRef()特性，每次渲染时，material.current都会更新，初始值为undefined，所以需要判断
-		if (material.current) {
-			// 每一帧都会更新uniforms.noiseBright.value
-			material.current.uniforms.noiseBright.value = noiseCommonProps.noiseBright
-		}
-	})
+所有参数通过 Redux 状态驱动，在 `useFrame` 中逐帧改写 `material.current.uniforms` 的值，调节即时生效，无需重新渲染。
 
-	return (
-		<mesh>
-			<planeGeometry args={[512, 512]} />
-			<shaderMaterial ref={material}
-				vertexShader={VertShader}
-				fragmentShader={FragShader}
-				uniforms={uniforms}
-			/>
-		</mesh>
-	)
-}
-export default function MainCanvas({ VertShader, FragShader }) {
+### 3. 动画控制
 
-	return (
-		<div id='main-canvas'>
-			<Canvas camera={{ position: [0, 0, 6.5] }} orthographic={true}>
-				<Mesh VertShader={VertShader} FragShader={FragShader} />
-			</Canvas>
-		</div>
-	)
-}
+支持一键开始 / 暂停动画。动画时间 `iTime` 基于**真实流逝时间（delta）**推进，动画速度与显示器刷新率无关，在不同刷新率的屏幕上表现一致。
+
+### 4. 导出 PNG 图片
+
+一键下载当前效果的 PNG 图片，文件名自动命名为噪波名（如 `voronoiWaterNoise.png`）。导出前会强制刷新画布，确保导出的内容与当前画面一致。
+
+### 5. 导出序列帧
+
+点击"开始下载序列帧"后，按设定的 fps（默认 10 帧/秒）逐帧渲染并导出 PNG 序列帧（如 `voronoiWaterNoise_1.png`、`voronoiWaterNoise_2.png`……），可用于后期合成动画或视频。序列帧同样基于真实时间间隔累计，导出速度不受显示器刷新率影响。
+
+## 🖥️ 页面与路由
+
+| 路由 | 页面 | 说明 |
+| --- | --- | --- |
+| `/` | 首页 | 读取 `noiseList.json` 渲染噪波卡片，点击携带 `id` / `noiseName` 跳转详情页 |
+| `/noiseDetail/:name` | 噪波详情 | 渲染公共参数 + 专属参数 + WebGL 画布；实际由路由 state（`id` + `noiseName`）驱动，`URL` 参数仅作刷新 / 收藏时的回退 |
+| `/thanksList` | 致谢名单 | 赞助与致谢 |
+| `/updateLog` | 更新日志 | 项目更新记录 |
+
+## 🛠️ 技术栈
+
+- React 18 + Vite 5
+- Three.js + @react-three/fiber 8 + @react-three/drei
+- Redux Toolkit + react-redux
+- react-router-dom 6
+- file-saver（导出文件）
+
+## 🚀 快速开始
+
+```bash
+npm install     # 安装依赖
+npm run dev     # 启动开发服务器
+npm run build   # 生产构建
+npm run preview # 预览构建产物
+npm run lint    # ESLint 检查
 ```
 
-### 4. useFrame()
-- useFrame() 是一个 react-three/fiber 的 Hook，它可以让函数组件在每一帧渲染时执行某些操作。
-- useFrame() 通常用来处理动画，比如更新物体的位置、旋转角度、缩放比例等。
-- useFrame() 可以传入两个值，分别是 state 和 detale；
-    - state 是一个值，具体查看文档所包含的参数意义；
-    - detale 是一个时间间隔，单位为秒，表示上一帧和当前帧的时间间隔。重点是此时间间隔是帧之间的时间间隔，随着场景刷新的帧率变化而变化，从而使得动画的画面看起来不会产生撕裂感。
-- useFrame() 必须在 Canvas 组件内使用，也就是说需要把 <mesh></mesh> 单独分离为一个独立的组件函数，然后在这个组件函数内使用 useFrame()。
-- useFrame() 最后加载到 Canvas 组件内，会自动执行，不需要额外的操作。
+## 📁 项目结构
 
+```
+public/
+  mySQL/noiseList.json        # 噪波目录（id / 图片 / 标题 / 路由 / 着色器路径）
+  glsl/<Noise>Fragment.js     # 片段着色器（模板字符串导出）
+  images/                     # 卡片图片
+src/
+  components/
+    HomePage.jsx              # 首页卡片
+    NoiseDetail.jsx           # 详情页：专属参数 + 公共参数 + 画布
+    NoiseCommonProps.jsx      # 公共参数面板
+    MainCanvas.jsx            # WebGL 画布、uniform 更新、图片/序列帧导出
+    noiseSpecialPropsComponents/  # 各噪波专属参数 UI
+  features/                   # 各噪波专属参数 Redux slice
+  canvasUniformFrame/         # PropsUniforms(初始化) / FrameUniform(逐帧更新)
+  app/store.js                # Redux store
+  router/routerSettings.jsx   # 路由配置
+```
 
-# 20241020 日常更新操作记录
-### 更新Noise操作顺序：
+## ⚙️ 核心数据流
+
+```
+参数 UI --dispatch--> Redux slice --useSelector--> useFrame() 内逐帧改写 material.current.uniforms.xxx.value --> shaderMaterial 重绘
+```
+
+- uniforms 只在 `useMemo(..., [])` 中**一次性初始化**，之后每一帧在 `useFrame` 内直接改写 `material.current.uniforms` 的值，避免触发 React 重复渲染。
+- 不要在组件函数体内读取 `material.current`（首次渲染时为 `undefined`），必须在 `useFrame` 里加 `if (material.current)` 判断后再操作。
+- 颜色类参数经 `hexToRgb`（`#rrggbb` → `THREE.Vector3`）后传入 uniform。
+- 导出图片 / 序列帧前先执行 `gl.render(scene, camera)` 强制刷新画布，保证导出帧与当前画面一致。
+
+## 🔧 更新 Noise 操作顺序
 
 1. 在 `noiseList.json` 内更新 特性组件路径和 glsl 文件路径；
 2. 增加 `noiseName.glsl` 文件；
@@ -125,4 +112,9 @@ export default function MainCanvas({ VertShader, FragShader }) {
 4. 根据 1 中的引用数据名字，增加 `NoiseNameParamsSlice.js` 文件；
 5. 根据 2 中的文件名字，在 `store.js` 内做相应的引用配置；
 6. 更新 `PropsUniforms.js` 和 `FrameUniforms.js`。
-7. 在 `NoiseDetail.jsx` 内增加特性Noise参数组件，并通过函数和switch进行选择性加载。
+7. 在 `NoiseDetail.jsx` 内增加特性 Noise 参数组件，并通过函数和 switch 进行选择性加载。
+
+### 命名约定（易错点）
+
+- 专属参数 state 的 key = `noiseName + "Props"`。`noiseName` 取 `routeHref` 的最后一个路径段（如 `voronoiWaterNoise` → `state.voronoiWaterNoiseProps`）。**route slug、store 注册名、`NoiseDetail` 的 switch case、`PropsUniforms`/`FrameUniform` 的 case 四者必须严格一致**。
+- 多个目录条目可以共用同一个 `routeHref`（如 `sampleNoise_A` / `sampleNoise_B` 都指向 `noiseDetail/sampleNoiseAB`），共用一个参数组件与 slice。

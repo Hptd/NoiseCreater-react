@@ -300,6 +300,12 @@ export function FrameUniforms(material, noiseSpecialProps, noiseName, hexToRgb) 
       material.current.uniforms.color2.value = hexToRgb(noiseSpecialProps.noiseColor2)
       break;
 
+    case "hexNoise":
+      material.current.uniforms.density.value = noiseSpecialProps.noiseDensity
+      material.current.uniforms.edgeWidth.value = noiseSpecialProps.noiseEdgeWidth
+      material.current.uniforms.edgeSoft.value = noiseSpecialProps.noiseEdgeSoft
+      break;
+
     // 下一个noise参数
 
     default:

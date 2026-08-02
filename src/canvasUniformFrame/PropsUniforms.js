@@ -371,6 +371,14 @@ export function PropsUniforms(noiseName, noiseSpecialProps, hexToRgb) {
       }
       break;
 
+    case "hexNoise":
+      noiseUniforms = {
+        density: { value: noiseSpecialProps.noiseDensity },
+        edgeWidth: { value: noiseSpecialProps.noiseEdgeWidth },
+        edgeSoft: { value: noiseSpecialProps.noiseEdgeSoft }
+      }
+      break;
+
     // case 下一个noise
 
     default:

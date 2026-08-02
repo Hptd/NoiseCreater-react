@@ -36,6 +36,7 @@ import { taijiParamsSlice } from "../features/TaijiParamsSlice"
 import { eyeParamsSlice } from "../features/EyeParamsSlice"
 import { brushNoiseAParamsSlice } from "../features/BrushNoiseAParamsSlice"
 import { brushNoiseBParamsSlice } from "../features/BrushNoiseBParamsSlice"
+import { hexNoiseParamsSlice } from "../features/HexNoiseParamsSlice"
 
 export const store = configureStore({
   reducer: {
@@ -76,5 +77,6 @@ export const store = configureStore({
     eyeProps: eyeParamsSlice.reducer,
     brushNoiseAProps: brushNoiseAParamsSlice.reducer,
     brushNoiseBProps: brushNoiseBParamsSlice.reducer,
+    hexNoiseProps: hexNoiseParamsSlice.reducer,
   }
 })
