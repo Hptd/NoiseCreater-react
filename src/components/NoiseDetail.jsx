@@ -2,7 +2,7 @@ import { useLocation, useParams, Link } from "react-router-dom"
 import NoiseCommonProps from "./NoiseCommonProps.jsx"
 import Sponsor from "./Sponsor.jsx"
 import noiseListInformations from '../../public/mySQL/noiseList.json'
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useSelector } from "react-redux"
 
 import MainCanvas from "./MainCanvas.jsx"
@@ -172,8 +172,25 @@ export default function NoiseDetail() {
 
   // 视频下载处理逻辑
   const [videoDownload, setVideoDownload] = useState(false)
+  const [frameCount, setFrameCount] = useState(0)
+  const [isPacking, setIsPacking] = useState(false)
+  const handleFrameCountChange = useCallback(count => setFrameCount(count), [])
+  const handlePackingChange = useCallback(packing => setIsPacking(packing), [])
+  const handleCapReached = useCallback(() => {
+    setVideoDownload(false)
+    setIsPacking(true)
+  }, [])
   function handleDownloadVideo() {
-    setVideoDownload(!videoDownload)
+    if (videoDownload) {
+      // 停止收集，FileSave 收到 videoDownload=false 后统一打包
+      setVideoDownload(false)
+      setIsPacking(true)
+    } else {
+      // 开始记录
+      setVideoDownload(true)
+      setFrameCount(0)
+      setIsPacking(false)
+    }
   }
 
 
@@ -184,15 +201,21 @@ export default function NoiseDetail() {
       <NoiseCommonProps />
 
       <div className="params-container" style={{ textAlign: 'center' }}>
-        <button id="btnReSize" style={{ marginLeft: '50px', marginRight: '70px' }} onClick={handleDownloadVideo}>{videoDownload ? '停止下载序列帧' : '开始下载序列帧'}</button>
+        <button id="btnReSize" style={{ marginLeft: '50px', marginRight: '70px' }} onClick={handleDownloadVideo} disabled={isPacking}>{videoDownload ? '停止并打包下载' : (isPacking ? '正在打包...' : '开始下载序列帧')}</button>
         <button id="btnReSize" style={{ marginLeft: '70px', marginRight: '50px' }} onClick={clickDownloadImg}>下载图片</button>
       </div>
+      {videoDownload && <div className="params-container" style={{ textAlign: 'center' }}>已准备 {frameCount} 张</div>}
+      {isPacking && <div className="params-container" style={{ textAlign: 'center' }}>正在打包 {frameCount} 张...</div>}
 
       <Sponsor />
 
       {isLoading ? <div>Loading...</div> :
         notFound ? <div className="noise-not-found" style={{ width: canvasSize, height: canvasSize }}>未找到该噪波，请返回<Link to="/" className="back-home">首页</Link></div> :
-          <MainCanvas VertShader={`${VertShader}`} FragShader={`${fragmentShader}`} noiseName={noiseName} clickedImg={clicked} videoDownload={videoDownload} />}
+          <MainCanvas
+            VertShader={`${VertShader}`} FragShader={`${fragmentShader}`} noiseName={noiseName}
+            clickedImg={clicked} videoDownload={videoDownload}
+            onFrameCountChange={handleFrameCountChange} onPackingChange={handlePackingChange} onCapReached={handleCapReached}
+          />}
     </>
   )
 }
