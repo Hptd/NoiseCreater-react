@@ -37,6 +37,7 @@ import { eyeParamsSlice } from "../features/EyeParamsSlice"
 import { brushNoiseAParamsSlice } from "../features/BrushNoiseAParamsSlice"
 import { brushNoiseBParamsSlice } from "../features/BrushNoiseBParamsSlice"
 import { hexNoiseParamsSlice } from "../features/HexNoiseParamsSlice"
+import { squaresNoiseParamsSlice } from "../features/SquaresNoiseParamsSlice"
 
 export const store = configureStore({
   reducer: {
@@ -78,5 +79,6 @@ export const store = configureStore({
     brushNoiseAProps: brushNoiseAParamsSlice.reducer,
     brushNoiseBProps: brushNoiseBParamsSlice.reducer,
     hexNoiseProps: hexNoiseParamsSlice.reducer,
+    squaresNoiseProps: squaresNoiseParamsSlice.reducer,
   }
 })

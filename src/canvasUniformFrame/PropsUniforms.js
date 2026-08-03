@@ -379,6 +379,23 @@ export function PropsUniforms(noiseName, noiseSpecialProps, hexToRgb) {
       }
       break;
 
+    case "squaresNoise":
+      noiseUniforms = {
+        gridSize: { value: noiseSpecialProps.noiseGridSize },
+        squareSize: { value: noiseSpecialProps.noiseSquareSize },
+        sizeAmplitude: { value: noiseSpecialProps.noiseSizeAmplitude },
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        jitter: { value: noiseSpecialProps.noiseJitter },
+        wallThickness: { value: noiseSpecialProps.noiseWallThickness },
+        timeScale: { value: noiseSpecialProps.noiseTimeScale },
+        bgColor: { value: hexToRgb(noiseSpecialProps.noiseBgColor) },
+        colorScale: { value: noiseSpecialProps.noiseColorScale },
+        colorBright: { value: noiseSpecialProps.noiseColorBright },
+        jitter2: { value: noiseSpecialProps.noiseJitter2 },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
     // case 下一个noise
 
     default:

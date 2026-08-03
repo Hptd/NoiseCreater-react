@@ -306,6 +306,21 @@ export function FrameUniforms(material, noiseSpecialProps, noiseName, hexToRgb) 
       material.current.uniforms.edgeSoft.value = noiseSpecialProps.noiseEdgeSoft
       break;
 
+    case "squaresNoise":
+      material.current.uniforms.gridSize.value = noiseSpecialProps.noiseGridSize
+      material.current.uniforms.squareSize.value = noiseSpecialProps.noiseSquareSize
+      material.current.uniforms.sizeAmplitude.value = noiseSpecialProps.noiseSizeAmplitude
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.jitter.value = noiseSpecialProps.noiseJitter
+      material.current.uniforms.wallThickness.value = noiseSpecialProps.noiseWallThickness
+      material.current.uniforms.timeScale.value = noiseSpecialProps.noiseTimeScale
+      material.current.uniforms.bgColor.value = hexToRgb(noiseSpecialProps.noiseBgColor)
+      material.current.uniforms.colorScale.value = noiseSpecialProps.noiseColorScale
+      material.current.uniforms.colorBright.value = noiseSpecialProps.noiseColorBright
+      material.current.uniforms.jitter2.value = noiseSpecialProps.noiseJitter2
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
     // 下一个noise参数
 
     default:

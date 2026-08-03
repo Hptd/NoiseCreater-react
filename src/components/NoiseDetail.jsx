@@ -45,6 +45,7 @@ import Eye from './noiseSpecialPropsComponents/Eye.jsx'
 import BrushNoiseA from './noiseSpecialPropsComponents/BrushNoiseA.jsx'
 import BrushNoiseB from './noiseSpecialPropsComponents/BrushNoiseB.jsx'
 import HexNoise from './noiseSpecialPropsComponents/HexNoise.jsx'
+import SquaresNoise from './noiseSpecialPropsComponents/SquaresNoise.jsx'
 
 
 function SpecialComponentChoose({ noiseName }) {
@@ -123,6 +124,8 @@ function SpecialComponentChoose({ noiseName }) {
       return <BrushNoiseB />
     case "hexNoise":
       return <HexNoise />
+    case "squaresNoise":
+      return <SquaresNoise />
     default:
       return (<div className="params-container">此Noise无特性参数</div>)
   }
