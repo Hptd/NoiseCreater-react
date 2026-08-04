@@ -37,6 +37,7 @@ import KnitNoiseE from './noiseSpecialPropsComponents/KnitNoiseE.jsx'
 import KnitNoiseF from './noiseSpecialPropsComponents/KnitNoiseF.jsx'
 import FireNoiseA from './noiseSpecialPropsComponents/FireNoiseA.jsx'
 import FireNoiseB from './noiseSpecialPropsComponents/FireNoiseB.jsx'
+import FireNoiseC from './noiseSpecialPropsComponents/FireNoiseC.jsx'
 import EtherNoiseA from './noiseSpecialPropsComponents/EtherNoiseA.jsx'
 import EtherNoiseB from './noiseSpecialPropsComponents/EtherNoiseB.jsx'
 import EtherNoiseC from './noiseSpecialPropsComponents/EtherNoiseC.jsx'
@@ -108,6 +109,8 @@ function SpecialComponentChoose({ noiseName }) {
       return <FireNoiseA />
     case "fireNoiseB":
       return <FireNoiseB />
+    case "fireNoiseC":
+      return <FireNoiseC />
     case "etherNoiseA":
       return <EtherNoiseA />
     case "etherNoiseB":

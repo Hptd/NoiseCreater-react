@@ -75,6 +75,8 @@
    },
    { "id": 38, "imgSrc": "../images/fireNoise_B.png", "title": "fire Noise_B", "routeHref": "noiseDetail/fireNoiseB", "FragmentShaderPath": "../glsl/FireNoiseBFragment.js"
    },
+   { "id": 46, "imgSrc": "../images/fireNoise_C.png", "title": "fire Noise_C", "routeHref": "noiseDetail/fireNoiseC", "FragmentShaderPath": "../glsl/FireNoiseCFragment.js"
+   },
    { "id": 39, "imgSrc": "../images/etherNoise_A.png", "title": "ether Noise_A", "routeHref": "noiseDetail/etherNoiseA", "FragmentShaderPath": "../glsl/EtherNoiseAFragment.js"
    },
    { "id": 40, "imgSrc": "../images/etherNoise_B.png", "title": "ether Noise_B", "routeHref": "noiseDetail/etherNoiseB", "FragmentShaderPath": "../glsl/EtherNoiseBFragment.js"

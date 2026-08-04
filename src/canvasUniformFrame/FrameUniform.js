@@ -321,6 +321,19 @@ export function FrameUniforms(material, noiseSpecialProps, noiseName, hexToRgb) 
       material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
       break;
 
+    case "fireNoiseC":
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.rotateSpeed.value = noiseSpecialProps.noiseRotateSpeed
+      material.current.uniforms.particleSize.value = noiseSpecialProps.noiseParticleSize
+      material.current.uniforms.layers.value = noiseSpecialProps.noiseLayers
+      material.current.uniforms.sizeMod.value = noiseSpecialProps.noiseSizeMod
+      material.current.uniforms.alphaMod.value = noiseSpecialProps.noiseAlphaMod
+      material.current.uniforms.smokeIntensity.value = noiseSpecialProps.noiseSmokeIntensity
+      material.current.uniforms.sparkColor.value = hexToRgb(noiseSpecialProps.noiseSparkColor)
+      material.current.uniforms.smokeColor.value = hexToRgb(noiseSpecialProps.noiseSmokeColor)
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
     // 下一个noise参数
 
     default:

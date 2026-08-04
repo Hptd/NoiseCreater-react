@@ -29,6 +29,7 @@ import { knitNoiseEParamsSlice } from "../features/KnitNoiseEParamsSlice"
 import { knitNoiseFParamsSlice } from "../features/KnitNoiseFParamsSlice"
 import { fireNoiseAParamsSlice } from "../features/FireNoiseAParamsSlice"
 import { fireNoiseBParamsSlice } from "../features/FireNoiseBParamsSlice"
+import { fireNoiseCParamsSlice } from "../features/FireNoiseCParamsSlice"
 import { etherNoiseAParamsSlice } from "../features/EtherNoiseAParamsSlice"
 import { etherNoiseBParamsSlice } from "../features/EtherNoiseBParamsSlice"
 import { etherNoiseCParamsSlice } from "../features/EtherNoiseCParamsSlice"
@@ -71,6 +72,7 @@ export const store = configureStore({
     knitNoiseFProps: knitNoiseFParamsSlice.reducer,
     fireNoiseAProps: fireNoiseAParamsSlice.reducer,
     fireNoiseBProps: fireNoiseBParamsSlice.reducer,
+    fireNoiseCProps: fireNoiseCParamsSlice.reducer,
     etherNoiseAProps: etherNoiseAParamsSlice.reducer,
     etherNoiseBProps: etherNoiseBParamsSlice.reducer,
     etherNoiseCProps: etherNoiseCParamsSlice.reducer,

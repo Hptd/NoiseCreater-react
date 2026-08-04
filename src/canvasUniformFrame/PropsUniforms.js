@@ -396,6 +396,21 @@ export function PropsUniforms(noiseName, noiseSpecialProps, hexToRgb) {
       }
       break;
 
+    case "fireNoiseC":
+      noiseUniforms = {
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        rotateSpeed: { value: noiseSpecialProps.noiseRotateSpeed },
+        particleSize: { value: noiseSpecialProps.noiseParticleSize },
+        layers: { value: noiseSpecialProps.noiseLayers },
+        sizeMod: { value: noiseSpecialProps.noiseSizeMod },
+        alphaMod: { value: noiseSpecialProps.noiseAlphaMod },
+        smokeIntensity: { value: noiseSpecialProps.noiseSmokeIntensity },
+        sparkColor: { value: hexToRgb(noiseSpecialProps.noiseSparkColor) },
+        smokeColor: { value: hexToRgb(noiseSpecialProps.noiseSmokeColor) },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
     // case 下一个noise
 
     default:
