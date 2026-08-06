@@ -48,6 +48,7 @@ import BrushNoiseB from './noiseSpecialPropsComponents/BrushNoiseB.jsx'
 import HexNoise from './noiseSpecialPropsComponents/HexNoise.jsx'
 import SquaresNoise from './noiseSpecialPropsComponents/SquaresNoise.jsx'
 import GyroidNoise from './noiseSpecialPropsComponents/GyroidNoise.jsx'
+import HexMazeNoise from './noiseSpecialPropsComponents/HexMazeNoise.jsx'
 
 
 function SpecialComponentChoose({ noiseName }) {
@@ -132,6 +133,8 @@ function SpecialComponentChoose({ noiseName }) {
       return <SquaresNoise />
     case "gyroidNoise":
       return <GyroidNoise />
+    case "hexMazeNoise":
+      return <HexMazeNoise />
     default:
       return (<div className="params-container">此Noise无特性参数</div>)
   }

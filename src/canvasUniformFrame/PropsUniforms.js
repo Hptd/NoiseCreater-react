@@ -426,6 +426,16 @@ export function PropsUniforms(noiseName, noiseSpecialProps, hexToRgb) {
       }
       break;
 
+    case "hexMazeNoise":
+      noiseUniforms = {
+        density: { value: noiseSpecialProps.noiseDensity },
+        hashFreq: { value: noiseSpecialProps.noiseHashFreq },
+        intensity: { value: noiseSpecialProps.noiseIntensity },
+        threshold: { value: noiseSpecialProps.noiseThreshold },
+        seed: { value: noiseSpecialProps.noiseSeed }
+      }
+      break;
+
     // case 下一个noise
 
     default:

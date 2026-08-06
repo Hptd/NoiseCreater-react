@@ -347,6 +347,14 @@ export function FrameUniforms(material, noiseSpecialProps, noiseName, hexToRgb) 
       material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
       break;
 
+    case "hexMazeNoise":
+      material.current.uniforms.density.value = noiseSpecialProps.noiseDensity
+      material.current.uniforms.hashFreq.value = noiseSpecialProps.noiseHashFreq
+      material.current.uniforms.intensity.value = noiseSpecialProps.noiseIntensity
+      material.current.uniforms.threshold.value = noiseSpecialProps.noiseThreshold
+      material.current.uniforms.seed.value = noiseSpecialProps.noiseSeed
+      break;
+
     // 下一个noise参数
 
     default:
