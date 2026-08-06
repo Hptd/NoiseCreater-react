@@ -39,6 +39,7 @@ import { brushNoiseAParamsSlice } from "../features/BrushNoiseAParamsSlice"
 import { brushNoiseBParamsSlice } from "../features/BrushNoiseBParamsSlice"
 import { hexNoiseParamsSlice } from "../features/HexNoiseParamsSlice"
 import { squaresNoiseParamsSlice } from "../features/SquaresNoiseParamsSlice"
+import { gyroidNoiseParamsSlice } from "../features/GyroidNoiseParamsSlice"
 
 export const store = configureStore({
   reducer: {
@@ -82,5 +83,6 @@ export const store = configureStore({
     brushNoiseBProps: brushNoiseBParamsSlice.reducer,
     hexNoiseProps: hexNoiseParamsSlice.reducer,
     squaresNoiseProps: squaresNoiseParamsSlice.reducer,
+    gyroidNoiseProps: gyroidNoiseParamsSlice.reducer,
   }
 })

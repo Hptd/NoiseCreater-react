@@ -334,6 +334,19 @@ export function FrameUniforms(material, noiseSpecialProps, noiseName, hexToRgb) 
       material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
       break;
 
+    case "gyroidNoise":
+      material.current.uniforms.scale.value = noiseSpecialProps.noiseScale
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.warp.value = noiseSpecialProps.noiseWarp
+      material.current.uniforms.bump.value = noiseSpecialProps.noiseBump
+      material.current.uniforms.specular.value = noiseSpecialProps.noiseSpecular
+      material.current.uniforms.tintStrength.value = noiseSpecialProps.noiseTintStrength
+      material.current.uniforms.hue.value = noiseSpecialProps.noiseHue
+      material.current.uniforms.rimColor.value = hexToRgb(noiseSpecialProps.noiseRimColor)
+      material.current.uniforms.rimPower.value = noiseSpecialProps.noiseRimPower
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
     // 下一个noise参数
 
     default:

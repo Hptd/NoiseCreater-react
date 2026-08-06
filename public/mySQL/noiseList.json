@@ -59,6 +59,8 @@
    },
    { "id": 30, "imgSrc": "../images/isovaluesNoise.png", "title": "isovalues Noise", "routeHref": "noiseDetail/isovaluesNoise", "FragmentShaderPath": "../glsl/IsovaluesNoiseFragment.js"
    },
+   { "id": 47, "imgSrc": "../images/gyroidNoise.png", "title": "gyroid Noise", "routeHref": "noiseDetail/gyroidNoise", "FragmentShaderPath": "../glsl/GyroidNoiseFragment.js"
+   },
    { "id": 31, "imgSrc": "../images/knitNoise_A.png", "title": "knit Noise_A", "routeHref": "noiseDetail/knitNoiseA", "FragmentShaderPath": "../glsl/KnitNoiseAFragment.js"
    },
    { "id": 32, "imgSrc": "../images/knitNoise_B.png", "title": "knit Noise_B", "routeHref": "noiseDetail/knitNoiseB", "FragmentShaderPath": "../glsl/KnitNoiseBFragment.js"
@@ -75,20 +77,20 @@
    },
    { "id": 38, "imgSrc": "../images/fireNoise_B.png", "title": "fire Noise_B", "routeHref": "noiseDetail/fireNoiseB", "FragmentShaderPath": "../glsl/FireNoiseBFragment.js"
    },
-   { "id": 46, "imgSrc": "../images/fireNoise_C.png", "title": "fire Noise_C", "routeHref": "noiseDetail/fireNoiseC", "FragmentShaderPath": "../glsl/FireNoiseCFragment.js"
+   { "id": 39, "imgSrc": "../images/fireNoise_C.png", "title": "fire Noise_C", "routeHref": "noiseDetail/fireNoiseC", "FragmentShaderPath": "../glsl/FireNoiseCFragment.js"
    },
-   { "id": 39, "imgSrc": "../images/etherNoise_A.png", "title": "ether Noise_A", "routeHref": "noiseDetail/etherNoiseA", "FragmentShaderPath": "../glsl/EtherNoiseAFragment.js"
+   { "id": 40, "imgSrc": "../images/etherNoise_A.png", "title": "ether Noise_A", "routeHref": "noiseDetail/etherNoiseA", "FragmentShaderPath": "../glsl/EtherNoiseAFragment.js"
    },
-   { "id": 40, "imgSrc": "../images/etherNoise_B.png", "title": "ether Noise_B", "routeHref": "noiseDetail/etherNoiseB", "FragmentShaderPath": "../glsl/EtherNoiseBFragment.js"
+   { "id": 41, "imgSrc": "../images/etherNoise_B.png", "title": "ether Noise_B", "routeHref": "noiseDetail/etherNoiseB", "FragmentShaderPath": "../glsl/EtherNoiseBFragment.js"
    },
-   { "id": 41, "imgSrc": "../images/etherNoise_C.png", "title": "ether Noise_C", "routeHref": "noiseDetail/etherNoiseC", "FragmentShaderPath": "../glsl/EtherNoiseCFragment.js"
+   { "id": 42, "imgSrc": "../images/etherNoise_C.png", "title": "ether Noise_C", "routeHref": "noiseDetail/etherNoiseC", "FragmentShaderPath": "../glsl/EtherNoiseCFragment.js"
    },
-   { "id": 42, "imgSrc": "../images/太极.png", "title": "太极阴阳鱼", "routeHref": "noiseDetail/taiji", "FragmentShaderPath": "../glsl/TaijiFragment.js"
+   { "id": 43, "imgSrc": "../images/太极.png", "title": "太极阴阳鱼", "routeHref": "noiseDetail/taiji", "FragmentShaderPath": "../glsl/TaijiFragment.js"
    },
-   { "id": 43, "imgSrc": "../images/eye.png", "title": "eye", "routeHref": "noiseDetail/eye", "FragmentShaderPath": "../glsl/EyeFragment.js"
+   { "id": 44, "imgSrc": "../images/eye.png", "title": "eye", "routeHref": "noiseDetail/eye", "FragmentShaderPath": "../glsl/EyeFragment.js"
    },
-   { "id": 44, "imgSrc": "../images/brushNoise_A.png", "title": "brush Noise_A", "routeHref": "noiseDetail/brushNoiseA", "FragmentShaderPath": "../glsl/BrushNoiseAFragment.js"
+   { "id": 45, "imgSrc": "../images/brushNoise_A.png", "title": "brush Noise_A", "routeHref": "noiseDetail/brushNoiseA", "FragmentShaderPath": "../glsl/BrushNoiseAFragment.js"
    },
-   { "id": 45, "imgSrc": "../images/brushNoise_B.png", "title": "brush Noise_B", "routeHref": "noiseDetail/brushNoiseB", "FragmentShaderPath": "../glsl/BrushNoiseBFragment.js"
+   { "id": 46, "imgSrc": "../images/brushNoise_B.png", "title": "brush Noise_B", "routeHref": "noiseDetail/brushNoiseB", "FragmentShaderPath": "../glsl/BrushNoiseBFragment.js"
    }
 ]

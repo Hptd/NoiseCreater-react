@@ -411,6 +411,21 @@ export function PropsUniforms(noiseName, noiseSpecialProps, hexToRgb) {
       }
       break;
 
+    case "gyroidNoise":
+      noiseUniforms = {
+        scale: { value: noiseSpecialProps.noiseScale },
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        warp: { value: noiseSpecialProps.noiseWarp },
+        bump: { value: noiseSpecialProps.noiseBump },
+        specular: { value: noiseSpecialProps.noiseSpecular },
+        tintStrength: { value: noiseSpecialProps.noiseTintStrength },
+        hue: { value: noiseSpecialProps.noiseHue },
+        rimColor: { value: hexToRgb(noiseSpecialProps.noiseRimColor) },
+        rimPower: { value: noiseSpecialProps.noiseRimPower },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
     // case 下一个noise
 
     default:
