@@ -49,6 +49,7 @@ import HexNoise from './noiseSpecialPropsComponents/HexNoise.jsx'
 import SquaresNoise from './noiseSpecialPropsComponents/SquaresNoise.jsx'
 import GyroidNoise from './noiseSpecialPropsComponents/GyroidNoise.jsx'
 import HexMazeNoise from './noiseSpecialPropsComponents/HexMazeNoise.jsx'
+import FireSmokeNoise from './noiseSpecialPropsComponents/FireSmokeNoise.jsx'
 
 
 function SpecialComponentChoose({ noiseName }) {
@@ -135,6 +136,8 @@ function SpecialComponentChoose({ noiseName }) {
       return <GyroidNoise />
     case "hexMazeNoise":
       return <HexMazeNoise />
+    case "fireSmokeNoise":
+      return <FireSmokeNoise />
     default:
       return (<div className="params-container">此Noise无特性参数</div>)
   }

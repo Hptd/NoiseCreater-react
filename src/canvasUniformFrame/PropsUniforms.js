@@ -436,6 +436,25 @@ export function PropsUniforms(noiseName, noiseSpecialProps, hexToRgb) {
       }
       break;
 
+    case "fireSmokeNoise":
+      noiseUniforms = {
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        fireHeight: { value: noiseSpecialProps.noiseFireHeight },
+        warp: { value: noiseSpecialProps.noiseWarp },
+        falloff: { value: noiseSpecialProps.noiseFalloff },
+        flameDensity: { value: noiseSpecialProps.noiseFlameDensity },
+        fireSoftness: { value: noiseSpecialProps.noiseFireSoftness },
+        fireBrightness: { value: noiseSpecialProps.noiseFireBrightness },
+        smokeAmount: { value: noiseSpecialProps.noiseSmokeAmount },
+        sparkDensity: { value: noiseSpecialProps.noiseSparkDensity },
+        sparkSpeed: { value: noiseSpecialProps.noiseSparkSpeed },
+        detail: { value: noiseSpecialProps.noiseDetail },
+        flowStrength: { value: noiseSpecialProps.noiseFlowStrength },
+        sparkColor: { value: hexToRgb(noiseSpecialProps.noiseSparkColor) },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
     // case 下一个noise
 
     default:
