@@ -42,6 +42,13 @@ import { squaresNoiseParamsSlice } from "../features/SquaresNoiseParamsSlice"
 import { gyroidNoiseParamsSlice } from "../features/GyroidNoiseParamsSlice"
 import { hexMazeNoiseParamsSlice } from "../features/HexMazeNoiseParamsSlice"
 import { fireSmokeNoiseParamsSlice } from "../features/FireSmokeNoiseParamsSlice"
+import { satisfyNoiseParamsSlice } from "../features/SatisfyNoiseParamsSlice"
+import { petroleumNoiseParamsSlice } from "../features/PetroleumNoiseParamsSlice"
+import { worleyNoiseParamsSlice } from "../features/WorleyNoiseParamsSlice"
+import { haloVoroNoiseParamsSlice } from "../features/HaloVoroNoiseParamsSlice"
+import { cloudTunnelNoiseParamsSlice } from "../features/CloudTunnelNoiseParamsSlice"
+import { fbmColorNoiseParamsSlice } from "../features/FbmColorNoiseParamsSlice"
+import { dashLineNoiseParamsSlice } from "../features/DashLineNoiseParamsSlice"
 
 export const store = configureStore({
   reducer: {
@@ -88,5 +95,12 @@ export const store = configureStore({
     gyroidNoiseProps: gyroidNoiseParamsSlice.reducer,
     hexMazeNoiseProps: hexMazeNoiseParamsSlice.reducer,
     fireSmokeNoiseProps: fireSmokeNoiseParamsSlice.reducer,
+    satisfyNoiseProps: satisfyNoiseParamsSlice.reducer,
+    petroleumNoiseProps: petroleumNoiseParamsSlice.reducer,
+    worleyNoiseProps: worleyNoiseParamsSlice.reducer,
+    haloVoroNoiseProps: haloVoroNoiseParamsSlice.reducer,
+    cloudTunnelNoiseProps: cloudTunnelNoiseParamsSlice.reducer,
+    fbmColorNoiseProps: fbmColorNoiseParamsSlice.reducer,
+    dashLineNoiseProps: dashLineNoiseParamsSlice.reducer,
   }
 })

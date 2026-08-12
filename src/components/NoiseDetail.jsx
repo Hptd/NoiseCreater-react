@@ -50,6 +50,13 @@ import SquaresNoise from './noiseSpecialPropsComponents/SquaresNoise.jsx'
 import GyroidNoise from './noiseSpecialPropsComponents/GyroidNoise.jsx'
 import HexMazeNoise from './noiseSpecialPropsComponents/HexMazeNoise.jsx'
 import FireSmokeNoise from './noiseSpecialPropsComponents/FireSmokeNoise.jsx'
+import SatisfyNoise from './noiseSpecialPropsComponents/SatisfyNoise.jsx'
+import PetroleumNoise from './noiseSpecialPropsComponents/PetroleumNoise.jsx'
+import WorleyNoise from './noiseSpecialPropsComponents/WorleyNoise.jsx'
+import HaloVoroNoise from './noiseSpecialPropsComponents/HaloVoroNoise.jsx'
+import CloudTunnelNoise from './noiseSpecialPropsComponents/CloudTunnelNoise.jsx'
+import FbmColorNoise from './noiseSpecialPropsComponents/FbmColorNoise.jsx'
+import DashLineNoise from './noiseSpecialPropsComponents/DashLineNoise.jsx'
 
 
 function SpecialComponentChoose({ noiseName }) {
@@ -138,6 +145,20 @@ function SpecialComponentChoose({ noiseName }) {
       return <HexMazeNoise />
     case "fireSmokeNoise":
       return <FireSmokeNoise />
+    case "satisfyNoise":
+      return <SatisfyNoise />
+    case "petroleumNoise":
+      return <PetroleumNoise />
+    case "worleyNoise":
+      return <WorleyNoise />
+    case "haloVoroNoise":
+      return <HaloVoroNoise />
+    case "cloudTunnelNoise":
+      return <CloudTunnelNoise />
+    case "fbmColorNoise":
+      return <FbmColorNoise />
+    case "dashLineNoise":
+      return <DashLineNoise />
     default:
       return (<div className="params-container">此Noise无特性参数</div>)
   }
