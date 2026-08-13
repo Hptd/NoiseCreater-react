@@ -49,6 +49,8 @@ import { haloVoroNoiseParamsSlice } from "../features/HaloVoroNoiseParamsSlice"
 import { cloudTunnelNoiseParamsSlice } from "../features/CloudTunnelNoiseParamsSlice"
 import { fbmColorNoiseParamsSlice } from "../features/FbmColorNoiseParamsSlice"
 import { dashLineNoiseParamsSlice } from "../features/DashLineNoiseParamsSlice"
+import { causticChromaNoiseParamsSlice } from "../features/CausticChromaNoiseParamsSlice"
+import { boomSmokeNoiseParamsSlice } from "../features/BoomSmokeNoiseParamsSlice"
 
 export const store = configureStore({
   reducer: {
@@ -102,5 +104,7 @@ export const store = configureStore({
     cloudTunnelNoiseProps: cloudTunnelNoiseParamsSlice.reducer,
     fbmColorNoiseProps: fbmColorNoiseParamsSlice.reducer,
     dashLineNoiseProps: dashLineNoiseParamsSlice.reducer,
+    causticChromaNoiseProps: causticChromaNoiseParamsSlice.reducer,
+    boomSmokeNoiseProps: boomSmokeNoiseParamsSlice.reducer,
   }
 })

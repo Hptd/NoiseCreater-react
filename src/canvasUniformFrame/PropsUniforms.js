@@ -576,6 +576,43 @@ export function PropsUniforms(noiseName, noiseSpecialProps, hexToRgb) {
       }
       break;
 
+    case "causticChromaNoise":
+      noiseUniforms = {
+        octaves: { value: noiseSpecialProps.noiseOctaves },
+        refineSteps: { value: noiseSpecialProps.noiseRefineSteps },
+        sepSize: { value: noiseSpecialProps.noiseSepSize },
+        sepLight: { value: noiseSpecialProps.noiseSepLight },
+        sepAnim: { value: noiseSpecialProps.noiseSepAnim },
+        causticStrength: { value: noiseSpecialProps.noiseCausticStrength },
+        causticRoughness: { value: noiseSpecialProps.noiseCausticRoughness },
+        causticAber: { value: noiseSpecialProps.noiseCausticAber },
+        scale: { value: noiseSpecialProps.noiseScale },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "boomSmokeNoise":
+      noiseUniforms = {
+        boomColor1: { value: hexToRgb(noiseSpecialProps.noiseBoomColor1) },
+        boomColor2: { value: hexToRgb(noiseSpecialProps.noiseBoomColor2) },
+        boomColor3: { value: hexToRgb(noiseSpecialProps.noiseBoomColor3) },
+        boomColor4: { value: hexToRgb(noiseSpecialProps.noiseBoomColor4) },
+        smokeColor1: { value: hexToRgb(noiseSpecialProps.noiseSmokeColor1) },
+        smokeColor2: { value: hexToRgb(noiseSpecialProps.noiseSmokeColor2) },
+        smokeColor3: { value: hexToRgb(noiseSpecialProps.noiseSmokeColor3) },
+        bgColor: { value: hexToRgb(noiseSpecialProps.noiseBgColor) },
+        cycle: { value: noiseSpecialProps.noiseCycle },
+        zoom: { value: noiseSpecialProps.noiseZoom },
+        boomDistort: { value: noiseSpecialProps.noiseBoomDistort },
+        smokeDistort: { value: noiseSpecialProps.noiseSmokeDistort },
+        bubbleW: { value: noiseSpecialProps.noiseBubbleW },
+        smokeBubbleW: { value: noiseSpecialProps.noiseSmokeBubbleW },
+        borderWidth: { value: noiseSpecialProps.noiseBorderWidth },
+        mixThreshold: { value: noiseSpecialProps.noiseMixThreshold },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
     default:
       break;
   }

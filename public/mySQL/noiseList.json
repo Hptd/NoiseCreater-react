@@ -23,6 +23,8 @@
    },
    { "id": 12, "imgSrc": "../images/forkedWaterNoise.png", "title": "forked Water Noise", "routeHref": "noiseDetail/forkedWaterNoise", "FragmentShaderPath": "../glsl/ForkedWaterNoiseFragment.js"
    },
+   { "id": 57, "imgSrc": "../images/causticChromaNoise.png", "title": "色差焦散", "routeHref": "noiseDetail/causticChromaNoise", "FragmentShaderPath": "../glsl/CausticChromaNoiseFragment.js"
+   },
    { "id": 13, "imgSrc": "../images/rainWaterNoise.png", "title": "rain Water Noise", "routeHref": "noiseDetail/rainWaterNoise", "FragmentShaderPath": "../glsl/RainWaterNoiseFragment.js"
    },
    { "id": 14, "imgSrc": "../images/smokeNoise.png", "title": "smoke Noise", "routeHref": "noiseDetail/smokeNoise", "FragmentShaderPath": "../glsl/SmokeNoiseFragment.js"
@@ -86,6 +88,8 @@
    { "id": 37, "imgSrc": "../images/knitNoise_E.png", "title": "knit Noise_E", "routeHref": "noiseDetail/knitNoiseE", "FragmentShaderPath": "../glsl/KnitNoiseEFragment.js"
    },
    { "id": 38, "imgSrc": "../images/knitNoise_F.png", "title": "knit Noise_F", "routeHref": "noiseDetail/knitNoiseF", "FragmentShaderPath": "../glsl/KnitNoiseFFragment.js"
+   },
+   { "id": 58, "imgSrc": "../images/boomSmokeNoise.png", "title": "爆炸烟雾", "routeHref": "noiseDetail/boomSmokeNoise", "FragmentShaderPath": "../glsl/BoomSmokeNoiseFragment.js"
    },
    { "id": 39, "imgSrc": "../images/fireNoise_A.png", "title": "fire Noise_A", "routeHref": "noiseDetail/fireNoiseA", "FragmentShaderPath": "../glsl/FireNoiseAFragment.js"
    },

@@ -479,6 +479,39 @@ export function FrameUniforms(material, noiseSpecialProps, noiseName, hexToRgb) 
       material.current.uniforms.lineWidth.value = noiseSpecialProps.noiseLineWidth
       break;
 
+    case "causticChromaNoise":
+      material.current.uniforms.octaves.value = noiseSpecialProps.noiseOctaves
+      material.current.uniforms.refineSteps.value = noiseSpecialProps.noiseRefineSteps
+      material.current.uniforms.sepSize.value = noiseSpecialProps.noiseSepSize
+      material.current.uniforms.sepLight.value = noiseSpecialProps.noiseSepLight
+      material.current.uniforms.sepAnim.value = noiseSpecialProps.noiseSepAnim
+      material.current.uniforms.causticStrength.value = noiseSpecialProps.noiseCausticStrength
+      material.current.uniforms.causticRoughness.value = noiseSpecialProps.noiseCausticRoughness
+      material.current.uniforms.causticAber.value = noiseSpecialProps.noiseCausticAber
+      material.current.uniforms.scale.value = noiseSpecialProps.noiseScale
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "boomSmokeNoise":
+      material.current.uniforms.boomColor1.value = hexToRgb(noiseSpecialProps.noiseBoomColor1)
+      material.current.uniforms.boomColor2.value = hexToRgb(noiseSpecialProps.noiseBoomColor2)
+      material.current.uniforms.boomColor3.value = hexToRgb(noiseSpecialProps.noiseBoomColor3)
+      material.current.uniforms.boomColor4.value = hexToRgb(noiseSpecialProps.noiseBoomColor4)
+      material.current.uniforms.smokeColor1.value = hexToRgb(noiseSpecialProps.noiseSmokeColor1)
+      material.current.uniforms.smokeColor2.value = hexToRgb(noiseSpecialProps.noiseSmokeColor2)
+      material.current.uniforms.smokeColor3.value = hexToRgb(noiseSpecialProps.noiseSmokeColor3)
+      material.current.uniforms.bgColor.value = hexToRgb(noiseSpecialProps.noiseBgColor)
+      material.current.uniforms.cycle.value = noiseSpecialProps.noiseCycle
+      material.current.uniforms.zoom.value = noiseSpecialProps.noiseZoom
+      material.current.uniforms.boomDistort.value = noiseSpecialProps.noiseBoomDistort
+      material.current.uniforms.smokeDistort.value = noiseSpecialProps.noiseSmokeDistort
+      material.current.uniforms.bubbleW.value = noiseSpecialProps.noiseBubbleW
+      material.current.uniforms.smokeBubbleW.value = noiseSpecialProps.noiseSmokeBubbleW
+      material.current.uniforms.borderWidth.value = noiseSpecialProps.noiseBorderWidth
+      material.current.uniforms.mixThreshold.value = noiseSpecialProps.noiseMixThreshold
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
     default:
       break;
   }

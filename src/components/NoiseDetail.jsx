@@ -57,6 +57,8 @@ import HaloVoroNoise from './noiseSpecialPropsComponents/HaloVoroNoise.jsx'
 import CloudTunnelNoise from './noiseSpecialPropsComponents/CloudTunnelNoise.jsx'
 import FbmColorNoise from './noiseSpecialPropsComponents/FbmColorNoise.jsx'
 import DashLineNoise from './noiseSpecialPropsComponents/DashLineNoise.jsx'
+import CausticChromaNoise from './noiseSpecialPropsComponents/CausticChromaNoise.jsx'
+import BoomSmokeNoise from './noiseSpecialPropsComponents/BoomSmokeNoise.jsx'
 
 
 function SpecialComponentChoose({ noiseName }) {
@@ -159,6 +161,10 @@ function SpecialComponentChoose({ noiseName }) {
       return <FbmColorNoise />
     case "dashLineNoise":
       return <DashLineNoise />
+    case "causticChromaNoise":
+      return <CausticChromaNoise />
+    case "boomSmokeNoise":
+      return <BoomSmokeNoise />
     default:
       return (<div className="params-container">此Noise无特性参数</div>)
   }
