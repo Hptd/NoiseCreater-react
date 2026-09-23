@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import noiseListInformations from '../../public/mySQL/noiseList.json'
+import AnnouncementModal from "./AnnouncementModal.jsx"
 
 export default function HomePage() {
   const noiseLi = noiseListInformations.map(item => (
@@ -16,6 +17,7 @@ export default function HomePage() {
 
   return (
     <div className="page">
+      <AnnouncementModal />
       <div className="noise-list">
         <ul>
           {noiseLi}
