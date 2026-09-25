@@ -35,4 +35,11 @@ export default [
       ],
     },
   },
+  {
+    // 节点编辑器沿用项目既有约定：组件不写 propTypes
+    files: ['src/nodeEditor/**/*.{js,jsx}'],
+    rules: {
+      'react/prop-types': 'off',
+    },
+  },
 ]

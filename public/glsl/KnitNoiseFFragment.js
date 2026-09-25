@@ -148,7 +148,7 @@ void main(){
 
     if(colorRem){
         float col_wb = dot(col, vec3(0.22, 0.707, 0.071));
-        col_wb += saturate(brightness);
+        col_wb += clamp(brightness, 0.0, 1.0);
         if(colorRev){
             col_wb = 1.0 - col_wb;
         }

@@ -61,7 +61,7 @@ import CausticChromaNoise from './noiseSpecialPropsComponents/CausticChromaNoise
 import BoomSmokeNoise from './noiseSpecialPropsComponents/BoomSmokeNoise.jsx'
 
 
-function SpecialComponentChoose({ noiseName }) {
+export function SpecialComponentChoose({ noiseName }) {
   switch (noiseName) {
     case "voronoiWaterNoise":
       return <VoronoiWaterNoise />

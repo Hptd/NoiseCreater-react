@@ -1,0 +1,495 @@
+.nc-editor {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: #1a1c1e;
+  color: #d8dde2;
+  z-index: 20;
+}
+
+/* ---------------------------------------------------------------- toolbar */
+.nc-toolbar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 10px;
+  background: #22252a;
+  border-bottom: 1px solid #333;
+}
+.nc-brand {
+  font-weight: 700;
+  color: #8fd0ff;
+  margin-right: 4px;
+}
+.nc-name {
+  width: 180px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #2c3036;
+  color: #e6e6e6;
+  border: 1px solid #3a3f44;
+}
+.nc-res {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #aab;
+}
+.nc-res select {
+  background: #2c3036;
+  color: #e6e6e6;
+  border: 1px solid #3a3f44;
+  border-radius: 4px;
+  padding: 3px 6px;
+}
+.nc-btn {
+  background: #3a4048;
+  color: #e6e6e6;
+  border: 1px solid #4a5058;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+.nc-btn:hover { background: #47505a; }
+.nc-btn.active { background: #2f6fb0; border-color: #4ea1ff; color: #fff; }
+.nc-btn.danger { background: #a33; border-color: #c55; }
+.nc-btn.link { text-decoration: none; display: inline-block; line-height: 1.4; }
+/* 导出：翡翠绿（非纯绿），字号与「返回首页」一致 */
+.nc-btn.export,
+.nc-btn.link {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.nc-btn.export {
+  background: #10b981;
+  border-color: #0ea371;
+  color: #fff;
+}
+.nc-btn.export:hover { background: #0ea371; }
+.nc-status {
+  color: #ffb454;
+  font-size: 12px;
+  margin-left: auto;
+  max-width: 40%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------- canvas */
+.nc-main {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+.nc-canvas-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+.nc-splitter {
+  flex: none;
+  width: 6px;
+  cursor: col-resize;
+  background: #2a2e33;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+}
+.nc-splitter:hover { background: #3a4650; }
+.nc-preview-glass {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 6;
+  /* 仅用于展示，不拦截画布节点的鼠标操作 */
+  pointer-events: none;
+  background: rgba(20, 22, 25, 0.85);
+  border: 1px solid #3a3f44;
+  border-radius: 6px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11px;
+  color: #9aa4ad;
+}
+.nc-preview-glass canvas {
+  background-color: #2b2b2b;
+  background-image:
+    linear-gradient(45deg, #454545 25%, transparent 25%),
+    linear-gradient(-45deg, #454545 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #454545 75%),
+    linear-gradient(-45deg, transparent 75%, #454545 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  border-radius: 4px;
+  image-rendering: auto;
+  display: block;
+  position: relative;
+  z-index: 0;
+}
+.nc-preview-resize {
+  display: block;
+  height: 12px;
+  width: 100%;
+  pointer-events: auto;
+  cursor: nwse-resize;
+  border-radius: 3px;
+  background: repeating-linear-gradient(135deg, #4a5058 0 4px, #2c3036 4px 8px);
+}
+
+/* ---------------------------------------------------------------- node */
+.nc-editor .nc-node {
+  position: relative;
+  background: #26292e;
+  border: 1px solid #3a3f44;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #d8dde2;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+.nc-node-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  background: #2f343a;
+  border-radius: 5px 5px 0 0;
+}
+.nc-node-title {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nc-node-toggle {
+  background: transparent;
+  border: none;
+  color: #8fd0ff;
+  font-size: 14px;
+  padding: 0 4px;
+}
+.nc-node-help {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  line-height: 15px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #6f7a85;
+  color: #9fb0bf;
+  font-size: 11px;
+  text-decoration: none;
+  margin-left: 4px;
+}
+.nc-node-help:hover { border-color: #4ea1ff; color: #4ea1ff; }
+.nc-node-thumb {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #2b2b2b;
+  background-image:
+    linear-gradient(45deg, #3a3a3a 25%, transparent 25%),
+    linear-gradient(-45deg, #3a3a3a 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #3a3a3a 75%),
+    linear-gradient(-45deg, transparent 75%, #3a3a3a 75%);
+  background-size: 12px 12px;
+  background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+  border-bottom: 1px solid #333;
+}
+.nc-node-thumb img {
+  width: 96px;
+  height: 96px;
+}
+.nc-node-thumb span { color: #556; font-size: 18px; }
+.nc-node-thumb.preview { flex-direction: column; gap: 4px; padding: 4px 0; overflow: hidden; }
+.nc-node-thumb.preview img {
+  border-radius: 3px;
+  object-fit: contain;
+}
+.nc-node-preview-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 0 6px;
+  box-sizing: border-box;
+}
+.nc-node-preview-bar select {
+  flex: 1;
+  min-width: 0;
+  background: #2c3036;
+  color: #e6e6e6;
+  border: 1px solid #4a5058;
+  border-radius: 3px;
+  padding: 2px 4px;
+  font-size: 11px;
+}
+.nc-node-body {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.nc-node-row {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  height: 20px;
+  line-height: 20px;
+  color: #b9c0c7;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.nc-node-row.out { text-align: right; }
+.nc-node-row.param { color: #8fb3d9; font-size: 11px; }
+.nc-editor .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #4ea1ff;
+  border: 1px solid #1a1c1e;
+}
+.nc-editor .react-flow__handle-left { left: -4px; }
+.nc-editor .react-flow__handle-right { right: -4px; }
+
+/* 左下角控制按钮（缩放/适配）：按钮内容统一 90% 黑 */
+.nc-editor .react-flow__controls-button {
+  color: rgba(0, 0, 0, 0.9);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.nc-editor .react-flow__controls-button svg {
+  fill: rgba(0, 0, 0, 0.9);
+  color: rgba(0, 0, 0, 0.9);
+}
+
+/* ---------------------------------------------------------------- palette */
+.nc-palette {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  width: 280px;
+  max-height: calc(100% - 24px);
+  background: #22252a;
+  border: 1px solid #3a3f44;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+}
+.nc-palette-head {
+  display: flex;
+  gap: 6px;
+  padding: 8px;
+  border-bottom: 1px solid #333;
+}
+.nc-palette-search {
+  flex: 1;
+  background: #2c3036;
+  color: #e6e6e6;
+  border: 1px solid #3a3f44;
+  border-radius: 4px;
+  padding: 5px 8px;
+}
+.nc-palette-body {
+  overflow-y: auto;
+  padding: 6px;
+}
+.nc-palette-category {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: #8fd0ff;
+  border: none;
+  padding: 4px 6px;
+  font-weight: 600;
+}
+/* 空格键呼出的创建节点弹窗 */
+.nc-creator-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nc-creator-modal {
+  width: min(620px, 92vw);
+  max-height: 80vh;
+  display: flex;
+}
+.nc-creator-modal .nc-palette {
+  position: static;
+  left: auto;
+  top: auto;
+  width: 100%;
+  max-height: 80vh;
+}
+
+/* 非噪波：图标 + 名称 网格 */
+.nc-palette-node-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  padding: 4px 6px 8px;
+}
+.nc-palette-node {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 6px;
+  background: #2f343a;
+  border: 1px solid #3f454c;
+  border-radius: 4px;
+  color: #d8dde2;
+  text-align: left;
+  overflow: hidden;
+}
+.nc-palette-node:hover { background: #3d444c; border-color: #4ea1ff; }
+.nc-palette-icon { width: 18px; height: 18px; flex: none; color: #8fd0ff; }
+.nc-palette-node-name {
+  font-size: 11px;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 噪波：缩略图 + 名称 网格 */
+.nc-palette-noise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 4px 6px 8px;
+}
+.nc-palette-noise {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 4px;
+  background: #2f343a;
+  border: 1px solid #3f454c;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.nc-palette-noise:hover { background: #3d444c; border-color: #4ea1ff; }
+.nc-palette-noise img,
+.nc-palette-noise-ph {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 3px;
+  background: #191b1e;
+}
+.nc-palette-noise-name {
+  font-size: 10px;
+  line-height: 1.2;
+  color: #cfd6dc;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------- params panel */
+.nc-panel {
+  flex: 1;
+  min-width: 0;
+  border-left: 1px solid #333;
+  background: #1d1f20;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.nc-panel-empty {
+  align-items: center;
+  justify-content: center;
+  color: #778;
+  font-size: 13px;
+}
+.nc-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #333;
+}
+.nc-panel-type {
+  color: #778;
+  font-size: 11px;
+  flex: 1;
+}
+.nc-overridden {
+  margin: 8px 10px 0;
+  padding: 6px 8px;
+  background: #2b2a20;
+  border: 1px solid #6a5a2a;
+  border-radius: 4px;
+  color: #e8c46a;
+  font-size: 12px;
+}
+.nc-panel-scroll {
+  overflow-y: auto;
+  padding-bottom: 20px;
+}
+.nc-panel-scroll .params-container {
+  margin: 8px;
+  max-width: none;
+}
+
+/* ---------------------------------------------------------------- generic params */
+.nc-param-list { padding: 8px; }
+.nc-param-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #dee4ea;
+  border-radius: 4px;
+  padding: 4px 6px;
+  margin-bottom: 5px;
+}
+.nc-param-name {
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 12px;
+  min-width: 68px;
+}
+.nc-param-control {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+.nc-range { flex: 1; }
+.nc-num {
+  width: 56px;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 12px;
+  color: #2c3e50;
+  background: #fff;
+}
+.nc-select {
+  flex: 1;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  padding: 2px 4px;
+  background: #fff;
+  color: #2c3e50;
+}
+.nc-param-empty {
+  color: #778;
+  font-size: 12px;
+  padding: 6px;
+}

@@ -18,7 +18,7 @@ void main(){
 	vec2 mainUv = vec2(vUv.x * uvScaleX + uvMoveX, vUv.y * uvScaleY + uvMoveY);
     float sampleNoise = noise(mainUv*(10000.) * uvScale);
 
-    sampleNoise = saturate(sampleNoise + brightness);
+    sampleNoise = clamp(sampleNoise + brightness, 0.0, 1.0);
 
     if(colorRev){sampleNoise = 1. - sampleNoise;}
 

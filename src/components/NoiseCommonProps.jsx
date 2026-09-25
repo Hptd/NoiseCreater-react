@@ -4,7 +4,7 @@ import InputCheck from "./InputCheck.jsx"
 import { useSelector } from "react-redux"
 import { setDownLoadSize, setNoiseUvSize, setNoiseOffsetU, setNoiseOffsetV, setNoiseScaleU, setNoiseScaleV, setNoiseBright, setNoiseInvert, setNoiseAlphaChannel, setNoiseAnimationOC, setNoiseSequenceFrame } from '../features/NoiseCommonParamsSlice.js'
 
-export default function NoiseCommonProps() {
+export default function NoiseCommonProps({ hideOutputParams = false }) {
   const noiseCommonProps = useSelector(state => state.noiseCommonProps)
   
   return (
@@ -21,8 +21,12 @@ export default function NoiseCommonProps() {
       <InputCheck checkName='开启Alpha通道(需开启黑白模式)' checkDefaultIn={noiseCommonProps.noiseAlphaChannel} dispatchFunc={setNoiseAlphaChannel} />
       <InputCheck checkName='动画：开始 | 暂停' checkDefaultIn={noiseCommonProps.noiseAnimationOC} dispatchFunc={setNoiseAnimationOC} />
       
-      <InputLabel labelName='导出尺寸(先确认效果再修改尺寸保存)' placeholder='默认1024*1024' defaultInputValue={noiseCommonProps.downLoadSize} resetValue={1024} dispatchFunc={setDownLoadSize} />
-      <InputLabel labelName='每秒导出序列帧数量(fps)' placeholder='默认10帧/秒' defaultInputValue={noiseCommonProps.noiseSequenceFrame} resetValue={10} dispatchFunc={setNoiseSequenceFrame} />
+      {!hideOutputParams && (
+        <>
+          <InputLabel labelName='导出尺寸(先确认效果再修改尺寸保存)' placeholder='默认1024*1024' defaultInputValue={noiseCommonProps.downLoadSize} resetValue={1024} dispatchFunc={setDownLoadSize} />
+          <InputLabel labelName='每秒导出序列帧数量(fps)' placeholder='默认10帧/秒' defaultInputValue={noiseCommonProps.noiseSequenceFrame} resetValue={10} dispatchFunc={setNoiseSequenceFrame} />
+        </>
+      )}
     </div>
 
   )

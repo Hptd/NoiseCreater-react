@@ -3,6 +3,8 @@
    },
    { "id": 2, "imgSrc": "../images/更新日志.png", "title": "更新日志", "routeHref": "updateLog"
    },
+   { "id": 59, "imgSrc": "../images/nodeEditor.svg", "title": "节点混合面板", "routeHref": "nodeEditor"
+   },
    { "id": 3, "imgSrc": "../images/sampleNoise.png", "title": "Sample Noise", "routeHref": "noiseDetail/sampleNoise", "FragmentShaderPath": "../glsl/SampleNoiseFragment.js"
    },
    { "id": 4, "imgSrc": "../images/sampleColorNoise.png", "title": "Sample Color Noise", "routeHref": "noiseDetail/sampleColorNoise", "FragmentShaderPath": "../glsl/SampleColorNoiseFragment.js"

@@ -1,0 +1,111 @@
+.nc-doc-page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 28px 20px 80px;
+  color: #d8dde2;
+}
+
+.nc-doc-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+.nc-doc-top h1 {
+  font-size: 22px;
+  margin: 0;
+}
+.nc-doc-btn {
+  background: #3a4048;
+  color: #e6e6e6;
+  border: 1px solid #4a5058;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 13px;
+  text-decoration: none;
+}
+.nc-doc-btn:hover { background: #47505a; }
+
+.nc-doc-search {
+  width: 100%;
+  box-sizing: border-box;
+  background: #2c3036;
+  color: #e6e6e6;
+  border: 1px solid #3a3f44;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-bottom: 18px;
+}
+
+.nc-doc-muted { color: #8a929a; }
+
+.nc-doc-group { margin-bottom: 22px; }
+.nc-doc-group h2 {
+  font-size: 16px;
+  color: #8fd0ff;
+  margin: 0 0 10px;
+}
+.nc-doc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 8px;
+}
+.nc-doc-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: #26292e;
+  border: 1px solid #3a3f44;
+  border-radius: 6px;
+  padding: 8px 10px;
+  text-decoration: none;
+}
+.nc-doc-card:hover { border-color: #4ea1ff; background: #2d3238; }
+.nc-doc-card-title { color: #e6e6e6; font-size: 14px; }
+.nc-doc-card-en { color: #7f8b95; font-size: 11px; }
+
+/* 详情：固定排版 */
+.nc-doc-article {
+  background: #22252a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 22px 26px;
+}
+.nc-doc-article h1 {
+  font-size: 24px;
+  margin: 0 0 14px;
+  color: #fff;
+}
+.nc-doc-article h2 {
+  font-size: 16px;
+  margin: 22px 0 8px;
+  padding-left: 9px;
+  border-left: 3px solid #4ea1ff;
+  color: #8fd0ff;
+}
+.nc-doc-article p {
+  margin: 6px 0;
+  line-height: 1.75;
+  color: #cfd6dc;
+}
+.nc-doc-article ul {
+  margin: 6px 0;
+  padding-left: 20px;
+  list-style: disc;
+}
+.nc-doc-article li {
+  line-height: 1.7;
+  color: #cfd6dc;
+}
+.nc-doc-article strong { color: #fff; }
+.nc-doc-article code {
+  background: #14161a;
+  border: 1px solid #333;
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 13px;
+  color: #8fd0ff;
+}
