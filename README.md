@@ -46,12 +46,25 @@
 
 点击"开始下载序列帧"后，按设定的 fps（默认 10 帧/秒）逐帧渲染并导出 PNG 序列帧（如 `voronoiWaterNoise_1.png`、`voronoiWaterNoise_2.png`……），可用于后期合成动画或视频。序列帧同样基于真实时间间隔累计，导出速度不受显示器刷新率影响。
 
+### 6. 节点混合面板（Node Editor）
+
+访问 `/nodeEditor` 进入节点编辑器，以连线方式自由组合效果：
+
+- **操作方式**：从节点菜单（或按空格键、双击画布空白处）添加节点，拖拽端口连线，同一目标端口仅保留一条入边；选中节点后可 Ctrl/Cmd+D 复制。
+- **节点分类**：噪波、数学、通道、艺术、形状、UV、法线、输出等；「混合」节点支持正片叠底 / 滤色 / 叠加 / 柔光 / 相加 / 相减 / 差值等模式，并可接入遮罩与整体不透明度。
+- **优势**：相比详情页的单参数调节更灵活，效果可自由组合与复用，节点图可保存 / 读取（`.ncgraph`）。
+- **导出**：设置「输出」节点分辨率后导出 PNG；也能用「黑白转法线」节点把噪波 / 灰度图转成法线贴图再导出。
+
+节点说明文档见 `/nodeDocument`。
+
 ## 🖥️ 页面与路由
 
 | 路由 | 页面 | 说明 |
 | --- | --- | --- |
 | `/` | 首页 | 读取 `noiseList.json` 渲染噪波卡片，点击携带 `id` / `noiseName` 跳转详情页 |
 | `/noiseDetail/:name` | 噪波详情 | 渲染公共参数 + 专属参数 + WebGL 画布；实际由路由 state（`id` + `noiseName`）驱动，`URL` 参数仅作刷新 / 收藏时的回退 |
+| `/nodeEditor` | 节点混合面板 | 节点连线式编辑，组合噪波与效果，导出 PNG |
+| `/nodeDocument` | 节点文档 | 各节点的功能与参数说明 |
 | `/thanksList` | 致谢名单 | 赞助与致谢 |
 | `/updateLog` | 更新日志 | 项目更新记录 |
 
@@ -59,6 +72,7 @@
 
 - React 18 + Vite 5
 - Three.js + @react-three/fiber 8 + @react-three/drei
+- @xyflow/react（节点混合面板连线画布）
 - Redux Toolkit + react-redux
 - react-router-dom 6
 - file-saver（导出文件）
@@ -87,6 +101,7 @@ src/
     NoiseCommonProps.jsx      # 公共参数面板
     MainCanvas.jsx            # WebGL 画布、uniform 更新、图片/序列帧导出
     noiseSpecialPropsComponents/  # 各噪波专属参数 UI
+  nodeEditor/                 # 节点混合面板：画布 / 节点注册 / 运行时 / 着色器
   features/                   # 各噪波专属参数 Redux slice
   canvasUniformFrame/         # PropsUniforms(初始化) / FrameUniform(逐帧更新)
   app/store.js                # Redux store

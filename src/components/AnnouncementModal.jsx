@@ -34,6 +34,16 @@ export default function AnnouncementModal() {
             吧，给宣传视频一键三连、点个赞；如果有好的意见和建议就给我留言吧，让我知道这个网站还有继续存在的必要。
           </p>
           <p className="announcement-content-sign">谢谢！</p>
+
+          <h3 className="announcement-update-title">20260925 - 更新</h3>
+          <ul className="announcement-update-list">
+            <li>
+              新增「节点混合面板」：拖拽连线即可组合噪波与效果，内置「混合」节点可叠加两图并支持遮罩；效果可复用，节点图可保存 / 读取。
+            </li>
+            <li>
+              支持导出法线贴图：添加「黑白转法线」节点，连入噪波 / 灰度图后接「输出」节点，点击「导出 PNG」即可。
+            </li>
+          </ul>
         </div>
         <div className="announcement-actions">
           <a
