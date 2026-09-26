@@ -66,7 +66,7 @@ float rawHeight(vec2 uv) {
 // preSmooth：3x3 均值滤波。GLSL 无法在单 pass 内保留中间状态，
 // 这里以“半径随迭代次数放大”的近似实现，效果等价于逐次模糊累积。
 float smoothHeight(vec2 uv) {
-  if (uPreSmooth <= 0) return rawHeight(uv);
+  if (uPreSmooth <= 0.0) return rawHeight(uv);
   vec2 e = uTexel * max(uSampleStep, 1.0) * uPreSmooth;
   float sum = 0.0;
   for (int y = -1; y <= 1; y++) {
