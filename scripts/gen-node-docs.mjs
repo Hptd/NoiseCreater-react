@@ -84,6 +84,7 @@ const DESC = {
   'artistic:blend': '按所选模式混合两张图，可加遮罩与整体不透明度。',
   'artistic:channelMask': '按通道开关保留或屏蔽通道。',
   'artistic:colorMask': '保留与指定颜色接近的像素，其余变黑。',
+  'artistic:seamless': '把输入图像转换为可平铺的无缝贴图：在边缘做交叉淡化，使左右/上下边缘像素连续，平铺后看不到接缝。',
   'normal:fromHeight': '由灰度高度图计算法线贴图。',
   'normal:strength': '调整法线强度（X/Y 可分别控制）。',
   'normal:blend': '按 Whiteout 等算法叠加两张法线贴图。',

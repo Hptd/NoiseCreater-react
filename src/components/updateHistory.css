@@ -1,22 +1,59 @@
 .update-page{
-    text-align: center;
-    line-height: auto;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 32px 16px 48px;
     background-color: rgb(52, 49, 43);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .update-page h1{
     color: rgb(226, 160, 36);
+    font-size: 24px;
+    margin: 0 0 20px;
+    text-align: center;
 }
 .update-list{
+    width: min(100%, 760px);
+    box-sizing: border-box;
     background-color: #474747;
+    border-radius: 8px;
+    padding: 4px 28px;
+    text-align: left;
 }
-.update-span{
+.update-entry{
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(175, 175, 175, 0.25);
+}
+.update-entry:last-child{
+    border-bottom: none;
+}
+.update-date{
+    color: rgb(226, 160, 36);
+    font-size: 15px;
+    margin: 0 0 10px;
+    text-align: left;
+}
+.update-items{
+    margin: 0;
+    padding-left: 20px;
     color: rgb(175, 175, 175);
-    white-space: pre-wrap;
+    line-height: 1.8;
 }
-.update-footer-span{
+.update-items li{
+    margin-bottom: 6px;
+}
+.update-items li:last-child{
+    margin-bottom: 0;
+}
+.update-footer{
+    width: min(100%, 760px);
+    box-sizing: border-box;
+    margin-top: 24px;
     color: rgb(199, 140, 30);
+    line-height: 1.8;
+    text-align: left;
 }
-.update-page hr{
-    border: 1px solid rgba(175, 175, 175, 0.3);
-    width: 150px;
+.update-footer p{
+    margin: 0 0 4px;
 }

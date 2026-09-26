@@ -162,6 +162,7 @@ export function createNodeUniforms(def) {
   }
   for (const spec of def.params || []) {
     if (def.shader === 'solid') continue
+    if (spec.ui) continue
     uniforms[uniformNameForParam(spec)] = { value: defaultValueForSpec(spec) }
   }
   if (def.shader === 'solid') uniforms.uValue = { value: new THREE.Vector4(...BLACK) }
@@ -188,6 +189,7 @@ export function updateNodeUniforms(material, def, params, ctx) {
 
   for (const spec of def.params || []) {
     if (def.shader === 'solid') break
+    if (spec.ui) continue
     if (spec.kind === 'gradient') {
       syncGradientUniform(material, spec, params)
       continue

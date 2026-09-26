@@ -4,16 +4,19 @@ import { Provider } from 'react-redux'
 import NoiseCommonProps from '../../components/NoiseCommonProps.jsx'
 import { SpecialComponentChoose } from '../../components/NoiseDetail.jsx'
 import ParamControls from './ParamControls.jsx'
+import SeamlessPreview from './SeamlessPreview.jsx'
 import { useLang, tNode } from '../i18n/index.js'
 
-export default function NodeParamsPanel({ node, def, store, overridden, onChange, onDelete, canDelete = true }) {
+export default function NodeParamsPanel({ node, def, store, overridden, onChange, onDelete, canDelete = true, captureNode }) {
   useLang()
   if (!node || !def) {
     return <div className="nc-panel nc-panel-empty">选中一个节点以编辑参数</div>
   }
 
+  const isSeamless = def.type === 'artistic' && def.op === 'seamless'
+
   return (
-    <div className="nc-panel">
+    <div className={`nc-panel${isSeamless ? ' nc-panel-split' : ''}`}>
       <div className="nc-panel-head">
         <strong>{tNode(def)}</strong>
         <span className="nc-panel-type">{def.type}{def.op ? ` / ${def.op}` : ''}</span>
@@ -36,6 +39,10 @@ export default function NodeParamsPanel({ node, def, store, overridden, onChange
           <ParamControls def={def} params={node.data.params || {}} onChange={onChange} />
         )}
       </div>
+
+      {isSeamless && (
+        <SeamlessPreview nodeId={node.id} tile={node.data.params?.tileCheck} capture={captureNode} />
+      )}
     </div>
   )
 }

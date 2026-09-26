@@ -21,6 +21,7 @@ export const UV_OPS = ['uv', 'polar', 'radialShear', 'tilingOffset', 'twirl']
 export const SHAPE_OPS = ['ellipse', 'rectangle', 'roundedRectangle', 'polygon']
 export const SOLID_OPS = ['constant', 'integer', 'slider', 'color', 'time', 'vector2', 'vector3']
 export const BLEND_MODES = ['multiply', 'screen', 'overlay', 'softLight', 'add', 'subtract', 'difference']
+export const SEAMLESS_OPS = ['seamless']
 
 export function opIndex(list, op) {
   return list.indexOf(op)

@@ -121,6 +121,7 @@ export const NODE_LABEL_ZH = {
   'artistic:blend': '混合',
   'artistic:channelMask': '通道遮罩',
   'artistic:colorMask': '颜色遮罩',
+  'artistic:seamless': '无缝贴图',
   'normal:fromHeight': '黑白转法线',
   'normal:strength': '法线强度',
   'normal:blend': '法线混合',
@@ -158,6 +159,7 @@ const PARAM_ZH = {
   center: '中心点', radialScale: '径向缩放', lengthScale: '长度缩放', tiling: '平铺次数',
   radius: '圆角半径', width: '宽度', height: '高度', sides: '边数', angle: '旋转角度',
   size: '预览尺寸', resolution: '分辨率', alphaChannel: '透明通道',
+  edgeBand: '边缘带宽', tileCheck: '平铺检测',
 }
 
 // 同名参数在不同节点下的差异化译名
@@ -181,6 +183,7 @@ const ENUM_ZH = {
   opengl: 'OpenGL', directx: 'DirectX',
   wrap: '平铺', clamp: '钳制', mirror: '镜像',
   whiteout: 'Whiteout', udn: 'UDN', partialDerivative: '偏导数',
+  '2x2': '2×2', '3x3': '3×3', '4x4': '4×4',
 }
 
 export function tNode(def) {

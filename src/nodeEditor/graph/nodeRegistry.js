@@ -251,6 +251,16 @@ export const NODE_DEFS = [
     params: [color('maskColor', '#ffffff'), float('range', 0.1, 0, 1), float('fuzziness', 0.1, 0, 1)],
   },
 
+  // ---------------------------------------------------------------- Artistic / Seamless
+  {
+    type: 'artistic', op: 'seamless', label: 'Convert to Seamless Texture', category: 'Artistic', shader: 'seamless',
+    inputs: [IMAGE('in')], outputs: ['out'],
+    params: [
+      float('edgeBand', 0.25, 0, 0.5, 0.01),
+      { ...enumP('tileCheck', '3x3', ['2x2', '3x3', '4x4']), ui: true },
+    ],
+  },
+
   // ---------------------------------------------------------------- Normal
   {
     type: 'normal', op: 'fromHeight', label: 'Normal From Height', category: 'Normal', shader: 'normal',

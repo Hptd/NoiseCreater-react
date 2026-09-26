@@ -512,6 +512,14 @@
   "title": "颜色遮罩"
  },
  {
+  "slug": "artistic-seamless",
+  "type": "artistic",
+  "op": "seamless",
+  "en": "Convert to Seamless Texture",
+  "category": "Artistic",
+  "title": "无缝贴图"
+ },
+ {
   "slug": "normal-fromHeight",
   "type": "normal",
   "op": "fromHeight",

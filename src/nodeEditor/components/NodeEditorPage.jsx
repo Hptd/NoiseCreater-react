@@ -379,6 +379,9 @@ function Editor() {
     dirtyRef.current = true
   }, [setNodes])
 
+  // 供参数面板按节点回读输出像素（无缝贴图的拼接预览用）。
+  const captureNodePreview = useCallback((id, port, size) => runtimeRef.current?.captureNode(id, port, size), [])
+
   const setResolution = useCallback((value) => {
     const out = nodesRef.current.find(n => n.data.type === 'output')
     if (out) updateNodeParam(out.id, 'resolution', Number(value))
@@ -515,6 +518,7 @@ function Editor() {
             onChange={(name, value) => selectedId && updateNodeParam(selectedId, name, value)}
             onDelete={deleteSelected}
             canDelete={selectedNode?.data.type !== 'output'}
+            captureNode={captureNodePreview}
           />
         </div>
       </div>
