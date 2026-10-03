@@ -60,7 +60,7 @@ function GenericNode({ id, data, selected }) {
             {showParamPorts ? '−' : '+'}
           </button>
         )}
-        {def && (
+        {def && data.type !== 'noise' && (
           <a
             className="nc-node-help nodrag nopan"
             href={`/nodeDocument/${nodeDocSlug(def)}/`}

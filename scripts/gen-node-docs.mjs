@@ -13,7 +13,7 @@ await build({
   bundle: true, platform: 'node', format: 'esm', outfile: outModule, logLevel: 'silent',
 })
 const data = await import(pathToFileURL(outModule).href)
-const { NODE_DEFS, NOISE_DEFS, nodeDocSlug, getNoiseDefaults, CATEGORY_ZH, tNode, tParam, setLang } = data
+const { NODE_DEFS, nodeDocSlug, CATEGORY_ZH, tNode, tParam, setLang } = data
 setLang('zh')
 
 const OUT_DIR = path.join(root, 'public', 'nodeDocument')
@@ -133,8 +133,6 @@ const USAGE_BY_CATEGORY = {
   Output: '把最终结果连到输入端口，设置分辨率与透明通道后导出 PNG。',
 }
 
-const NOISE_USAGE = '从左侧菜单拖入画布即可生成图案，无需输入图像；在右侧参数面板调节公共参数（尺寸 / 位移 / 缩放 / 明暗 / 反相 / 动画等）与专属参数。'
-
 function fmtDefault(v) {
   if (Array.isArray(v)) return v.join(', ')
   if (v && typeof v === 'object') return JSON.stringify(v)
@@ -189,29 +187,6 @@ ${renderOutputs(def)}
 ${renderParams(def)}`
 }
 
-function noiseDoc(def) {
-  return `# ${def.label}
-
-- 分类：噪声
-- 英文标识：noise:${def.noiseName}
-
-## 功能介绍
-生成「${def.label}」噪波图案。
-
-## 如何使用
-${NOISE_USAGE}
-
-## 输入
-无图像输入（噪波自生成）。公共参数（噪波尺寸 / 横向位移 / 纵向位移 / 横向尺寸 / 纵向尺寸 / 整体明暗 / 颜色取反 / Alpha / 动画）由节点面板统一控制。
-
-## 输出
-- **out**：图像输出（RGBA）
-
-## 参数
-${Object.entries(getNoiseDefaults(def.noiseName)).map(([k, v]) => `- ${k}：默认 ${fmtDefault(v)}`).join('\n') || '无专属参数。'}
-`
-}
-
 fs.mkdirSync(OUT_DIR, { recursive: true })
 for (const f of fs.readdirSync(OUT_DIR)) if (f.endsWith('.md')) fs.rmSync(path.join(OUT_DIR, f))
 
@@ -220,11 +195,6 @@ for (const def of NODE_DEFS) {
   const slug = nodeDocSlug(def)
   fs.writeFileSync(path.join(OUT_DIR, `${slug}.md`), nonNoiseDoc(def), 'utf8')
   index.push({ slug, type: def.type, op: def.op, en: def.label, category: def.category, title: tNode(def) })
-}
-for (const def of NOISE_DEFS) {
-  const slug = nodeDocSlug(def)
-  fs.writeFileSync(path.join(OUT_DIR, `${slug}.md`), noiseDoc(def), 'utf8')
-  index.push({ slug, type: 'noise', op: def.noiseName, noiseName: def.noiseName, en: def.label, category: 'Noise', title: def.label })
 }
 fs.writeFileSync(path.join(OUT_DIR, 'index.json'), JSON.stringify(index, null, 1), 'utf8')
 console.log(`已生成 ${index.length} 个节点说明文件 -> public/nodeDocument/`)
