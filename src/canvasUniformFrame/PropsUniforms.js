@@ -613,6 +613,80 @@ export function PropsUniforms(noiseName, noiseSpecialProps, hexToRgb) {
       }
       break;
 
+    case "synthwaveNoise":
+      noiseUniforms = {
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        height: { value: noiseSpecialProps.noiseHeight },
+        iterations: { value: noiseSpecialProps.noiseIterations },
+        maxDist: { value: noiseSpecialProps.noiseMaxDist },
+        epsilon: { value: noiseSpecialProps.noiseEpsilon },
+        fov: { value: noiseSpecialProps.noiseFov },
+        camHeight: { value: noiseSpecialProps.noiseCamHeight },
+        sunSize: { value: noiseSpecialProps.noiseSunSize },
+        sunColor: { value: hexToRgb(noiseSpecialProps.noiseSunColor) },
+        skyColor: { value: hexToRgb(noiseSpecialProps.noiseSkyColor) },
+        hazeColor: { value: hexToRgb(noiseSpecialProps.noiseHazeColor) },
+        surfaceColor: { value: hexToRgb(noiseSpecialProps.noiseSurfaceColor) },
+        glowColor: { value: hexToRgb(noiseSpecialProps.noiseGlowColor) },
+        fogDensity: { value: noiseSpecialProps.noiseFogDensity },
+        waveAmp: { value: noiseSpecialProps.noiseWaveAmp },
+        waveFreq: { value: noiseSpecialProps.noiseWaveFreq },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "cloudSkyNoise":
+      noiseUniforms = {
+        cloudscale: { value: noiseSpecialProps.noiseCloudScale },
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        clouddark: { value: noiseSpecialProps.noiseCloudDark },
+        cloudlight: { value: noiseSpecialProps.noiseCloudLight },
+        cloudcover: { value: noiseSpecialProps.noiseCloudCover },
+        cloudalpha: { value: noiseSpecialProps.noiseCloudAlpha },
+        skytint: { value: noiseSpecialProps.noiseSkyTint },
+        skycolour1: { value: hexToRgb(noiseSpecialProps.noiseSkyColor1) },
+        skycolour2: { value: hexToRgb(noiseSpecialProps.noiseSkyColor2) },
+        cloudcolour: { value: hexToRgb(noiseSpecialProps.noiseCloudColor) },
+        warp: { value: noiseSpecialProps.noiseWarp },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "lavaNoise":
+      noiseUniforms = {
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        flowSpeed: { value: noiseSpecialProps.noiseFlowSpeed },
+        flowSpeed2: { value: noiseSpecialProps.noiseFlowSpeed2 },
+        displacement: { value: noiseSpecialProps.noiseDisplacement },
+        advect: { value: noiseSpecialProps.noiseAdvect },
+        dispFreq: { value: noiseSpecialProps.noiseDispFreq },
+        rotSpeed: { value: noiseSpecialProps.noiseRotSpeed },
+        ridgeFreq: { value: noiseSpecialProps.noiseRidgeFreq },
+        octaves: { value: noiseSpecialProps.noiseOctaves },
+        gain: { value: noiseSpecialProps.noiseGain },
+        octaveScale: { value: noiseSpecialProps.noiseOctaveScale },
+        baseScale: { value: noiseSpecialProps.noiseBaseScale },
+        color1: { value: hexToRgb(noiseSpecialProps.noiseColor) },
+        gamma: { value: noiseSpecialProps.noiseGamma },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "sphereNoise":
+      noiseUniforms = {
+        slices: { value: noiseSpecialProps.noiseSlices },
+        amplitude: { value: noiseSpecialProps.noiseAmplitude },
+        frequency: { value: noiseSpecialProps.noiseFrequency },
+        density: { value: noiseSpecialProps.noiseDensity },
+        animSpeed: { value: noiseSpecialProps.noiseAnimSpeed },
+        scale: { value: noiseSpecialProps.noiseScale },
+        radius: { value: noiseSpecialProps.noiseRadius },
+        camZ: { value: noiseSpecialProps.noiseCamZ },
+        rotAngle: { value: noiseSpecialProps.noiseRotAngle },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
     default:
       break;
   }

@@ -512,6 +512,72 @@ export function FrameUniforms(material, noiseSpecialProps, noiseName, hexToRgb) 
       material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
       break;
 
+    case "synthwaveNoise":
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.height.value = noiseSpecialProps.noiseHeight
+      material.current.uniforms.iterations.value = noiseSpecialProps.noiseIterations
+      material.current.uniforms.maxDist.value = noiseSpecialProps.noiseMaxDist
+      material.current.uniforms.epsilon.value = noiseSpecialProps.noiseEpsilon
+      material.current.uniforms.fov.value = noiseSpecialProps.noiseFov
+      material.current.uniforms.camHeight.value = noiseSpecialProps.noiseCamHeight
+      material.current.uniforms.sunSize.value = noiseSpecialProps.noiseSunSize
+      material.current.uniforms.sunColor.value = hexToRgb(noiseSpecialProps.noiseSunColor)
+      material.current.uniforms.skyColor.value = hexToRgb(noiseSpecialProps.noiseSkyColor)
+      material.current.uniforms.hazeColor.value = hexToRgb(noiseSpecialProps.noiseHazeColor)
+      material.current.uniforms.surfaceColor.value = hexToRgb(noiseSpecialProps.noiseSurfaceColor)
+      material.current.uniforms.glowColor.value = hexToRgb(noiseSpecialProps.noiseGlowColor)
+      material.current.uniforms.fogDensity.value = noiseSpecialProps.noiseFogDensity
+      material.current.uniforms.waveAmp.value = noiseSpecialProps.noiseWaveAmp
+      material.current.uniforms.waveFreq.value = noiseSpecialProps.noiseWaveFreq
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "cloudSkyNoise":
+      material.current.uniforms.cloudscale.value = noiseSpecialProps.noiseCloudScale
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.clouddark.value = noiseSpecialProps.noiseCloudDark
+      material.current.uniforms.cloudlight.value = noiseSpecialProps.noiseCloudLight
+      material.current.uniforms.cloudcover.value = noiseSpecialProps.noiseCloudCover
+      material.current.uniforms.cloudalpha.value = noiseSpecialProps.noiseCloudAlpha
+      material.current.uniforms.skytint.value = noiseSpecialProps.noiseSkyTint
+      material.current.uniforms.skycolour1.value = hexToRgb(noiseSpecialProps.noiseSkyColor1)
+      material.current.uniforms.skycolour2.value = hexToRgb(noiseSpecialProps.noiseSkyColor2)
+      material.current.uniforms.cloudcolour.value = hexToRgb(noiseSpecialProps.noiseCloudColor)
+      material.current.uniforms.warp.value = noiseSpecialProps.noiseWarp
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "lavaNoise":
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.flowSpeed.value = noiseSpecialProps.noiseFlowSpeed
+      material.current.uniforms.flowSpeed2.value = noiseSpecialProps.noiseFlowSpeed2
+      material.current.uniforms.displacement.value = noiseSpecialProps.noiseDisplacement
+      material.current.uniforms.advect.value = noiseSpecialProps.noiseAdvect
+      material.current.uniforms.dispFreq.value = noiseSpecialProps.noiseDispFreq
+      material.current.uniforms.rotSpeed.value = noiseSpecialProps.noiseRotSpeed
+      material.current.uniforms.ridgeFreq.value = noiseSpecialProps.noiseRidgeFreq
+      material.current.uniforms.octaves.value = noiseSpecialProps.noiseOctaves
+      material.current.uniforms.gain.value = noiseSpecialProps.noiseGain
+      material.current.uniforms.octaveScale.value = noiseSpecialProps.noiseOctaveScale
+      material.current.uniforms.baseScale.value = noiseSpecialProps.noiseBaseScale
+      material.current.uniforms.color1.value = hexToRgb(noiseSpecialProps.noiseColor)
+      material.current.uniforms.gamma.value = noiseSpecialProps.noiseGamma
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "sphereNoise":
+      material.current.uniforms.slices.value = noiseSpecialProps.noiseSlices
+      material.current.uniforms.amplitude.value = noiseSpecialProps.noiseAmplitude
+      material.current.uniforms.frequency.value = noiseSpecialProps.noiseFrequency
+      material.current.uniforms.density.value = noiseSpecialProps.noiseDensity
+      material.current.uniforms.animSpeed.value = noiseSpecialProps.noiseAnimSpeed
+      material.current.uniforms.scale.value = noiseSpecialProps.noiseScale
+      material.current.uniforms.radius.value = noiseSpecialProps.noiseRadius
+      material.current.uniforms.camZ.value = noiseSpecialProps.noiseCamZ
+      material.current.uniforms.rotAngle.value = noiseSpecialProps.noiseRotAngle
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
     default:
       break;
   }

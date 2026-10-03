@@ -51,6 +51,10 @@ import { fbmColorNoiseParamsSlice } from "../features/FbmColorNoiseParamsSlice"
 import { dashLineNoiseParamsSlice } from "../features/DashLineNoiseParamsSlice"
 import { causticChromaNoiseParamsSlice } from "../features/CausticChromaNoiseParamsSlice"
 import { boomSmokeNoiseParamsSlice } from "../features/BoomSmokeNoiseParamsSlice"
+import { synthwaveNoiseParamsSlice } from "../features/SynthwaveNoiseParamsSlice"
+import { cloudSkyNoiseParamsSlice } from "../features/CloudSkyNoiseParamsSlice"
+import { lavaNoiseParamsSlice } from "../features/LavaNoiseParamsSlice"
+import { sphereNoiseParamsSlice } from "../features/SphereNoiseParamsSlice"
 
 export const store = configureStore({
   reducer: {
@@ -106,5 +110,9 @@ export const store = configureStore({
     dashLineNoiseProps: dashLineNoiseParamsSlice.reducer,
     causticChromaNoiseProps: causticChromaNoiseParamsSlice.reducer,
     boomSmokeNoiseProps: boomSmokeNoiseParamsSlice.reducer,
+    synthwaveNoiseProps: synthwaveNoiseParamsSlice.reducer,
+    cloudSkyNoiseProps: cloudSkyNoiseParamsSlice.reducer,
+    lavaNoiseProps: lavaNoiseParamsSlice.reducer,
+    sphereNoiseProps: sphereNoiseParamsSlice.reducer,
   }
 })

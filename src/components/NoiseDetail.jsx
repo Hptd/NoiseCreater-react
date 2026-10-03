@@ -59,6 +59,10 @@ import FbmColorNoise from './noiseSpecialPropsComponents/FbmColorNoise.jsx'
 import DashLineNoise from './noiseSpecialPropsComponents/DashLineNoise.jsx'
 import CausticChromaNoise from './noiseSpecialPropsComponents/CausticChromaNoise.jsx'
 import BoomSmokeNoise from './noiseSpecialPropsComponents/BoomSmokeNoise.jsx'
+import SynthwaveNoise from './noiseSpecialPropsComponents/SynthwaveNoise.jsx'
+import CloudSkyNoise from './noiseSpecialPropsComponents/CloudSkyNoise.jsx'
+import LavaNoise from './noiseSpecialPropsComponents/LavaNoise.jsx'
+import SphereNoise from './noiseSpecialPropsComponents/SphereNoise.jsx'
 
 
 export function SpecialComponentChoose({ noiseName }) {
@@ -165,6 +169,14 @@ export function SpecialComponentChoose({ noiseName }) {
       return <CausticChromaNoise />
     case "boomSmokeNoise":
       return <BoomSmokeNoise />
+    case "synthwaveNoise":
+      return <SynthwaveNoise />
+    case "cloudSkyNoise":
+      return <CloudSkyNoise />
+    case "lavaNoise":
+      return <LavaNoise />
+    case "sphereNoise":
+      return <SphereNoise />
     default:
       return (<div className="params-container">此Noise无特性参数</div>)
   }

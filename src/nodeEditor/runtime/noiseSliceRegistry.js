@@ -51,6 +51,10 @@ import { fbmColorNoiseParamsSlice } from '../../features/FbmColorNoiseParamsSlic
 import { dashLineNoiseParamsSlice } from '../../features/DashLineNoiseParamsSlice.js'
 import { causticChromaNoiseParamsSlice } from '../../features/CausticChromaNoiseParamsSlice.js'
 import { boomSmokeNoiseParamsSlice } from '../../features/BoomSmokeNoiseParamsSlice.js'
+import { synthwaveNoiseParamsSlice } from '../../features/SynthwaveNoiseParamsSlice.js'
+import { cloudSkyNoiseParamsSlice } from '../../features/CloudSkyNoiseParamsSlice.js'
+import { lavaNoiseParamsSlice } from '../../features/LavaNoiseParamsSlice.js'
+import { sphereNoiseParamsSlice } from '../../features/SphereNoiseParamsSlice.js'
 
 const INIT = { type: '@@noiseEditor/init' }
 
@@ -113,6 +117,10 @@ export const NOISE_SLICES = {
   "dashLineNoiseProps": dashLineNoiseParamsSlice.reducer,
   "causticChromaNoiseProps": causticChromaNoiseParamsSlice.reducer,
   "boomSmokeNoiseProps": boomSmokeNoiseParamsSlice.reducer,
+  "synthwaveNoiseProps": synthwaveNoiseParamsSlice.reducer,
+  "cloudSkyNoiseProps": cloudSkyNoiseParamsSlice.reducer,
+  "lavaNoiseProps": lavaNoiseParamsSlice.reducer,
+  "sphereNoiseProps": sphereNoiseParamsSlice.reducer,
 }
 
 export function getNoiseDefaults(noiseName) {

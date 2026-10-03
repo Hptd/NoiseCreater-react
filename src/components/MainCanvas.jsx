@@ -54,7 +54,7 @@ function Mesh({ VertShader, FragShader, noiseName }) {
 		iTime: { value: 0 },
 
 		...PropsUniforms(noiseName, noiseSpecialProps, hexToRgb)
-	}), [])
+	}), [noiseName])
 
 	useFrame((state, delta) => {
 		// useRef()特性，每次渲染时，material.current都会更新，初始值为undefined，所以需要判断
@@ -198,7 +198,7 @@ function MainCanvas({ VertShader, FragShader, noiseName, clickedImg, videoDownlo
 	return (
 		<div id='main-canvas' style={canvasStyle}>
 			<Canvas camera={{ position: [0, 0, 6.5] }} orthographic={true}>
-				<Mesh VertShader={VertShader} FragShader={FragShader} noiseName={noiseName} />
+				<Mesh key={noiseName} VertShader={VertShader} FragShader={FragShader} noiseName={noiseName} />
 				<FileSave
 					clickedImg={clickedImg}
 					videoDownload={videoDownload}

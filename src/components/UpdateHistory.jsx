@@ -2,6 +2,12 @@ import './updateHistory.css'
 
 const HISTORY = [
   {
+    date: '2026.10.03',
+    items: [
+      '日常新增Noise形态效果*4',
+    ],
+  },
+  {
     date: '2026.09.26',
     items: [
       '「节点混合面板」新增「无缝贴图」节点（英文：Convert to Seamless Texture），把输入的噪波效果图转换为可平铺的无缝贴图，平铺后看不到接缝。',

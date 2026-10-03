@@ -71,6 +71,8 @@
    },
    { "id": 54, "imgSrc": "../images/cloudTunnelNoise.png", "title": "云洞隧道", "routeHref": "noiseDetail/cloudTunnelNoise", "FragmentShaderPath": "../glsl/CloudTunnelNoiseFragment.js"
    },
+   { "id": 61, "imgSrc": "../images/cloudSkyNoise.png", "title": "天空云层", "routeHref": "noiseDetail/cloudSkyNoise", "FragmentShaderPath": "../glsl/CloudSkyNoiseFragment.js"
+   },
    { "id": 31, "imgSrc": "../images/isovaluesNoise.png", "title": "isovalues Noise", "routeHref": "noiseDetail/isovaluesNoise", "FragmentShaderPath": "../glsl/IsovaluesNoiseFragment.js"
    },
    { "id": 32, "imgSrc": "../images/gyroidNoise.png", "title": "gyroid Noise", "routeHref": "noiseDetail/gyroidNoise", "FragmentShaderPath": "../glsl/GyroidNoiseFragment.js"
@@ -78,6 +80,8 @@
    { "id": 51, "imgSrc": "../images/petroleumNoise.png", "title": "petroleum Noise", "routeHref": "noiseDetail/petroleumNoise", "FragmentShaderPath": "../glsl/PetroleumNoiseFragment.js"
    },
    { "id": 55, "imgSrc": "../images/fbmColorNoise.png", "title": "FBM 彩色", "routeHref": "noiseDetail/fbmColorNoise", "FragmentShaderPath": "../glsl/FbmColorNoiseFragment.js"
+   },
+   { "id": 62, "imgSrc": "../images/lavaNoise.png", "title": "熔岩噪波", "routeHref": "noiseDetail/lavaNoise", "FragmentShaderPath": "../glsl/LavaNoiseFragment.js"
    },
    { "id": 33, "imgSrc": "../images/knitNoise_A.png", "title": "knit Noise_A", "routeHref": "noiseDetail/knitNoiseA", "FragmentShaderPath": "../glsl/KnitNoiseAFragment.js"
    },
@@ -109,12 +113,16 @@
    },
    { "id": 50, "imgSrc": "../images/satisfyNoise.png", "title": "治愈同心圆环", "routeHref": "noiseDetail/satisfyNoise", "FragmentShaderPath": "../glsl/SatisfyNoiseFragment.js"
    },
+   { "id": 63, "imgSrc": "../images/sphereNoise.png", "title": "体积噪波球", "routeHref": "noiseDetail/sphereNoise", "FragmentShaderPath": "../glsl/SphereNoiseFragment.js"
+   },
+   { "id": 60, "imgSrc": "../images/synthwaveNoise.png", "title": "合成波日落", "routeHref": "noiseDetail/synthwaveNoise", "FragmentShaderPath": "../glsl/SynthwaveNoiseFragment.js"
+   },
    { "id": 45, "imgSrc": "../images/太极.png", "title": "太极阴阳鱼", "routeHref": "noiseDetail/taiji", "FragmentShaderPath": "../glsl/TaijiFragment.js"
    },
    { "id": 46, "imgSrc": "../images/eye.png", "title": "eye", "routeHref": "noiseDetail/eye", "FragmentShaderPath": "../glsl/EyeFragment.js"
    },
    { "id": 47, "imgSrc": "../images/brushNoise_A.png", "title": "brush Noise_A", "routeHref": "noiseDetail/brushNoiseA", "FragmentShaderPath": "../glsl/BrushNoiseAFragment.js"
    },
-    { "id": 48, "imgSrc": "../images/brushNoise_B.png", "title": "brush Noise_B", "routeHref": "noiseDetail/brushNoiseB", "FragmentShaderPath": "../glsl/BrushNoiseBFragment.js"
-    }
-]
+   { "id": 48, "imgSrc": "../images/brushNoise_B.png", "title": "brush Noise_B", "routeHref": "noiseDetail/brushNoiseB", "FragmentShaderPath": "../glsl/BrushNoiseBFragment.js"
+   }
+  ]
