@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { DEFAULT_ASPECT } from "./exportAspect.js"
 
 // 公共参数默认参数
 const initialState = {
   downLoadSize: 1024,
+  exportAspect: DEFAULT_ASPECT,
   noiseUvSize: 1,
   noiseOffsetU: 0,
   noiseOffsetV: 0,
@@ -24,6 +26,7 @@ export const noiseCommonParams = createSlice({
   initialState,
   reducers: {
     setDownLoadSize: (state, action) => setReducer(state, action, 'downLoadSize'),
+    setExportAspect: (state, action) => setReducer(state, action, 'exportAspect'),
     setNoiseUvSize: (state, action) => setReducer(state, action, 'noiseUvSize'),
     setNoiseOffsetU: (state, action) => setReducer(state, action, 'noiseOffsetU'),
     setNoiseOffsetV: (state, action) => setReducer(state, action, 'noiseOffsetV'),
@@ -39,6 +42,7 @@ export const noiseCommonParams = createSlice({
 
 export const {
   setDownLoadSize,
+  setExportAspect,
   setNoiseUvSize,
   setNoiseOffsetU,
   setNoiseOffsetV,

@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, memo } from 'react'
 import { useSelector } from 'react-redux'
 import { FrameUniforms } from '../canvasUniformFrame/FrameUniform.js'
 import { PropsUniforms } from '../canvasUniformFrame/PropsUniforms.js'
+import { computeExportSize } from '../features/exportAspect.js'
 import { saveAs } from 'file-saver'
 import * as THREE from 'three'
 import JSZip from 'jszip'
@@ -78,9 +79,13 @@ function Mesh({ VertShader, FragShader, noiseName }) {
 		}
 	})
 
+	// 工作区保持正方形：边长取宽高较大者，画布按比例居中裁切，噪波不变形
+	const { width, height } = computeExportSize(noiseCommonProps.downLoadSize, noiseCommonProps.exportAspect)
+	const planeSide = Math.max(width, height)
+
 	return (
 		<mesh>
-			<planeGeometry args={[noiseCommonProps.downLoadSize / 2, noiseCommonProps.downLoadSize / 2]} />
+			<planeGeometry args={[planeSide, planeSide]} />
 			<shaderMaterial ref={material}
 				vertexShader={VertShader}
 				fragmentShader={FragShader}
@@ -192,12 +197,14 @@ function FileSave({ clickedImg, videoDownload, noiseName, onFrameCountChange, on
 
 function MainCanvas({ VertShader, FragShader, noiseName, clickedImg, videoDownload, onFrameCountChange, onPackingChange, onCapReached }) {
 
-	const canvasSize = useSelector(state => state.noiseCommonProps.downLoadSize) / 2
-	const canvasStyle = { 'width': canvasSize, 'height': canvasSize }
+	const noiseCommonProps = useSelector(state => state.noiseCommonProps)
+	const { width, height } = computeExportSize(noiseCommonProps.downLoadSize, noiseCommonProps.exportAspect)
+	const canvasStyle = { 'width': width / 2, 'height': height / 2 }
 
 	return (
+		// 画布按 CSS 尺寸的一半显示，dpr 固定为 2，使绘制缓冲（导出图片/序列帧）等于设定的 宽×高
 		<div id='main-canvas' style={canvasStyle}>
-			<Canvas camera={{ position: [0, 0, 6.5] }} orthographic={true}>
+			<Canvas dpr={2} camera={{ position: [0, 0, 6.5] }} orthographic={true}>
 				<Mesh key={noiseName} VertShader={VertShader} FragShader={FragShader} noiseName={noiseName} />
 				<FileSave
 					clickedImg={clickedImg}

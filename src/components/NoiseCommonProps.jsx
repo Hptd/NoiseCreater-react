@@ -1,11 +1,14 @@
 import InputLabel from "./InputLabel.jsx"
 import InputSlider from "./InputSlider.jsx"
 import InputCheck from "./InputCheck.jsx"
+import InputSelect from "./InputSelect.jsx"
 import { useSelector } from "react-redux"
-import { setDownLoadSize, setNoiseUvSize, setNoiseOffsetU, setNoiseOffsetV, setNoiseScaleU, setNoiseScaleV, setNoiseBright, setNoiseInvert, setNoiseAlphaChannel, setNoiseAnimationOC, setNoiseSequenceFrame } from '../features/NoiseCommonParamsSlice.js'
+import { setDownLoadSize, setExportAspect, setNoiseUvSize, setNoiseOffsetU, setNoiseOffsetV, setNoiseScaleU, setNoiseScaleV, setNoiseBright, setNoiseInvert, setNoiseAlphaChannel, setNoiseAnimationOC, setNoiseSequenceFrame } from '../features/NoiseCommonParamsSlice.js'
+import { ASPECT_LABELS, DEFAULT_ASPECT, computeExportSize } from '../features/exportAspect.js'
 
 export default function NoiseCommonProps({ hideOutputParams = false }) {
   const noiseCommonProps = useSelector(state => state.noiseCommonProps)
+  const exportSize = computeExportSize(noiseCommonProps.downLoadSize, noiseCommonProps.exportAspect)
   
   return (
     <div className="params-container">
@@ -23,7 +26,16 @@ export default function NoiseCommonProps({ hideOutputParams = false }) {
       
       {!hideOutputParams && (
         <>
-          <InputLabel labelName='导出尺寸(先确认效果再修改尺寸保存)' placeholder='默认1024*1024' defaultInputValue={noiseCommonProps.downLoadSize} resetValue={1024} dispatchFunc={setDownLoadSize} />
+          <InputSelect labelName='导出比例' options={ASPECT_LABELS} defaultInputValue={noiseCommonProps.exportAspect} resetValue={DEFAULT_ASPECT} dispatchFunc={setExportAspect} />
+          <InputLabel labelName='导出宽度(先确认效果再修改尺寸保存)' placeholder='默认1024' defaultInputValue={noiseCommonProps.downLoadSize} resetValue={1024} dispatchFunc={setDownLoadSize} />
+          <div className="inValue">
+            <span>导出高度(按比例自动计算，只读)</span>
+            <div className="right">
+              <span>{`==>   `}</span>
+              <span>{exportSize.height}</span>
+              <span> {`<==`} </span>
+            </div>
+          </div>
           <InputLabel labelName='每秒导出序列帧数量(fps)' placeholder='默认10帧/秒' defaultInputValue={noiseCommonProps.noiseSequenceFrame} resetValue={10} dispatchFunc={setNoiseSequenceFrame} />
         </>
       )}

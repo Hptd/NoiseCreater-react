@@ -9,7 +9,8 @@ import * as THREE from 'three'
 import { saveAs } from 'file-saver'
 import { getNodeDef } from '../graph/nodeRegistry.js'
 import { createGraphNode, newEdgeId } from './nodeFactory.js'
-import { GraphRuntime } from '../runtime/graphRuntime.js'
+import { GraphRuntime, MAX_RESOLUTION, MIN_RESOLUTION } from '../runtime/graphRuntime.js'
+import { ASPECT_LABELS, DEFAULT_ASPECT, computeExportSize } from '../../features/exportAspect.js'
 import { createNodeStore, readNodeParams, readCommonParams } from '../runtime/scopedStore.js'
 import { getNoiseDefaults, getCommonDefaults } from '../runtime/noiseSliceRegistry.js'
 import { downloadGraph, readGraphFile } from '../graph/ncgraphIO.js'
@@ -23,6 +24,10 @@ import { useLang, toggleLang } from '../i18n/index.js'
 import './nodeEditor.css'
 
 const nodeTypes = { ncNode: GenericNode }
+
+// 常用宽度档位（适配不同比例）与自定义选项；最大 4096。
+const CUSTOM_WIDTH = '自定义'
+const WIDTH_PRESETS = [256, 512, 768, 1024, 1280, 1536, 1920, 2048, 2560, 3072, 3840, 4096]
 
 function makeOutputNode() {
   return createGraphNode(getNodeDef('output', 'output'), { x: 720, y: 220 })
@@ -48,6 +53,33 @@ function pixelsToDataURL(pixels) {
   return canvas.toDataURL('image/png')
 }
 
+// 目标宽高与正方形工作区边长：长边超过上限时按同一比例整体缩小，保持比例不变形。
+function nodeExportSize(width, aspectLabel) {
+  const { width: W, height: H } = computeExportSize(width, aspectLabel || DEFAULT_ASPECT)
+  const long = Math.max(W, H)
+  if (long <= MAX_RESOLUTION) return { width: W, height: H, edge: long }
+  const scale = MAX_RESOLUTION / long
+  return {
+    width: Math.max(1, Math.round(W * scale)),
+    height: Math.max(1, Math.round(H * scale)),
+    edge: MAX_RESOLUTION,
+  }
+}
+
+// 把非正方形回读结果等比放入方形预览框（留边），避免拉伸变形。
+function drawPixelsFit(canvas, pixels, box) {
+  const source = document.createElement('canvas')
+  drawPixels(source, pixels)
+  canvas.width = box
+  canvas.height = box
+  const ctx = canvas.getContext('2d')
+  ctx.clearRect(0, 0, box, box)
+  const scale = Math.min(box / pixels.width, box / pixels.height)
+  const w = Math.round(pixels.width * scale)
+  const h = Math.round(pixels.height * scale)
+  ctx.drawImage(source, Math.floor((box - w) / 2), Math.floor((box - h) / 2), w, h)
+}
+
 function Editor() {
   const initialNodesRef = useRef(null)
   if (initialNodesRef.current === null) initialNodesRef.current = [makeOutputNode()]
@@ -62,6 +94,8 @@ function Editor() {
   const [graphName, setGraphName] = useState('未命名节点图')
   const [panelWidth, setPanelWidth] = useState(466)
   const [previewSide, setPreviewSide] = useState(220)
+  const [customWidthEditing, setCustomWidthEditing] = useState(false)
+  const [customWidthText, setCustomWidthText] = useState('1024')
   const [, bumpStores] = useState(0)
 
   const { screenToFlowPosition } = useReactFlow()
@@ -82,6 +116,7 @@ function Editor() {
   const nodesRef = useRef(nodes)
   const edgesRef = useRef(edges)
   const previewSizeRef = useRef(previewSide)
+  const outputSizeRef = useRef({ width: 1024, height: 1024, edge: 1024 })
   const pendingPositionRef = useRef(null)
 
   nodesRef.current = nodes
@@ -127,22 +162,43 @@ function Editor() {
     [nodes, edges],
   )
 
-  const outputResolution = useMemo(() => {
+  const outputWidth = useMemo(() => {
     const out = nodes.find(n => n.data.type === 'output')
     return Number(out?.data?.params?.resolution) || 1024
   }, [nodes])
+
+  const outputAspect = useMemo(() => {
+    const out = nodes.find(n => n.data.type === 'output')
+    return out?.data?.params?.aspect || DEFAULT_ASPECT
+  }, [nodes])
+
+  const outputSize = useMemo(() => nodeExportSize(outputWidth, outputAspect), [outputWidth, outputAspect])
+  outputSizeRef.current = outputSize
+
+  // 下拉反显：宽度命中档位显示档位，否则显示“自定义”并给出输入框。
+  const isPresetWidth = WIDTH_PRESETS.includes(outputWidth)
+  const showCustomWidth = !isPresetWidth || customWidthEditing
+
+  useEffect(() => {
+    if (isPresetWidth) setCustomWidthEditing(false)
+  }, [isPresetWidth])
+
+  useEffect(() => {
+    // 仅在外因（档位切换/参数面板滑块）导致显示自定义时同步文本，避免打断正在输入的内容。
+    if (showCustomWidth && !customWidthEditing) setCustomWidthText(String(outputWidth))
+  }, [outputWidth, showCustomWidth, customWidthEditing])
 
   useEffect(() => {
     const rt = runtimeRef.current
     if (!rt) return
     rt.setGraph(toGraphModel(nodesRef.current, edgesRef.current, metaRef.current))
-    rt.setResolution(outputResolution)
+    rt.setResolution(outputSize.edge)
     rt.preload().then(missing => {
       setStatus(missing.length ? `有 ${missing.length} 个节点的着色器加载失败` : '')
       dirtyRef.current = true
     })
     dirtyRef.current = true
-  }, [topoKey, outputResolution])
+  }, [topoKey, outputSize.edge])
 
   const pushParams = useCallback((rt) => {
     const ns = nodesRef.current
@@ -186,8 +242,9 @@ function Editor() {
           lastPreview = now
           previewDirtyRef.current = false
           const size = Math.round(Math.min(640, Math.max(120, previewSizeRef.current)))
-          const pixels = rt.captureNode(rt.outputId, 'out', size)
-          if (pixels) drawPixels(previewCanvasRef.current, pixels)
+          const os = outputSizeRef.current
+          const pixels = rt.captureNode(rt.outputId, 'out', size, os.width, os.height)
+          if (pixels) drawPixelsFit(previewCanvasRef.current, pixels, size)
         }
       }
       raf = requestAnimationFrame(loop)
@@ -383,19 +440,25 @@ function Editor() {
   const captureNodePreview = useCallback((id, port, size) => runtimeRef.current?.captureNode(id, port, size), [])
 
   const setResolution = useCallback((value) => {
+    const clamped = Math.min(Math.max(Number(value) || 0, MIN_RESOLUTION), MAX_RESOLUTION)
     const out = nodesRef.current.find(n => n.data.type === 'output')
-    if (out) updateNodeParam(out.id, 'resolution', Number(value))
+    if (out) updateNodeParam(out.id, 'resolution', clamped)
+  }, [updateNodeParam])
+
+  const setAspect = useCallback((value) => {
+    const out = nodesRef.current.find(n => n.data.type === 'output')
+    if (out) updateNodeParam(out.id, 'aspect', value)
   }, [updateNodeParam])
 
   const exportPNG = useCallback(() => {
     const rt = runtimeRef.current
     if (!rt) return
-    const pixels = rt.readOutputPixels()
+    const pixels = rt.readOutputPixels(outputSize.width, outputSize.height)
     if (!pixels) { setStatus('没有可导出的输出（请连接 Output 节点）'); return }
     const canvas = document.createElement('canvas')
     drawPixels(canvas, pixels)
     saveAs(canvas.toDataURL('image/png'), `${graphName || 'nodeGraph'}.png`)
-  }, [graphName])
+  }, [graphName, outputSize])
 
   const saveGraph = useCallback(() => {
     const graph = toGraphModel(nodesRef.current, edgesRef.current, metaRef.current)
@@ -456,11 +519,47 @@ function Editor() {
         <button className="nc-btn" onClick={() => fileRef.current?.click()}>打开Graph</button>
         <button className="nc-btn" onClick={() => setPlaying(v => !v)}>{playing ? '暂停动画' : '播放动画'}</button>
         <label className="nc-res">
-          分辨率
-          <select value={outputResolution} onChange={e => setResolution(e.target.value)}>
-            {[256, 512, 1024, 1536, 2048].map(v => <option key={v} value={v}>{v}</option>)}
+          宽度
+          <select
+            value={isPresetWidth ? outputWidth : CUSTOM_WIDTH}
+            onChange={e => {
+              const v = e.target.value
+              if (v === CUSTOM_WIDTH) {
+                setCustomWidthText(String(outputWidth))
+                setCustomWidthEditing(true)
+              } else {
+                setResolution(v)
+              }
+            }}
+          >
+            {WIDTH_PRESETS.map(v => <option key={v} value={v}>{v}</option>)}
+            <option value={CUSTOM_WIDTH}>{CUSTOM_WIDTH}</option>
           </select>
         </label>
+        {showCustomWidth && (
+          <input
+            className="nc-num nc-res-custom"
+            type="number"
+            min={64}
+            max={MAX_RESOLUTION}
+            step={1}
+            value={customWidthText}
+            onChange={e => {
+              const t = e.target.value
+              setCustomWidthText(t)
+              const n = Number(t)
+              if (t !== '' && Number.isFinite(n)) setResolution(n)
+            }}
+            onBlur={() => setCustomWidthText(String(outputWidth))}
+          />
+        )}
+        <label className="nc-res">
+          比例
+          <select value={outputAspect} onChange={e => setAspect(e.target.value)}>
+            {ASPECT_LABELS.map(label => <option key={label} value={label}>{label}</option>)}
+          </select>
+        </label>
+        <span className="nc-res">高度 {outputSize.height}</span>
         <button className="nc-btn export" onClick={exportPNG}>导出 PNG</button>
         <a className="nc-btn link" href="/">返回首页</a>
         <button className="nc-btn lang" onClick={toggleLang} title="中英文切换">

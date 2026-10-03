@@ -158,7 +158,7 @@ const PARAM_ZH = {
   strengthX: 'X 方向强度', strengthY: 'Y 方向强度', weightA: '底层权重', weightB: '细节层权重',
   center: '中心点', radialScale: '径向缩放', lengthScale: '长度缩放', tiling: '平铺次数',
   radius: '圆角半径', width: '宽度', height: '高度', sides: '边数', angle: '旋转角度',
-  size: '预览尺寸', resolution: '分辨率', alphaChannel: '透明通道',
+  size: '预览尺寸', resolution: '宽度', aspect: '比例', alphaChannel: '透明通道',
   edgeBand: '边缘带宽', tileCheck: '平铺检测',
 }
 

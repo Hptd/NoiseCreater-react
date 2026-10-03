@@ -7,6 +7,7 @@ import { useSelector } from "react-redux"
 
 import MainCanvas from "./MainCanvas.jsx"
 import VertShader from '../../public/glsl/NoiseVertexShader.js'
+import { computeExportSize } from '../features/exportAspect.js'
 
 import SampleNoiseAB from './noiseSpecialPropsComponents/SampleNoiseAB.jsx'
 import VoronoiWaterNoise from './noiseSpecialPropsComponents/VoronoiWaterNoise.jsx'
@@ -190,7 +191,8 @@ export default function NoiseDetail() {
   const noiseInfo = noiseListInformations.find(item => item.routeHref === `noiseDetail/${noiseName}`)
   const id = location.state?.id ?? noiseInfo?.id
   // 未找到时的提示框尺寸与画布一致，占据画布位置
-  const canvasSize = useSelector(state => state.noiseCommonProps.downLoadSize) / 2
+  const noiseCommonProps = useSelector(state => state.noiseCommonProps)
+  const notFoundSize = computeExportSize(noiseCommonProps.downLoadSize, noiseCommonProps.exportAspect)
 
   const [fragmentShader, setFragmentShader] = useState()
   const [isLoading, setIsLoading] = useState(true);
@@ -264,7 +266,7 @@ export default function NoiseDetail() {
       <Sponsor />
 
       {isLoading ? <div>Loading...</div> :
-        notFound ? <div className="noise-not-found" style={{ width: canvasSize, height: canvasSize }}>未找到该噪波，请返回<Link to="/" className="back-home">首页</Link></div> :
+        notFound ? <div className="noise-not-found" style={{ width: notFoundSize.width / 2, height: notFoundSize.height / 2 }}>未找到该噪波，请返回<Link to="/" className="back-home">首页</Link></div> :
           <MainCanvas
             VertShader={`${VertShader}`} FragShader={`${fragmentShader}`} noiseName={noiseName}
             clickedImg={clicked} videoDownload={videoDownload}

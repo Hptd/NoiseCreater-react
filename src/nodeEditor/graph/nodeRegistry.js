@@ -7,6 +7,8 @@
 // - inputs[].inline 为 true 时，存在同名参数作为“未连线时的常量”
 // - 端口统一 RGBA（vec4），标量常量广播到 4 通道
 
+import { ASPECT_LABELS, DEFAULT_ASPECT } from '../../features/exportAspect.js'
+
 const float = (name, def, min, max, step = 0.001) => ({ name, kind: 'float', default: def, min, max, step })
 const int = (name, def, min, max) => ({ name, kind: 'int', default: def, min, max, step: 1 })
 const bool = (name, def) => ({ name, kind: 'bool', default: def })
@@ -349,7 +351,7 @@ export const NODE_DEFS = [
   {
     type: 'output', op: 'output', label: 'Output', category: 'Output', shader: 'output',
     inputs: [IMAGE('in')], outputs: [],
-    params: [int('resolution', 1024, 64, 2048), bool('alphaChannel', false)],
+    params: [int('resolution', 1024, 64, 4096), enumP('aspect', DEFAULT_ASPECT, ASPECT_LABELS), bool('alphaChannel', false)],
   },
 ]
 

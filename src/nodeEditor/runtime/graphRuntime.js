@@ -14,7 +14,7 @@ import {
   INPUT_LETTERS,
 } from './uniforms.js'
 
-export const MAX_RESOLUTION = 2048
+export const MAX_RESOLUTION = 4096
 export const MIN_RESOLUTION = 64
 
 export class GraphRuntime {
@@ -226,14 +226,18 @@ export class GraphRuntime {
   }
 
   // 回读 Output 的像素（WebGL 坐标系，y 轴自下而上，导出时需翻转）。
-  readOutputPixels() {
+  // 工作区为正方形（边长 target.width），按目标宽高居中裁切，保证噪波不变形。
+  readOutputPixels(width, height) {
     const target = this.getNodeTarget(this.outputId, 'out')
     if (!target) return null
-    const width = target.width
-    const height = target.height
-    const data = new Uint8Array(width * height * 4)
-    this.renderer.readRenderTargetPixels(target, 0, 0, width, height, data)
-    return { data, width, height }
+    const edge = target.width
+    const w = Math.max(1, Math.min(Math.round(width) || edge, edge))
+    const h = Math.max(1, Math.min(Math.round(height) || edge, edge))
+    const x = Math.floor((edge - w) / 2)
+    const y = Math.floor((edge - h) / 2)
+    const data = new Uint8Array(w * h * 4)
+    this.renderer.readRenderTargetPixels(target, x, y, w, h, data)
+    return { data, width: w, height: h }
   }
 
   ensureCaptureMaterial() {
@@ -254,8 +258,8 @@ export class GraphRuntime {
   }
 
   // 把某节点输出缩采到 size×size 后回读，供节点缩略图使用（同样为 y 轴自下而上）。
-  // 按尺寸缓存 RenderTarget，避免不同节点不同尺寸时反复重建。
-  captureNode(nodeId, port, size = 96) {
+  // aspectW/aspectH 非 1:1 时，从方形画面居中裁出目标比例；按尺寸缓存 RenderTarget。
+  captureNode(nodeId, port, size = 96, aspectW = 1, aspectH = 1) {
     const target = this.getNodeTarget(nodeId, port)
     if (!target || !this.renderer) return null
     const material = this.ensureCaptureMaterial()
@@ -275,9 +279,15 @@ export class GraphRuntime {
     this.renderer.setRenderTarget(captureTarget)
     this.renderer.render(this.scene, this.camera)
     this.renderer.setRenderTarget(null)
-    const data = new Uint8Array(size * size * 4)
-    this.renderer.readRenderTargetPixels(captureTarget, 0, 0, size, size, data)
-    return { data, width: size, height: size }
+    let w = size
+    let h = size
+    if (aspectW >= aspectH) h = Math.max(1, Math.round(size * aspectH / aspectW))
+    else w = Math.max(1, Math.round(size * aspectW / aspectH))
+    const x = Math.floor((size - w) / 2)
+    const y = Math.floor((size - h) / 2)
+    const data = new Uint8Array(w * h * 4)
+    this.renderer.readRenderTargetPixels(captureTarget, x, y, w, h, data)
+    return { data, width: w, height: h }
   }
 
   disposeEntry(entry) {
