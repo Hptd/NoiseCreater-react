@@ -64,6 +64,12 @@ import SynthwaveNoise from './noiseSpecialPropsComponents/SynthwaveNoise.jsx'
 import CloudSkyNoise from './noiseSpecialPropsComponents/CloudSkyNoise.jsx'
 import LavaNoise from './noiseSpecialPropsComponents/LavaNoise.jsx'
 import SphereNoise from './noiseSpecialPropsComponents/SphereNoise.jsx'
+import ParticleNoise from './noiseSpecialPropsComponents/ParticleNoise.jsx'
+import BalatroNoise from './noiseSpecialPropsComponents/BalatroNoise.jsx'
+import HexTerminalNoise from './noiseSpecialPropsComponents/HexTerminalNoise.jsx'
+import RuneRainNoise from './noiseSpecialPropsComponents/RuneRainNoise.jsx'
+import MountainSunsetNoise from './noiseSpecialPropsComponents/MountainSunsetNoise.jsx'
+import LightningNoise from './noiseSpecialPropsComponents/LightningNoise.jsx'
 
 
 export function SpecialComponentChoose({ noiseName }) {
@@ -178,6 +184,18 @@ export function SpecialComponentChoose({ noiseName }) {
       return <LavaNoise />
     case "sphereNoise":
       return <SphereNoise />
+    case "particleNoise":
+      return <ParticleNoise />
+    case "balatroNoise":
+      return <BalatroNoise />
+    case "hexTerminalNoise":
+      return <HexTerminalNoise />
+    case "runeRainNoise":
+      return <RuneRainNoise />
+    case "mountainSunsetNoise":
+      return <MountainSunsetNoise />
+    case "lightningNoise":
+      return <LightningNoise />
     default:
       return (<div className="params-container">此Noise无特性参数</div>)
   }

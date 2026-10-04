@@ -55,6 +55,12 @@ import { synthwaveNoiseParamsSlice } from "../features/SynthwaveNoiseParamsSlice
 import { cloudSkyNoiseParamsSlice } from "../features/CloudSkyNoiseParamsSlice"
 import { lavaNoiseParamsSlice } from "../features/LavaNoiseParamsSlice"
 import { sphereNoiseParamsSlice } from "../features/SphereNoiseParamsSlice"
+import { particleNoiseParamsSlice } from "../features/ParticleNoiseParamsSlice"
+import { balatroNoiseParamsSlice } from "../features/BalatroNoiseParamsSlice"
+import { hexTerminalNoiseParamsSlice } from "../features/HexTerminalNoiseParamsSlice"
+import { runeRainNoiseParamsSlice } from "../features/RuneRainNoiseParamsSlice"
+import { mountainSunsetNoiseParamsSlice } from "../features/MountainSunsetNoiseParamsSlice"
+import { lightningNoiseParamsSlice } from "../features/LightningNoiseParamsSlice"
 
 export const store = configureStore({
   reducer: {
@@ -114,5 +120,11 @@ export const store = configureStore({
     cloudSkyNoiseProps: cloudSkyNoiseParamsSlice.reducer,
     lavaNoiseProps: lavaNoiseParamsSlice.reducer,
     sphereNoiseProps: sphereNoiseParamsSlice.reducer,
+    particleNoiseProps: particleNoiseParamsSlice.reducer,
+    balatroNoiseProps: balatroNoiseParamsSlice.reducer,
+    hexTerminalNoiseProps: hexTerminalNoiseParamsSlice.reducer,
+    runeRainNoiseProps: runeRainNoiseParamsSlice.reducer,
+    mountainSunsetNoiseProps: mountainSunsetNoiseParamsSlice.reducer,
+    lightningNoiseProps: lightningNoiseParamsSlice.reducer,
   }
 })

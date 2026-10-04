@@ -578,6 +578,109 @@ export function FrameUniforms(material, noiseSpecialProps, noiseName, hexToRgb) 
       material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
       break;
 
+    case "particleNoise":
+      material.current.uniforms.particleIterations.value = noiseSpecialProps.noiseParticleIterations
+      material.current.uniforms.scale.value = noiseSpecialProps.noiseScale
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.displaceFreq.value = noiseSpecialProps.noiseDisplaceFreq
+      material.current.uniforms.displaceStrength.value = noiseSpecialProps.noiseDisplaceStrength
+      material.current.uniforms.particleRadius.value = noiseSpecialProps.noiseParticleRadius
+      material.current.uniforms.particleRadius2.value = noiseSpecialProps.noiseParticleRadius2
+      material.current.uniforms.particleSizeVar.value = noiseSpecialProps.noiseParticleSizeVar
+      material.current.uniforms.randomSize.value = noiseSpecialProps.noiseRandomSize
+      material.current.uniforms.particleColor.value = hexToRgb(noiseSpecialProps.noiseParticleColor)
+      material.current.uniforms.partBright.value = noiseSpecialProps.noiseParticleBright
+      material.current.uniforms.glowThreshold.value = noiseSpecialProps.noiseGlowThreshold
+      material.current.uniforms.glowPower.value = noiseSpecialProps.noiseGlowPower
+      material.current.uniforms.blurStrength.value = noiseSpecialProps.noiseBlurStrength
+      material.current.uniforms.blurRange.value = noiseSpecialProps.noiseBlurRange
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "balatroNoise":
+      material.current.uniforms.spinRotation.value = noiseSpecialProps.noiseSpinRotation
+      material.current.uniforms.spinSpeed.value = noiseSpecialProps.noiseSpinSpeed
+      material.current.uniforms.spinEase.value = noiseSpecialProps.noiseSpinEase
+      material.current.uniforms.spinAmount.value = noiseSpecialProps.noiseSpinAmount
+      material.current.uniforms.contrast.value = noiseSpecialProps.noiseContrast
+      material.current.uniforms.lighting.value = noiseSpecialProps.noiseLighting
+      material.current.uniforms.pixelFilter.value = noiseSpecialProps.noisePixelFilter
+      material.current.uniforms.iterations.value = noiseSpecialProps.noiseIterations
+      material.current.uniforms.scale.value = noiseSpecialProps.noiseScale
+      material.current.uniforms.paintScale.value = noiseSpecialProps.noisePaintScale
+      material.current.uniforms.isRotate.value = noiseSpecialProps.noiseIsRotate
+      material.current.uniforms.color1.value = hexToRgb(noiseSpecialProps.noiseColor1)
+      material.current.uniforms.color2.value = hexToRgb(noiseSpecialProps.noiseColor2)
+      material.current.uniforms.color3.value = hexToRgb(noiseSpecialProps.noiseColor3)
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "hexTerminalNoise":
+      material.current.uniforms.color.value = hexToRgb(noiseSpecialProps.noiseColor)
+      material.current.uniforms.hexDensity.value = noiseSpecialProps.noiseHexDensity
+      material.current.uniforms.fillScale.value = noiseSpecialProps.noiseFillScale
+      material.current.uniforms.randOffset.value = noiseSpecialProps.noiseRandOffset
+      material.current.uniforms.gradSpeed.value = noiseSpecialProps.noiseGradSpeed
+      material.current.uniforms.borderThreshold.value = noiseSpecialProps.noiseBorderThreshold
+      material.current.uniforms.borderWidth.value = noiseSpecialProps.noiseBorderWidth
+      material.current.uniforms.edgeContrast.value = noiseSpecialProps.noiseEdgeContrast
+      material.current.uniforms.fillSpeed.value = noiseSpecialProps.noiseFillSpeed
+      material.current.uniforms.fillSharp.value = noiseSpecialProps.noiseFillSharp
+      material.current.uniforms.bgFreq.value = noiseSpecialProps.noiseBgFreq
+      material.current.uniforms.bgSpeed.value = noiseSpecialProps.noiseBgSpeed
+      material.current.uniforms.glow.value = noiseSpecialProps.noiseGlow
+      material.current.uniforms.exposure.value = noiseSpecialProps.noiseExposure
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "runeRainNoise":
+      material.current.uniforms.rows.value = noiseSpecialProps.noiseRows
+      material.current.uniforms.columns.value = noiseSpecialProps.noiseColumns
+      material.current.uniforms.zoomSpeed.value = noiseSpecialProps.noiseZoomSpeed
+      material.current.uniforms.rainSpeed.value = noiseSpecialProps.noiseRainSpeed
+      material.current.uniforms.rainDensity.value = noiseSpecialProps.noiseRainDensity
+      material.current.uniforms.rainColor.value = hexToRgb(noiseSpecialProps.noiseRainColor)
+      material.current.uniforms.maxBright.value = noiseSpecialProps.noiseMaxBright
+      material.current.uniforms.satPower.value = noiseSpecialProps.noiseSatPower
+      material.current.uniforms.layerScale.value = noiseSpecialProps.noiseLayerScale
+      material.current.uniforms.runeThickness.value = noiseSpecialProps.noiseRuneThickness
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "mountainSunsetNoise":
+      material.current.uniforms.skyColor.value = hexToRgb(noiseSpecialProps.noiseSkyColor)
+      material.current.uniforms.sunColor.value = hexToRgb(noiseSpecialProps.noiseSunColor)
+      material.current.uniforms.birdColor.value = hexToRgb(noiseSpecialProps.noiseBirdColor)
+      material.current.uniforms.sunSize.value = noiseSpecialProps.noiseSunSize
+      material.current.uniforms.sunX.value = noiseSpecialProps.noiseSunX
+      material.current.uniforms.sunY.value = noiseSpecialProps.noiseSunY
+      material.current.uniforms.noiseFreq.value = noiseSpecialProps.noiseNoiseFreq
+      material.current.uniforms.mountainAmp.value = noiseSpecialProps.noiseMountainAmp
+      material.current.uniforms.detailAmp.value = noiseSpecialProps.noiseDetailAmp
+      material.current.uniforms.mountainThreshold.value = noiseSpecialProps.noiseMountainThreshold
+      material.current.uniforms.fogStrength.value = noiseSpecialProps.noiseFogStrength
+      material.current.uniforms.globalSpeed.value = noiseSpecialProps.noiseGlobalSpeed
+      material.current.uniforms.parallaxSpeed.value = noiseSpecialProps.noiseParallaxSpeed
+      material.current.uniforms.showBird.value = noiseSpecialProps.noiseShowBird
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "lightningNoise":
+      material.current.uniforms.seedVal.value = noiseSpecialProps.noiseSeed
+      material.current.uniforms.steady.value = noiseSpecialProps.noiseSteady
+      material.current.uniforms.strikePeriod.value = noiseSpecialProps.noiseStrikePeriod
+      material.current.uniforms.decay.value = noiseSpecialProps.noiseDecay
+      material.current.uniforms.branchAmount.value = noiseSpecialProps.noiseBranchAmount
+      material.current.uniforms.branchLength.value = noiseSpecialProps.noiseBranchLength
+      material.current.uniforms.distortion.value = noiseSpecialProps.noiseDistortion
+      material.current.uniforms.noiseScale.value = noiseSpecialProps.noiseNoiseScale
+      material.current.uniforms.doReveal.value = noiseSpecialProps.noiseDoReveal
+      material.current.uniforms.coreColor.value = hexToRgb(noiseSpecialProps.noiseCoreColor)
+      material.current.uniforms.sheathColor.value = hexToRgb(noiseSpecialProps.noiseSheathColor)
+      material.current.uniforms.glowColor.value = hexToRgb(noiseSpecialProps.noiseGlowColor)
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
     default:
       break;
   }

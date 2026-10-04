@@ -55,6 +55,12 @@ import { synthwaveNoiseParamsSlice } from '../../features/SynthwaveNoiseParamsSl
 import { cloudSkyNoiseParamsSlice } from '../../features/CloudSkyNoiseParamsSlice.js'
 import { lavaNoiseParamsSlice } from '../../features/LavaNoiseParamsSlice.js'
 import { sphereNoiseParamsSlice } from '../../features/SphereNoiseParamsSlice.js'
+import { particleNoiseParamsSlice } from '../../features/ParticleNoiseParamsSlice.js'
+import { balatroNoiseParamsSlice } from '../../features/BalatroNoiseParamsSlice.js'
+import { hexTerminalNoiseParamsSlice } from '../../features/HexTerminalNoiseParamsSlice.js'
+import { runeRainNoiseParamsSlice } from '../../features/RuneRainNoiseParamsSlice.js'
+import { mountainSunsetNoiseParamsSlice } from '../../features/MountainSunsetNoiseParamsSlice.js'
+import { lightningNoiseParamsSlice } from '../../features/LightningNoiseParamsSlice.js'
 
 const INIT = { type: '@@noiseEditor/init' }
 
@@ -121,6 +127,12 @@ export const NOISE_SLICES = {
   "cloudSkyNoiseProps": cloudSkyNoiseParamsSlice.reducer,
   "lavaNoiseProps": lavaNoiseParamsSlice.reducer,
   "sphereNoiseProps": sphereNoiseParamsSlice.reducer,
+  "particleNoiseProps": particleNoiseParamsSlice.reducer,
+  "balatroNoiseProps": balatroNoiseParamsSlice.reducer,
+  "hexTerminalNoiseProps": hexTerminalNoiseParamsSlice.reducer,
+  "runeRainNoiseProps": runeRainNoiseParamsSlice.reducer,
+  "mountainSunsetNoiseProps": mountainSunsetNoiseParamsSlice.reducer,
+  "lightningNoiseProps": lightningNoiseParamsSlice.reducer,
 }
 
 export function getNoiseDefaults(noiseName) {

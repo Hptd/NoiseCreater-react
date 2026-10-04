@@ -83,6 +83,14 @@
    },
    { "id": 62, "imgSrc": "../images/lavaNoise.png", "title": "熔岩噪波", "routeHref": "noiseDetail/lavaNoise", "FragmentShaderPath": "../glsl/LavaNoiseFragment.js"
    },
+   { "id": 64, "imgSrc": "../images/particleNoise.png", "title": "粒子噪波", "routeHref": "noiseDetail/particleNoise", "FragmentShaderPath": "../glsl/ParticleNoiseFragment.js"
+   },
+   { "id": 65, "imgSrc": "../images/balatroNoise.png", "title": "Balatro 漩涡", "routeHref": "noiseDetail/balatroNoise", "FragmentShaderPath": "../glsl/BalatroNoiseFragment.js"
+   },
+   { "id": 66, "imgSrc": "../images/hexTerminalNoise.png", "title": "六边形终端", "routeHref": "noiseDetail/hexTerminalNoise", "FragmentShaderPath": "../glsl/HexTerminalNoiseFragment.js"
+   },
+   { "id": 67, "imgSrc": "../images/runeRainNoise.png", "title": "符文数字雨", "routeHref": "noiseDetail/runeRainNoise", "FragmentShaderPath": "../glsl/RuneRainNoiseFragment.js"
+   },
    { "id": 33, "imgSrc": "../images/knitNoise_A.png", "title": "knit Noise_A", "routeHref": "noiseDetail/knitNoiseA", "FragmentShaderPath": "../glsl/KnitNoiseAFragment.js"
    },
    { "id": 34, "imgSrc": "../images/knitNoise_B.png", "title": "knit Noise_B", "routeHref": "noiseDetail/knitNoiseB", "FragmentShaderPath": "../glsl/KnitNoiseBFragment.js"
@@ -105,6 +113,8 @@
    },
    { "id": 49, "imgSrc": "../images/fireSmokeNoise.png", "title": "fire Smoke Noise", "routeHref": "noiseDetail/fireSmokeNoise", "FragmentShaderPath": "../glsl/FireSmokeNoiseFragment.js"
    },
+   { "id": 69, "imgSrc": "../images/lightningNoise.png", "title": "闪电", "routeHref": "noiseDetail/lightningNoise", "FragmentShaderPath": "../glsl/LightningNoiseFragment.js"
+   },
    { "id": 42, "imgSrc": "../images/etherNoise_A.png", "title": "ether Noise_A", "routeHref": "noiseDetail/etherNoiseA", "FragmentShaderPath": "../glsl/EtherNoiseAFragment.js"
    },
    { "id": 43, "imgSrc": "../images/etherNoise_B.png", "title": "ether Noise_B", "routeHref": "noiseDetail/etherNoiseB", "FragmentShaderPath": "../glsl/EtherNoiseBFragment.js"
@@ -116,6 +126,8 @@
    { "id": 63, "imgSrc": "../images/sphereNoise.png", "title": "体积噪波球", "routeHref": "noiseDetail/sphereNoise", "FragmentShaderPath": "../glsl/SphereNoiseFragment.js"
    },
    { "id": 60, "imgSrc": "../images/synthwaveNoise.png", "title": "合成波日落", "routeHref": "noiseDetail/synthwaveNoise", "FragmentShaderPath": "../glsl/SynthwaveNoiseFragment.js"
+   },
+   { "id": 68, "imgSrc": "../images/mountainSunsetNoise.png", "title": "日落山峦", "routeHref": "noiseDetail/mountainSunsetNoise", "FragmentShaderPath": "../glsl/MountainSunsetNoiseFragment.js"
    },
    { "id": 45, "imgSrc": "../images/太极.png", "title": "太极阴阳鱼", "routeHref": "noiseDetail/taiji", "FragmentShaderPath": "../glsl/TaijiFragment.js"
    },

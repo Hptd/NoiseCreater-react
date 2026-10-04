@@ -687,6 +687,121 @@ export function PropsUniforms(noiseName, noiseSpecialProps, hexToRgb) {
       }
       break;
 
+    case "particleNoise":
+      noiseUniforms = {
+        particleIterations: { value: noiseSpecialProps.noiseParticleIterations },
+        scale: { value: noiseSpecialProps.noiseScale },
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        displaceFreq: { value: noiseSpecialProps.noiseDisplaceFreq },
+        displaceStrength: { value: noiseSpecialProps.noiseDisplaceStrength },
+        particleRadius: { value: noiseSpecialProps.noiseParticleRadius },
+        particleRadius2: { value: noiseSpecialProps.noiseParticleRadius2 },
+        particleSizeVar: { value: noiseSpecialProps.noiseParticleSizeVar },
+        randomSize: { value: noiseSpecialProps.noiseRandomSize },
+        particleColor: { value: hexToRgb(noiseSpecialProps.noiseParticleColor) },
+        partBright: { value: noiseSpecialProps.noiseParticleBright },
+        glowThreshold: { value: noiseSpecialProps.noiseGlowThreshold },
+        glowPower: { value: noiseSpecialProps.noiseGlowPower },
+        blurStrength: { value: noiseSpecialProps.noiseBlurStrength },
+        blurRange: { value: noiseSpecialProps.noiseBlurRange },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "balatroNoise":
+      noiseUniforms = {
+        spinRotation: { value: noiseSpecialProps.noiseSpinRotation },
+        spinSpeed: { value: noiseSpecialProps.noiseSpinSpeed },
+        spinEase: { value: noiseSpecialProps.noiseSpinEase },
+        spinAmount: { value: noiseSpecialProps.noiseSpinAmount },
+        contrast: { value: noiseSpecialProps.noiseContrast },
+        lighting: { value: noiseSpecialProps.noiseLighting },
+        pixelFilter: { value: noiseSpecialProps.noisePixelFilter },
+        iterations: { value: noiseSpecialProps.noiseIterations },
+        scale: { value: noiseSpecialProps.noiseScale },
+        paintScale: { value: noiseSpecialProps.noisePaintScale },
+        isRotate: { value: noiseSpecialProps.noiseIsRotate },
+        color1: { value: hexToRgb(noiseSpecialProps.noiseColor1) },
+        color2: { value: hexToRgb(noiseSpecialProps.noiseColor2) },
+        color3: { value: hexToRgb(noiseSpecialProps.noiseColor3) },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "hexTerminalNoise":
+      noiseUniforms = {
+        color: { value: hexToRgb(noiseSpecialProps.noiseColor) },
+        hexDensity: { value: noiseSpecialProps.noiseHexDensity },
+        fillScale: { value: noiseSpecialProps.noiseFillScale },
+        randOffset: { value: noiseSpecialProps.noiseRandOffset },
+        gradSpeed: { value: noiseSpecialProps.noiseGradSpeed },
+        borderThreshold: { value: noiseSpecialProps.noiseBorderThreshold },
+        borderWidth: { value: noiseSpecialProps.noiseBorderWidth },
+        edgeContrast: { value: noiseSpecialProps.noiseEdgeContrast },
+        fillSpeed: { value: noiseSpecialProps.noiseFillSpeed },
+        fillSharp: { value: noiseSpecialProps.noiseFillSharp },
+        bgFreq: { value: noiseSpecialProps.noiseBgFreq },
+        bgSpeed: { value: noiseSpecialProps.noiseBgSpeed },
+        glow: { value: noiseSpecialProps.noiseGlow },
+        exposure: { value: noiseSpecialProps.noiseExposure },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "runeRainNoise":
+      noiseUniforms = {
+        rows: { value: noiseSpecialProps.noiseRows },
+        columns: { value: noiseSpecialProps.noiseColumns },
+        zoomSpeed: { value: noiseSpecialProps.noiseZoomSpeed },
+        rainSpeed: { value: noiseSpecialProps.noiseRainSpeed },
+        rainDensity: { value: noiseSpecialProps.noiseRainDensity },
+        rainColor: { value: hexToRgb(noiseSpecialProps.noiseRainColor) },
+        maxBright: { value: noiseSpecialProps.noiseMaxBright },
+        satPower: { value: noiseSpecialProps.noiseSatPower },
+        layerScale: { value: noiseSpecialProps.noiseLayerScale },
+        runeThickness: { value: noiseSpecialProps.noiseRuneThickness },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "mountainSunsetNoise":
+      noiseUniforms = {
+        skyColor: { value: hexToRgb(noiseSpecialProps.noiseSkyColor) },
+        sunColor: { value: hexToRgb(noiseSpecialProps.noiseSunColor) },
+        birdColor: { value: hexToRgb(noiseSpecialProps.noiseBirdColor) },
+        sunSize: { value: noiseSpecialProps.noiseSunSize },
+        sunX: { value: noiseSpecialProps.noiseSunX },
+        sunY: { value: noiseSpecialProps.noiseSunY },
+        noiseFreq: { value: noiseSpecialProps.noiseNoiseFreq },
+        mountainAmp: { value: noiseSpecialProps.noiseMountainAmp },
+        detailAmp: { value: noiseSpecialProps.noiseDetailAmp },
+        mountainThreshold: { value: noiseSpecialProps.noiseMountainThreshold },
+        fogStrength: { value: noiseSpecialProps.noiseFogStrength },
+        globalSpeed: { value: noiseSpecialProps.noiseGlobalSpeed },
+        parallaxSpeed: { value: noiseSpecialProps.noiseParallaxSpeed },
+        showBird: { value: noiseSpecialProps.noiseShowBird },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "lightningNoise":
+      noiseUniforms = {
+        seedVal: { value: noiseSpecialProps.noiseSeed },
+        steady: { value: noiseSpecialProps.noiseSteady },
+        strikePeriod: { value: noiseSpecialProps.noiseStrikePeriod },
+        decay: { value: noiseSpecialProps.noiseDecay },
+        branchAmount: { value: noiseSpecialProps.noiseBranchAmount },
+        branchLength: { value: noiseSpecialProps.noiseBranchLength },
+        distortion: { value: noiseSpecialProps.noiseDistortion },
+        noiseScale: { value: noiseSpecialProps.noiseNoiseScale },
+        doReveal: { value: noiseSpecialProps.noiseDoReveal },
+        coreColor: { value: hexToRgb(noiseSpecialProps.noiseCoreColor) },
+        sheathColor: { value: hexToRgb(noiseSpecialProps.noiseSheathColor) },
+        glowColor: { value: hexToRgb(noiseSpecialProps.noiseGlowColor) },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
     default:
       break;
   }
