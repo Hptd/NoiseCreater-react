@@ -61,6 +61,10 @@ import { hexTerminalNoiseParamsSlice } from "../features/HexTerminalNoiseParamsS
 import { runeRainNoiseParamsSlice } from "../features/RuneRainNoiseParamsSlice"
 import { mountainSunsetNoiseParamsSlice } from "../features/MountainSunsetNoiseParamsSlice"
 import { lightningNoiseParamsSlice } from "../features/LightningNoiseParamsSlice"
+import { liquidWarpNoiseParamsSlice } from "../features/LiquidWarpNoiseParamsSlice"
+import { dynamismNoiseParamsSlice } from "../features/DynamismNoiseParamsSlice"
+import { domainWarpNoiseParamsSlice } from "../features/DomainWarpNoiseParamsSlice"
+import { trabeculumNoiseParamsSlice } from "../features/TrabeculumNoiseParamsSlice"
 
 export const store = configureStore({
   reducer: {
@@ -126,5 +130,9 @@ export const store = configureStore({
     runeRainNoiseProps: runeRainNoiseParamsSlice.reducer,
     mountainSunsetNoiseProps: mountainSunsetNoiseParamsSlice.reducer,
     lightningNoiseProps: lightningNoiseParamsSlice.reducer,
+    liquidWarpNoiseProps: liquidWarpNoiseParamsSlice.reducer,
+    dynamismNoiseProps: dynamismNoiseParamsSlice.reducer,
+    domainWarpNoiseProps: domainWarpNoiseParamsSlice.reducer,
+    trabeculumNoiseProps: trabeculumNoiseParamsSlice.reducer,
   }
 })

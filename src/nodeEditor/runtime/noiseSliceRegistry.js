@@ -61,6 +61,10 @@ import { hexTerminalNoiseParamsSlice } from '../../features/HexTerminalNoisePara
 import { runeRainNoiseParamsSlice } from '../../features/RuneRainNoiseParamsSlice.js'
 import { mountainSunsetNoiseParamsSlice } from '../../features/MountainSunsetNoiseParamsSlice.js'
 import { lightningNoiseParamsSlice } from '../../features/LightningNoiseParamsSlice.js'
+import { liquidWarpNoiseParamsSlice } from '../../features/LiquidWarpNoiseParamsSlice.js'
+import { dynamismNoiseParamsSlice } from '../../features/DynamismNoiseParamsSlice.js'
+import { domainWarpNoiseParamsSlice } from '../../features/DomainWarpNoiseParamsSlice.js'
+import { trabeculumNoiseParamsSlice } from '../../features/TrabeculumNoiseParamsSlice.js'
 
 const INIT = { type: '@@noiseEditor/init' }
 
@@ -133,6 +137,10 @@ export const NOISE_SLICES = {
   "runeRainNoiseProps": runeRainNoiseParamsSlice.reducer,
   "mountainSunsetNoiseProps": mountainSunsetNoiseParamsSlice.reducer,
   "lightningNoiseProps": lightningNoiseParamsSlice.reducer,
+  "liquidWarpNoiseProps": liquidWarpNoiseParamsSlice.reducer,
+  "dynamismNoiseProps": dynamismNoiseParamsSlice.reducer,
+  "domainWarpNoiseProps": domainWarpNoiseParamsSlice.reducer,
+  "trabeculumNoiseProps": trabeculumNoiseParamsSlice.reducer,
 }
 
 export function getNoiseDefaults(noiseName) {

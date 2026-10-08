@@ -70,6 +70,10 @@ import HexTerminalNoise from './noiseSpecialPropsComponents/HexTerminalNoise.jsx
 import RuneRainNoise from './noiseSpecialPropsComponents/RuneRainNoise.jsx'
 import MountainSunsetNoise from './noiseSpecialPropsComponents/MountainSunsetNoise.jsx'
 import LightningNoise from './noiseSpecialPropsComponents/LightningNoise.jsx'
+import LiquidWarpNoise from './noiseSpecialPropsComponents/LiquidWarpNoise.jsx'
+import DynamismNoise from './noiseSpecialPropsComponents/DynamismNoise.jsx'
+import DomainWarpNoise from './noiseSpecialPropsComponents/DomainWarpNoise.jsx'
+import TrabeculumNoise from './noiseSpecialPropsComponents/TrabeculumNoise.jsx'
 
 
 export function SpecialComponentChoose({ noiseName }) {
@@ -196,6 +200,14 @@ export function SpecialComponentChoose({ noiseName }) {
       return <MountainSunsetNoise />
     case "lightningNoise":
       return <LightningNoise />
+    case "liquidWarpNoise":
+      return <LiquidWarpNoise />
+    case "dynamismNoise":
+      return <DynamismNoise />
+    case "domainWarpNoise":
+      return <DomainWarpNoise />
+    case "trabeculumNoise":
+      return <TrabeculumNoise />
     default:
       return (<div className="params-container">此Noise无特性参数</div>)
   }

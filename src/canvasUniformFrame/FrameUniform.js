@@ -681,6 +681,59 @@ export function FrameUniforms(material, noiseSpecialProps, noiseName, hexToRgb) 
       material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
       break;
 
+    case "liquidWarpNoise":
+      material.current.uniforms.frequency.value = noiseSpecialProps.noiseFrequency
+      material.current.uniforms.amplitude.value = noiseSpecialProps.noiseAmplitude
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.degreeSpeed.value = noiseSpecialProps.noiseDegreeSpeed
+      material.current.uniforms.rotateStrength.value = noiseSpecialProps.noiseRotateStrength
+      material.current.uniforms.color1.value = hexToRgb(noiseSpecialProps.noiseColor1)
+      material.current.uniforms.color2.value = hexToRgb(noiseSpecialProps.noiseColor2)
+      material.current.uniforms.color3.value = hexToRgb(noiseSpecialProps.noiseColor3)
+      material.current.uniforms.color4.value = hexToRgb(noiseSpecialProps.noiseColor4)
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "dynamismNoise":
+      material.current.uniforms.scale.value = noiseSpecialProps.noiseScale
+      material.current.uniforms.animSpeed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.octaves.value = noiseSpecialProps.noiseOctaves
+      material.current.uniforms.decay.value = noiseSpecialProps.noiseDecay
+      material.current.uniforms.divScale.value = noiseSpecialProps.noiseDivScale
+      material.current.uniforms.color1.value = hexToRgb(noiseSpecialProps.noiseColor1)
+      material.current.uniforms.color2.value = hexToRgb(noiseSpecialProps.noiseColor2)
+      material.current.uniforms.color3.value = hexToRgb(noiseSpecialProps.noiseColor3)
+      material.current.uniforms.color4.value = hexToRgb(noiseSpecialProps.noiseColor4)
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "domainWarpNoise":
+      material.current.uniforms.scale.value = noiseSpecialProps.noiseScale
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.contrast.value = noiseSpecialProps.noiseContrast
+      material.current.uniforms.color1.value = hexToRgb(noiseSpecialProps.noiseColor1)
+      material.current.uniforms.color2.value = hexToRgb(noiseSpecialProps.noiseColor2)
+      material.current.uniforms.color3.value = hexToRgb(noiseSpecialProps.noiseColor3)
+      material.current.uniforms.color4.value = hexToRgb(noiseSpecialProps.noiseColor4)
+      material.current.uniforms.color5.value = hexToRgb(noiseSpecialProps.noiseColor5)
+      material.current.uniforms.color6.value = hexToRgb(noiseSpecialProps.noiseColor6)
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "trabeculumNoise":
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.steps.value = noiseSpecialProps.noiseSteps
+      material.current.uniforms.stepSize.value = noiseSpecialProps.noiseStepSize
+      material.current.uniforms.scale.value = noiseSpecialProps.noiseScale
+      material.current.uniforms.grad.value = noiseSpecialProps.noiseGrad
+      material.current.uniforms.threshold.value = noiseSpecialProps.noiseThreshold
+      material.current.uniforms.fov.value = noiseSpecialProps.noiseFov
+      material.current.uniforms.camTheta.value = noiseSpecialProps.noiseCamTheta
+      material.current.uniforms.camPhi.value = noiseSpecialProps.noiseCamPhi
+      material.current.uniforms.skyColor.value = hexToRgb(noiseSpecialProps.noiseSkyColor)
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
     default:
       break;
   }

@@ -802,6 +802,67 @@ export function PropsUniforms(noiseName, noiseSpecialProps, hexToRgb) {
       }
       break;
 
+    case "liquidWarpNoise":
+      noiseUniforms = {
+        frequency: { value: noiseSpecialProps.noiseFrequency },
+        amplitude: { value: noiseSpecialProps.noiseAmplitude },
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        degreeSpeed: { value: noiseSpecialProps.noiseDegreeSpeed },
+        rotateStrength: { value: noiseSpecialProps.noiseRotateStrength },
+        color1: { value: hexToRgb(noiseSpecialProps.noiseColor1) },
+        color2: { value: hexToRgb(noiseSpecialProps.noiseColor2) },
+        color3: { value: hexToRgb(noiseSpecialProps.noiseColor3) },
+        color4: { value: hexToRgb(noiseSpecialProps.noiseColor4) },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "dynamismNoise":
+      noiseUniforms = {
+        scale: { value: noiseSpecialProps.noiseScale },
+        animSpeed: { value: noiseSpecialProps.noiseSpeed },
+        octaves: { value: noiseSpecialProps.noiseOctaves },
+        decay: { value: noiseSpecialProps.noiseDecay },
+        divScale: { value: noiseSpecialProps.noiseDivScale },
+        color1: { value: hexToRgb(noiseSpecialProps.noiseColor1) },
+        color2: { value: hexToRgb(noiseSpecialProps.noiseColor2) },
+        color3: { value: hexToRgb(noiseSpecialProps.noiseColor3) },
+        color4: { value: hexToRgb(noiseSpecialProps.noiseColor4) },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "domainWarpNoise":
+      noiseUniforms = {
+        scale: { value: noiseSpecialProps.noiseScale },
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        contrast: { value: noiseSpecialProps.noiseContrast },
+        color1: { value: hexToRgb(noiseSpecialProps.noiseColor1) },
+        color2: { value: hexToRgb(noiseSpecialProps.noiseColor2) },
+        color3: { value: hexToRgb(noiseSpecialProps.noiseColor3) },
+        color4: { value: hexToRgb(noiseSpecialProps.noiseColor4) },
+        color5: { value: hexToRgb(noiseSpecialProps.noiseColor5) },
+        color6: { value: hexToRgb(noiseSpecialProps.noiseColor6) },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "trabeculumNoise":
+      noiseUniforms = {
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        steps: { value: noiseSpecialProps.noiseSteps },
+        stepSize: { value: noiseSpecialProps.noiseStepSize },
+        scale: { value: noiseSpecialProps.noiseScale },
+        grad: { value: noiseSpecialProps.noiseGrad },
+        threshold: { value: noiseSpecialProps.noiseThreshold },
+        fov: { value: noiseSpecialProps.noiseFov },
+        camTheta: { value: noiseSpecialProps.noiseCamTheta },
+        camPhi: { value: noiseSpecialProps.noiseCamPhi },
+        skyColor: { value: hexToRgb(noiseSpecialProps.noiseSkyColor) },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
     default:
       break;
   }

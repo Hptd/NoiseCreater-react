@@ -77,15 +77,23 @@
    },
    { "id": 32, "imgSrc": "../images/gyroidNoise.png", "title": "gyroid Noise", "routeHref": "noiseDetail/gyroidNoise", "FragmentShaderPath": "../glsl/GyroidNoiseFragment.js"
    },
+   { "id": 72, "imgSrc": "../images/domainWarpNoise.png", "title": "域扭曲噪波", "routeHref": "noiseDetail/domainWarpNoise", "FragmentShaderPath": "../glsl/DomainWarpNoiseFragment.js"
+   },
    { "id": 51, "imgSrc": "../images/petroleumNoise.png", "title": "petroleum Noise", "routeHref": "noiseDetail/petroleumNoise", "FragmentShaderPath": "../glsl/PetroleumNoiseFragment.js"
    },
    { "id": 55, "imgSrc": "../images/fbmColorNoise.png", "title": "FBM 彩色", "routeHref": "noiseDetail/fbmColorNoise", "FragmentShaderPath": "../glsl/FbmColorNoiseFragment.js"
+   },
+   { "id": 71, "imgSrc": "../images/dynamismNoise.png", "title": "动力噪波", "routeHref": "noiseDetail/dynamismNoise", "FragmentShaderPath": "../glsl/DynamismNoiseFragment.js"
+   },
+   { "id": 73, "imgSrc": "../images/trabeculumNoise.png", "title": "体积脉络", "routeHref": "noiseDetail/trabeculumNoise", "FragmentShaderPath": "../glsl/TrabeculumNoiseFragment.js"
    },
    { "id": 62, "imgSrc": "../images/lavaNoise.png", "title": "熔岩噪波", "routeHref": "noiseDetail/lavaNoise", "FragmentShaderPath": "../glsl/LavaNoiseFragment.js"
    },
    { "id": 64, "imgSrc": "../images/particleNoise.png", "title": "粒子噪波", "routeHref": "noiseDetail/particleNoise", "FragmentShaderPath": "../glsl/ParticleNoiseFragment.js"
    },
    { "id": 65, "imgSrc": "../images/balatroNoise.png", "title": "Balatro 漩涡", "routeHref": "noiseDetail/balatroNoise", "FragmentShaderPath": "../glsl/BalatroNoiseFragment.js"
+   },
+   { "id": 70, "imgSrc": "../images/liquidWarpNoise.png", "title": "液态波纹", "routeHref": "noiseDetail/liquidWarpNoise", "FragmentShaderPath": "../glsl/LiquidWarpNoiseFragment.js"
    },
    { "id": 66, "imgSrc": "../images/hexTerminalNoise.png", "title": "六边形终端", "routeHref": "noiseDetail/hexTerminalNoise", "FragmentShaderPath": "../glsl/HexTerminalNoiseFragment.js"
    },
