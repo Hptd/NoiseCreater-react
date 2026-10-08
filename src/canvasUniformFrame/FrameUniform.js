@@ -734,6 +734,19 @@ export function FrameUniforms(material, noiseSpecialProps, noiseName, hexToRgb) 
       material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
       break;
 
+    case "starGlowNoise":
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.iterations.value = noiseSpecialProps.noiseIterations
+      material.current.uniforms.octaves.value = noiseSpecialProps.noiseOctaves
+      material.current.uniforms.fbmScroll.value = noiseSpecialProps.noiseFbmScroll
+      material.current.uniforms.radius.value = noiseSpecialProps.noiseRadius
+      material.current.uniforms.tailNoise.value = noiseSpecialProps.noiseTailNoise
+      material.current.uniforms.shake.value = noiseSpecialProps.noiseShake
+      material.current.uniforms.gamma.value = noiseSpecialProps.noiseGamma
+      material.current.uniforms.exposure.value = noiseSpecialProps.noiseExposure
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
     default:
       break;
   }

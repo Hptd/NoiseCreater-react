@@ -2,6 +2,13 @@ import './updateHistory.css'
 
 const HISTORY = [
   {
+    date: '2026.10.09',
+    items: [
+      '日常新增Noise形态效果',
+      '增加GLSL代码导出功能'
+    ],
+  },
+  {
     date: '2026.10.03',
     items: [
       '日常新增Noise形态效果*4',

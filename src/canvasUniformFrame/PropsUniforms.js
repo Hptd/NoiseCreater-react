@@ -863,6 +863,21 @@ export function PropsUniforms(noiseName, noiseSpecialProps, hexToRgb) {
       }
       break;
 
+    case "starGlowNoise":
+      noiseUniforms = {
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        iterations: { value: noiseSpecialProps.noiseIterations },
+        octaves: { value: noiseSpecialProps.noiseOctaves },
+        fbmScroll: { value: noiseSpecialProps.noiseFbmScroll },
+        radius: { value: noiseSpecialProps.noiseRadius },
+        tailNoise: { value: noiseSpecialProps.noiseTailNoise },
+        shake: { value: noiseSpecialProps.noiseShake },
+        gamma: { value: noiseSpecialProps.noiseGamma },
+        exposure: { value: noiseSpecialProps.noiseExposure },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
     default:
       break;
   }

@@ -65,6 +65,7 @@ import { liquidWarpNoiseParamsSlice } from "../features/LiquidWarpNoiseParamsSli
 import { dynamismNoiseParamsSlice } from "../features/DynamismNoiseParamsSlice"
 import { domainWarpNoiseParamsSlice } from "../features/DomainWarpNoiseParamsSlice"
 import { trabeculumNoiseParamsSlice } from "../features/TrabeculumNoiseParamsSlice"
+import { starGlowNoiseParamsSlice } from "../features/StarGlowNoiseParamsSlice"
 
 export const store = configureStore({
   reducer: {
@@ -134,5 +135,6 @@ export const store = configureStore({
     dynamismNoiseProps: dynamismNoiseParamsSlice.reducer,
     domainWarpNoiseProps: domainWarpNoiseParamsSlice.reducer,
     trabeculumNoiseProps: trabeculumNoiseParamsSlice.reducer,
+    starGlowNoiseProps: starGlowNoiseParamsSlice.reducer,
   }
 })

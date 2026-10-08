@@ -65,6 +65,7 @@ import { liquidWarpNoiseParamsSlice } from '../../features/LiquidWarpNoiseParams
 import { dynamismNoiseParamsSlice } from '../../features/DynamismNoiseParamsSlice.js'
 import { domainWarpNoiseParamsSlice } from '../../features/DomainWarpNoiseParamsSlice.js'
 import { trabeculumNoiseParamsSlice } from '../../features/TrabeculumNoiseParamsSlice.js'
+import { starGlowNoiseParamsSlice } from '../../features/StarGlowNoiseParamsSlice.js'
 
 const INIT = { type: '@@noiseEditor/init' }
 
@@ -141,6 +142,7 @@ export const NOISE_SLICES = {
   "dynamismNoiseProps": dynamismNoiseParamsSlice.reducer,
   "domainWarpNoiseProps": domainWarpNoiseParamsSlice.reducer,
   "trabeculumNoiseProps": trabeculumNoiseParamsSlice.reducer,
+  "starGlowNoiseProps": starGlowNoiseParamsSlice.reducer,
 }
 
 export function getNoiseDefaults(noiseName) {

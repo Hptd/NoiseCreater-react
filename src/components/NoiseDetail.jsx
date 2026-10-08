@@ -4,6 +4,7 @@ import Sponsor from "./Sponsor.jsx"
 import noiseListInformations from '../../public/mySQL/noiseList.json'
 import { useState, useEffect, useCallback } from "react"
 import { useSelector } from "react-redux"
+import { saveAs } from 'file-saver'
 
 import MainCanvas from "./MainCanvas.jsx"
 import VertShader from '../../public/glsl/NoiseVertexShader.js'
@@ -74,6 +75,7 @@ import LiquidWarpNoise from './noiseSpecialPropsComponents/LiquidWarpNoise.jsx'
 import DynamismNoise from './noiseSpecialPropsComponents/DynamismNoise.jsx'
 import DomainWarpNoise from './noiseSpecialPropsComponents/DomainWarpNoise.jsx'
 import TrabeculumNoise from './noiseSpecialPropsComponents/TrabeculumNoise.jsx'
+import StarGlowNoise from './noiseSpecialPropsComponents/StarGlowNoise.jsx'
 
 
 export function SpecialComponentChoose({ noiseName }) {
@@ -208,6 +210,8 @@ export function SpecialComponentChoose({ noiseName }) {
       return <DomainWarpNoise />
     case "trabeculumNoise":
       return <TrabeculumNoise />
+    case "starGlowNoise":
+      return <StarGlowNoise />
     default:
       return (<div className="params-container">此Noise无特性参数</div>)
   }
@@ -256,6 +260,13 @@ export default function NoiseDetail() {
     setClicked(clicked + 1)
   }
 
+  // 处理下载GLSL源码的逻辑
+  function clickDownloadGlsl() {
+    if (!fragmentShader) return
+    // file-saver 传字符串会当作URL处理，必须用 Blob 才能下载源码本身
+    saveAs(new Blob([fragmentShader], { type: 'text/plain;charset=utf-8' }), `${noiseName}.glsl`)
+  }
+
   // 视频下载处理逻辑
   const [videoDownload, setVideoDownload] = useState(false)
   const [frameCount, setFrameCount] = useState(0)
@@ -288,6 +299,7 @@ export default function NoiseDetail() {
 
       <div className="params-container" style={{ textAlign: 'center' }}>
         <button id="btnReSize" style={{ marginLeft: '50px', marginRight: '70px' }} onClick={handleDownloadVideo} disabled={isPacking}>{videoDownload ? '停止并打包下载' : (isPacking ? '正在打包...' : '开始下载序列帧')}</button>
+        <button id="btnReSize" onClick={clickDownloadGlsl} disabled={!fragmentShader}>下载GLSL</button>
         <button id="btnReSize" style={{ marginLeft: '70px', marginRight: '50px' }} onClick={clickDownloadImg}>下载图片</button>
       </div>
       {videoDownload && <div className="params-container" style={{ textAlign: 'center' }}>已准备 {frameCount} 张</div>}
