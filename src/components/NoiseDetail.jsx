@@ -76,6 +76,9 @@ import DynamismNoise from './noiseSpecialPropsComponents/DynamismNoise.jsx'
 import DomainWarpNoise from './noiseSpecialPropsComponents/DomainWarpNoise.jsx'
 import TrabeculumNoise from './noiseSpecialPropsComponents/TrabeculumNoise.jsx'
 import StarGlowNoise from './noiseSpecialPropsComponents/StarGlowNoise.jsx'
+import GaborNoise from './noiseSpecialPropsComponents/GaborNoise.jsx'
+import GalacticCloudNoise from './noiseSpecialPropsComponents/GalacticCloudNoise.jsx'
+import WorleyEdgeNoise from './noiseSpecialPropsComponents/WorleyEdgeNoise.jsx'
 
 
 export function SpecialComponentChoose({ noiseName }) {
@@ -212,6 +215,12 @@ export function SpecialComponentChoose({ noiseName }) {
       return <TrabeculumNoise />
     case "starGlowNoise":
       return <StarGlowNoise />
+    case "gaborNoise":
+      return <GaborNoise />
+    case "galacticCloudNoise":
+      return <GalacticCloudNoise />
+    case "worleyEdgeNoise":
+      return <WorleyEdgeNoise />
     default:
       return (<div className="params-container">此Noise无特性参数</div>)
   }

@@ -747,6 +747,44 @@ export function FrameUniforms(material, noiseSpecialProps, noiseName, hexToRgb) 
       material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
       break;
 
+    case "gaborNoise":
+      material.current.uniforms.noiseChooseValue.value = noiseSpecialProps.noiseChooseValue
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.dirX.value = noiseSpecialProps.noiseDirX
+      material.current.uniforms.dirY.value = noiseSpecialProps.noiseDirY
+      material.current.uniforms.lightX.value = noiseSpecialProps.noiseLightX
+      material.current.uniforms.lightY.value = noiseSpecialProps.noiseLightY
+      material.current.uniforms.lightZ.value = noiseSpecialProps.noiseLightZ
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "galacticCloudNoise":
+      material.current.uniforms.scales.value = noiseSpecialProps.noiseScales
+      material.current.uniforms.zoomDistance.value = noiseSpecialProps.noiseZoomDistance
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.firstDivision.value = noiseSpecialProps.noiseFirstDivision
+      material.current.uniforms.fRatio.value = noiseSpecialProps.noiseFRatio
+      material.current.uniforms.limitDetails.value = noiseSpecialProps.noiseLimitDetails
+      material.current.uniforms.smoothZone.value = noiseSpecialProps.noiseSmoothZone
+      material.current.uniforms.clampLevel.value = noiseSpecialProps.noiseClampLevel
+      material.current.uniforms.theta.value = noiseSpecialProps.noiseTheta
+      material.current.uniforms.rotSpeed.value = noiseSpecialProps.noiseRotSpeed
+      material.current.uniforms.centerX.value = noiseSpecialProps.noiseCenterX
+      material.current.uniforms.centerY.value = noiseSpecialProps.noiseCenterY
+      material.current.uniforms.seed.value = noiseSpecialProps.noiseSeed
+      material.current.uniforms.gazConcentration.value = noiseSpecialProps.noiseGazConcentration
+      break;
+
+    case "worleyEdgeNoise":
+      material.current.uniforms.scale.value = noiseSpecialProps.noiseScale
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.distScale.value = noiseSpecialProps.noiseDistScale
+      material.current.uniforms.edgeGain.value = noiseSpecialProps.noiseEdgeGain
+      material.current.uniforms.edgeOffset.value = noiseSpecialProps.noiseEdgeOffset
+      material.current.uniforms.hashRatio.value = noiseSpecialProps.noiseHashRatio
+      material.current.uniforms.hashSeed.value = noiseSpecialProps.noiseHashSeed
+      break;
+
     default:
       break;
   }

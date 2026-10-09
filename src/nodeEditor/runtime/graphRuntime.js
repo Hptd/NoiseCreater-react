@@ -40,6 +40,9 @@ export class GraphRuntime {
   }
 
   setGraph(graph) {
+    // 拓扑变化时保留每个噪波节点已推进的时间值，避免编辑连线/增删节点导致动画跳回初始帧。
+    const prevTime = new Map()
+    for (const [id, entry] of this.nodes) prevTime.set(id, entry.iTime)
     this.disposeNodes()
     this.graph = graph || { nodes: [], edges: [] }
     this.nodes.clear()
@@ -56,6 +59,7 @@ export class GraphRuntime {
         material: null,
         targets: [],
         targetResolution: 0,
+        iTime: prevTime.get(node.id) || 0,
       })
     }
     for (const edge of this.graph.edges || []) {
@@ -172,8 +176,7 @@ export class GraphRuntime {
     for (let out = 0; out < count; out++) {
       this.quad.material = material
       if (entry.def.type === 'noise') {
-        const anim = entry.commonParams.noiseAnimationOC
-        updateNoiseUniforms(material, entry.def.noiseName, entry.commonParams, entry.params, anim ? this.time : 0)
+        updateNoiseUniforms(material, entry.def.noiseName, entry.commonParams, entry.params, entry.iTime)
       } else {
         this.bindInputs(entry, material)
         updateNodeUniforms(material, entry.def, entry.params, {
@@ -206,6 +209,9 @@ export class GraphRuntime {
     for (const id of order) {
       const entry = this.nodes.get(id)
       if (!entry) continue
+      if (entry.def?.type === 'noise' && entry.commonParams.noiseAnimationOC) {
+        entry.iTime += delta
+      }
       this.renderEntry(entry)
     }
     return true

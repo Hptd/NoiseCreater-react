@@ -66,6 +66,9 @@ import { dynamismNoiseParamsSlice } from "../features/DynamismNoiseParamsSlice"
 import { domainWarpNoiseParamsSlice } from "../features/DomainWarpNoiseParamsSlice"
 import { trabeculumNoiseParamsSlice } from "../features/TrabeculumNoiseParamsSlice"
 import { starGlowNoiseParamsSlice } from "../features/StarGlowNoiseParamsSlice"
+import { gaborNoiseParamsSlice } from "../features/GaborNoiseParamsSlice"
+import { galacticCloudNoiseParamsSlice } from "../features/GalacticCloudNoiseParamsSlice"
+import { worleyEdgeNoiseParamsSlice } from "../features/WorleyEdgeNoiseParamsSlice"
 
 export const store = configureStore({
   reducer: {
@@ -136,5 +139,8 @@ export const store = configureStore({
     domainWarpNoiseProps: domainWarpNoiseParamsSlice.reducer,
     trabeculumNoiseProps: trabeculumNoiseParamsSlice.reducer,
     starGlowNoiseProps: starGlowNoiseParamsSlice.reducer,
+    gaborNoiseProps: gaborNoiseParamsSlice.reducer,
+    galacticCloudNoiseProps: galacticCloudNoiseParamsSlice.reducer,
+    worleyEdgeNoiseProps: worleyEdgeNoiseParamsSlice.reducer,
   }
 })

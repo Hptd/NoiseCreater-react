@@ -878,6 +878,50 @@ export function PropsUniforms(noiseName, noiseSpecialProps, hexToRgb) {
       }
       break;
 
+    case "gaborNoise":
+      noiseUniforms = {
+        noiseChooseValue: { value: noiseSpecialProps.noiseChooseValue },
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        dirX: { value: noiseSpecialProps.noiseDirX },
+        dirY: { value: noiseSpecialProps.noiseDirY },
+        lightX: { value: noiseSpecialProps.noiseLightX },
+        lightY: { value: noiseSpecialProps.noiseLightY },
+        lightZ: { value: noiseSpecialProps.noiseLightZ },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "galacticCloudNoise":
+      noiseUniforms = {
+        scales: { value: noiseSpecialProps.noiseScales },
+        zoomDistance: { value: noiseSpecialProps.noiseZoomDistance },
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        firstDivision: { value: noiseSpecialProps.noiseFirstDivision },
+        fRatio: { value: noiseSpecialProps.noiseFRatio },
+        limitDetails: { value: noiseSpecialProps.noiseLimitDetails },
+        smoothZone: { value: noiseSpecialProps.noiseSmoothZone },
+        clampLevel: { value: noiseSpecialProps.noiseClampLevel },
+        theta: { value: noiseSpecialProps.noiseTheta },
+        rotSpeed: { value: noiseSpecialProps.noiseRotSpeed },
+        centerX: { value: noiseSpecialProps.noiseCenterX },
+        centerY: { value: noiseSpecialProps.noiseCenterY },
+        seed: { value: noiseSpecialProps.noiseSeed },
+        gazConcentration: { value: noiseSpecialProps.noiseGazConcentration }
+      }
+      break;
+
+    case "worleyEdgeNoise":
+      noiseUniforms = {
+        scale: { value: noiseSpecialProps.noiseScale },
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        distScale: { value: noiseSpecialProps.noiseDistScale },
+        edgeGain: { value: noiseSpecialProps.noiseEdgeGain },
+        edgeOffset: { value: noiseSpecialProps.noiseEdgeOffset },
+        hashRatio: { value: noiseSpecialProps.noiseHashRatio },
+        hashSeed: { value: noiseSpecialProps.noiseHashSeed }
+      }
+      break;
+
     default:
       break;
   }

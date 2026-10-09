@@ -15,6 +15,8 @@
    },
    { "id": 7, "imgSrc": "../images/sampleNoise_B.png", "title": "sample Noise_B", "routeHref": "noiseDetail/sampleNoiseAB", "FragmentShaderPath": "../glsl/SampleNoiseBFragment.js"
    },
+   { "id": 76, "imgSrc": "../images/galacticCloudNoise.png", "title": "银河云团", "routeHref": "noiseDetail/galacticCloudNoise", "FragmentShaderPath": "../glsl/GalacticCloudNoiseFragment.js"
+   },
    { "id": 8, "imgSrc": "../images/voronoiWaterNoise.png", "title": "voronoi Water Noise", "routeHref": "noiseDetail/voronoiWaterNoise", "FragmentShaderPath": "../glsl/VoronoiWaterNoiseFragment.js"
    },
    { "id": 9, "imgSrc": "../images/tileableWaterNoise.png", "title": "tileable Water Noise", "routeHref": "noiseDetail/tileableWaterNoise", "FragmentShaderPath": "../glsl/TileableWaterNoiseFragment.js"
@@ -50,6 +52,8 @@
    { "id": 23, "imgSrc": "../images/cellNoise_B.png", "title": "cell Noise_B", "routeHref": "noiseDetail/cellNoiseB", "FragmentShaderPath": "../glsl/CellNoiseBFragment.js"
    },
    { "id": 24, "imgSrc": "../images/cellNoise_C.png", "title": "cell Noise_C", "routeHref": "noiseDetail/cellNoiseC", "FragmentShaderPath": "../glsl/CellNoiseCFragment.js"
+   },
+   { "id": 77, "imgSrc": "../images/worleyEdgeNoise.png", "title": "cell Noise_D", "routeHref": "noiseDetail/worleyEdgeNoise", "FragmentShaderPath": "../glsl/WorleyEdgeNoiseFragment.js"
    },
    { "id": 52, "imgSrc": "../images/worleyNoise.png", "title": "worley Noise", "routeHref": "noiseDetail/worleyNoise", "FragmentShaderPath": "../glsl/WorleyNoiseFragment.js"
    },
@@ -100,6 +104,8 @@
    { "id": 67, "imgSrc": "../images/runeRainNoise.png", "title": "符文数字雨", "routeHref": "noiseDetail/runeRainNoise", "FragmentShaderPath": "../glsl/RuneRainNoiseFragment.js"
    },
    { "id": 74, "imgSrc": "../images/starGlowNoise.png", "title": "星光", "routeHref": "noiseDetail/starGlowNoise", "FragmentShaderPath": "../glsl/StarGlowNoiseFragment.js"
+   },
+   { "id": 75, "imgSrc": "../images/gaborNoise.png", "title": "Gabor 涡流", "routeHref": "noiseDetail/gaborNoise", "FragmentShaderPath": "../glsl/GaborNoiseFragment.js"
    },
    { "id": 33, "imgSrc": "../images/knitNoise_A.png", "title": "knit Noise_A", "routeHref": "noiseDetail/knitNoiseA", "FragmentShaderPath": "../glsl/KnitNoiseAFragment.js"
    },
