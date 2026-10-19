@@ -58,25 +58,25 @@
   text-align: right;
 }
 
-.announcement-update-title {
-  margin: 20px 0 10px;
+.announcement-group {
+  margin-top: 20px;
   padding-top: 16px;
   border-top: 1px solid rgb(90, 86, 78);
+  text-align: center;
+}
+
+.announcement-group-img {
+  display: block;
+  width: 200px;
+  max-width: 100%;
+  margin: 0 auto 10px;
+  border-radius: 6px;
+}
+
+.announcement-group-text {
+  margin: 0;
   font-size: 16px;
   color: #e2a024;
-}
-
-.announcement-update-list {
-  margin: 0;
-  padding-left: 20px;
-}
-
-.announcement-update-list li {
-  margin-bottom: 10px;
-}
-
-.announcement-update-list li:last-child {
-  margin-bottom: 0;
 }
 
 .announcement-actions {
