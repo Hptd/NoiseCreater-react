@@ -69,6 +69,9 @@ import { starGlowNoiseParamsSlice } from '../../features/StarGlowNoiseParamsSlic
 import { gaborNoiseParamsSlice } from '../../features/GaborNoiseParamsSlice.js'
 import { galacticCloudNoiseParamsSlice } from '../../features/GalacticCloudNoiseParamsSlice.js'
 import { worleyEdgeNoiseParamsSlice } from '../../features/WorleyEdgeNoiseParamsSlice.js'
+import { lineNoiseParamsSlice } from '../../features/LineNoiseParamsSlice.js'
+import { warpedNoiseParamsSlice } from '../../features/WarpedNoiseParamsSlice.js'
+import { waveLineNoiseParamsSlice } from '../../features/WaveLineNoiseParamsSlice.js'
 
 const INIT = { type: '@@noiseEditor/init' }
 
@@ -149,6 +152,9 @@ export const NOISE_SLICES = {
   "gaborNoiseProps": gaborNoiseParamsSlice.reducer,
   "galacticCloudNoiseProps": galacticCloudNoiseParamsSlice.reducer,
   "worleyEdgeNoiseProps": worleyEdgeNoiseParamsSlice.reducer,
+  "lineNoiseProps": lineNoiseParamsSlice.reducer,
+  "warpedNoiseProps": warpedNoiseParamsSlice.reducer,
+  "waveLineNoiseProps": waveLineNoiseParamsSlice.reducer,
 }
 
 export function getNoiseDefaults(noiseName) {

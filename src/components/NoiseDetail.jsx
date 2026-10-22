@@ -79,6 +79,9 @@ import StarGlowNoise from './noiseSpecialPropsComponents/StarGlowNoise.jsx'
 import GaborNoise from './noiseSpecialPropsComponents/GaborNoise.jsx'
 import GalacticCloudNoise from './noiseSpecialPropsComponents/GalacticCloudNoise.jsx'
 import WorleyEdgeNoise from './noiseSpecialPropsComponents/WorleyEdgeNoise.jsx'
+import LineNoise from './noiseSpecialPropsComponents/LineNoise.jsx'
+import WarpedNoise from './noiseSpecialPropsComponents/WarpedNoise.jsx'
+import WaveLineNoise from './noiseSpecialPropsComponents/WaveLineNoise.jsx'
 
 
 export function SpecialComponentChoose({ noiseName }) {
@@ -221,6 +224,12 @@ export function SpecialComponentChoose({ noiseName }) {
       return <GalacticCloudNoise />
     case "worleyEdgeNoise":
       return <WorleyEdgeNoise />
+    case "lineNoise":
+      return <LineNoise />
+    case "warpedNoise":
+      return <WarpedNoise />
+    case "waveLineNoise":
+      return <WaveLineNoise />
     default:
       return (<div className="params-container">此Noise无特性参数</div>)
   }

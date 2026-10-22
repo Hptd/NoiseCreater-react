@@ -922,6 +922,43 @@ export function PropsUniforms(noiseName, noiseSpecialProps, hexToRgb) {
       }
       break;
 
+    case "lineNoise":
+      noiseUniforms = {
+        width: { value: noiseSpecialProps.noiseWidth },
+        border: { value: noiseSpecialProps.noiseBorder },
+        noiseFreq: { value: noiseSpecialProps.noiseFreq },
+        noiseStr: { value: noiseSpecialProps.noiseStrength },
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        grow: { value: noiseSpecialProps.noiseGrow },
+        seed: { value: noiseSpecialProps.noiseSeed }
+      }
+      break;
+
+    case "warpedNoise":
+      noiseUniforms = {
+        scale: { value: noiseSpecialProps.noiseScale },
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        sampleDist: { value: noiseSpecialProps.noiseSampleDist },
+        bumpStrength: { value: noiseSpecialProps.noiseBumpStrength },
+        baseBright: { value: noiseSpecialProps.noiseBaseBright },
+        color1: { value: hexToRgb(noiseSpecialProps.noiseColor) },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "waveLineNoise":
+      noiseUniforms = {
+        lineScale: { value: noiseSpecialProps.noiseLineScale },
+        lineCount: { value: noiseSpecialProps.noiseLineCount },
+        warpStrength: { value: noiseSpecialProps.noiseWarpStrength },
+        noiseFreq: { value: noiseSpecialProps.noiseNoiseFreq },
+        animSpeed: { value: noiseSpecialProps.noiseAnimSpeed },
+        lightColor: { value: hexToRgb(noiseSpecialProps.noiseLightColor) },
+        darkColor: { value: hexToRgb(noiseSpecialProps.noiseDarkColor) },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
     default:
       break;
   }

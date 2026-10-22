@@ -69,6 +69,9 @@ import { starGlowNoiseParamsSlice } from "../features/StarGlowNoiseParamsSlice"
 import { gaborNoiseParamsSlice } from "../features/GaborNoiseParamsSlice"
 import { galacticCloudNoiseParamsSlice } from "../features/GalacticCloudNoiseParamsSlice"
 import { worleyEdgeNoiseParamsSlice } from "../features/WorleyEdgeNoiseParamsSlice"
+import { lineNoiseParamsSlice } from "../features/LineNoiseParamsSlice"
+import { warpedNoiseParamsSlice } from "../features/WarpedNoiseParamsSlice"
+import { waveLineNoiseParamsSlice } from "../features/WaveLineNoiseParamsSlice"
 
 export const store = configureStore({
   reducer: {
@@ -142,5 +145,8 @@ export const store = configureStore({
     gaborNoiseProps: gaborNoiseParamsSlice.reducer,
     galacticCloudNoiseProps: galacticCloudNoiseParamsSlice.reducer,
     worleyEdgeNoiseProps: worleyEdgeNoiseParamsSlice.reducer,
+    lineNoiseProps: lineNoiseParamsSlice.reducer,
+    warpedNoiseProps: warpedNoiseParamsSlice.reducer,
+    waveLineNoiseProps: waveLineNoiseParamsSlice.reducer,
   }
 })

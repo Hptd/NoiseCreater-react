@@ -785,6 +785,37 @@ export function FrameUniforms(material, noiseSpecialProps, noiseName, hexToRgb) 
       material.current.uniforms.hashSeed.value = noiseSpecialProps.noiseHashSeed
       break;
 
+    case "lineNoise":
+      material.current.uniforms.width.value = noiseSpecialProps.noiseWidth
+      material.current.uniforms.border.value = noiseSpecialProps.noiseBorder
+      material.current.uniforms.noiseFreq.value = noiseSpecialProps.noiseFreq
+      material.current.uniforms.noiseStr.value = noiseSpecialProps.noiseStrength
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.grow.value = noiseSpecialProps.noiseGrow
+      material.current.uniforms.seed.value = noiseSpecialProps.noiseSeed
+      break;
+
+    case "warpedNoise":
+      material.current.uniforms.scale.value = noiseSpecialProps.noiseScale
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.sampleDist.value = noiseSpecialProps.noiseSampleDist
+      material.current.uniforms.bumpStrength.value = noiseSpecialProps.noiseBumpStrength
+      material.current.uniforms.baseBright.value = noiseSpecialProps.noiseBaseBright
+      material.current.uniforms.color1.value = hexToRgb(noiseSpecialProps.noiseColor)
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "waveLineNoise":
+      material.current.uniforms.lineScale.value = noiseSpecialProps.noiseLineScale
+      material.current.uniforms.lineCount.value = noiseSpecialProps.noiseLineCount
+      material.current.uniforms.warpStrength.value = noiseSpecialProps.noiseWarpStrength
+      material.current.uniforms.noiseFreq.value = noiseSpecialProps.noiseNoiseFreq
+      material.current.uniforms.animSpeed.value = noiseSpecialProps.noiseAnimSpeed
+      material.current.uniforms.lightColor.value = hexToRgb(noiseSpecialProps.noiseLightColor)
+      material.current.uniforms.darkColor.value = hexToRgb(noiseSpecialProps.noiseDarkColor)
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
     default:
       break;
   }
