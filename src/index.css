@@ -93,6 +93,32 @@ body{
   display: block;
   color: rgb(222, 220, 220);
 }
+/* 节点混合画布工具：彩虹文字 + 顺序跳动 + 颜色滚动 */
+.page .noise-list ul li span.rainbow-title{
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.page .noise-list ul li span.rainbow-char{
+  display: inline-block;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(90deg, #ff2d55, #ff9500, #ffcc00, #34c759, #00c7be, #007aff, #af52de, #ff2d55);
+  background-size: 200% 100%;
+  background-repeat: repeat-x;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation:
+    rainbow-bounce 1.8s ease-in-out calc(var(--i) * 0.09s) infinite,
+    rainbow-scroll 3s linear calc(var(--i) * -0.12s) infinite;
+}
+@keyframes rainbow-bounce{
+  0%, 50%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-7px); }
+}
+@keyframes rainbow-scroll{
+  from { background-position: 0% 50%; }
+  to { background-position: -200% 50%; }
+}
 /* -- noise list 设置 -- 结束 -- */
 
 /* -- Label ｜ Slider | Input Color | Check 盒子设置 -- 开始 -- */

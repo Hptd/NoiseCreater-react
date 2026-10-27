@@ -7,9 +7,23 @@ export default function HomePage() {
       {/* 路由跳转并带参state */}
       <Link to={item.routeHref} state={{'id': item.id, 'noiseName': item.routeHref.split('/').pop() || ''}}>
         <img src={item.imgSrc} />
-        <span>
-          {item.title}
-        </span>
+        {item.routeHref === 'nodeEditor' || item.title === '去点赞支持！' || item.title === '欢迎加群' ? (
+          <span className="rainbow-title">
+            {Array.from(item.title).map((char, index) => (
+              <span
+                key={index}
+                className="rainbow-char"
+                style={{ '--i': index }}
+              >
+                {char}
+              </span>
+            ))}
+          </span>
+        ) : (
+          <span>
+            {item.title}
+          </span>
+        )}
       </Link>
     </li>
   ))
