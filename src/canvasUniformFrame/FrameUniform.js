@@ -816,6 +816,46 @@ export function FrameUniforms(material, noiseSpecialProps, noiseName, hexToRgb) 
       material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
       break;
 
+    case "marchingSquaresNoise":
+      material.current.uniforms.gridScale.value = noiseSpecialProps.noiseGridScale
+      material.current.uniforms.noiseFreq.value = noiseSpecialProps.noiseNoiseFreq
+      material.current.uniforms.threshold.value = noiseSpecialProps.noiseThreshold
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.lineWidth.value = noiseSpecialProps.noiseLineWidth
+      material.current.uniforms.dotSize.value = noiseSpecialProps.noiseDotSize
+      material.current.uniforms.edgeSoft.value = noiseSpecialProps.noiseEdgeSoft
+      material.current.uniforms.lineColor.value = hexToRgb(noiseSpecialProps.noiseLineColor)
+      material.current.uniforms.bgColor.value = hexToRgb(noiseSpecialProps.noiseBgColor)
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "isoLineNoise":
+      material.current.uniforms.scale.value = noiseSpecialProps.noiseScale
+      material.current.uniforms.speed.value = noiseSpecialProps.noiseSpeed
+      material.current.uniforms.levels.value = noiseSpecialProps.noiseLevels
+      material.current.uniforms.layerOffset.value = noiseSpecialProps.noiseLayerOffset
+      material.current.uniforms.skew.value = noiseSpecialProps.noiseSkew
+      material.current.uniforms.yScale.value = noiseSpecialProps.noiseYScale
+      material.current.uniforms.bias.value = noiseSpecialProps.noiseBias
+      material.current.uniforms.gain.value = noiseSpecialProps.noiseGain
+      material.current.uniforms.edgeBase.value = noiseSpecialProps.noiseEdgeBase
+      material.current.uniforms.edgeHeight.value = noiseSpecialProps.noiseEdgeHeight
+      material.current.uniforms.edgeSharp.value = noiseSpecialProps.noiseEdgeSharp
+      material.current.uniforms.color1.value = hexToRgb(noiseSpecialProps.noiseColor1)
+      material.current.uniforms.color2.value = hexToRgb(noiseSpecialProps.noiseColor2)
+      material.current.uniforms.bgColor.value = hexToRgb(noiseSpecialProps.noiseBgColor)
+      material.current.uniforms.colorRem.value = noiseSpecialProps.noiseRemoveCol
+      break;
+
+    case "rotating3DNoise":
+      material.current.uniforms.warpAmount.value = noiseSpecialProps.noiseWarpAmount
+      material.current.uniforms.freq.value = noiseSpecialProps.noiseFreq
+      material.current.uniforms.seed.value = noiseSpecialProps.noiseSeed
+      material.current.uniforms.mixSoft.value = noiseSpecialProps.noiseMixSoft
+      material.current.uniforms.contrast.value = noiseSpecialProps.noiseContrast
+      material.current.uniforms.octaves.value = noiseSpecialProps.noiseOctaves
+      break;
+
     default:
       break;
   }

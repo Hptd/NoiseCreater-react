@@ -72,6 +72,9 @@ import { worleyEdgeNoiseParamsSlice } from "../features/WorleyEdgeNoiseParamsSli
 import { lineNoiseParamsSlice } from "../features/LineNoiseParamsSlice"
 import { warpedNoiseParamsSlice } from "../features/WarpedNoiseParamsSlice"
 import { waveLineNoiseParamsSlice } from "../features/WaveLineNoiseParamsSlice"
+import { marchingSquaresNoiseParamsSlice } from "../features/MarchingSquaresNoiseParamsSlice"
+import { isoLineNoiseParamsSlice } from "../features/IsoLineNoiseParamsSlice"
+import { rotating3DNoiseParamsSlice } from "../features/Rotating3DNoiseParamsSlice"
 
 export const store = configureStore({
   reducer: {
@@ -148,5 +151,8 @@ export const store = configureStore({
     lineNoiseProps: lineNoiseParamsSlice.reducer,
     warpedNoiseProps: warpedNoiseParamsSlice.reducer,
     waveLineNoiseProps: waveLineNoiseParamsSlice.reducer,
+    marchingSquaresNoiseProps: marchingSquaresNoiseParamsSlice.reducer,
+    isoLineNoiseProps: isoLineNoiseParamsSlice.reducer,
+    rotating3DNoiseProps: rotating3DNoiseParamsSlice.reducer,
   }
 })

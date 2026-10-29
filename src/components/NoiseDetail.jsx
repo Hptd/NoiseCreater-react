@@ -82,6 +82,9 @@ import WorleyEdgeNoise from './noiseSpecialPropsComponents/WorleyEdgeNoise.jsx'
 import LineNoise from './noiseSpecialPropsComponents/LineNoise.jsx'
 import WarpedNoise from './noiseSpecialPropsComponents/WarpedNoise.jsx'
 import WaveLineNoise from './noiseSpecialPropsComponents/WaveLineNoise.jsx'
+import MarchingSquaresNoise from './noiseSpecialPropsComponents/MarchingSquaresNoise.jsx'
+import IsoLineNoise from './noiseSpecialPropsComponents/IsoLineNoise.jsx'
+import Rotating3DNoise from './noiseSpecialPropsComponents/Rotating3DNoise.jsx'
 
 
 export function SpecialComponentChoose({ noiseName }) {
@@ -230,6 +233,12 @@ export function SpecialComponentChoose({ noiseName }) {
       return <WarpedNoise />
     case "waveLineNoise":
       return <WaveLineNoise />
+    case "marchingSquaresNoise":
+      return <MarchingSquaresNoise />
+    case "isoLineNoise":
+      return <IsoLineNoise />
+    case "rotating3DNoise":
+      return <Rotating3DNoise />
     default:
       return (<div className="params-container">此Noise无特性参数</div>)
   }

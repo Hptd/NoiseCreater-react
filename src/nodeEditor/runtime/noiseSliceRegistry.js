@@ -72,6 +72,9 @@ import { worleyEdgeNoiseParamsSlice } from '../../features/WorleyEdgeNoiseParams
 import { lineNoiseParamsSlice } from '../../features/LineNoiseParamsSlice.js'
 import { warpedNoiseParamsSlice } from '../../features/WarpedNoiseParamsSlice.js'
 import { waveLineNoiseParamsSlice } from '../../features/WaveLineNoiseParamsSlice.js'
+import { marchingSquaresNoiseParamsSlice } from '../../features/MarchingSquaresNoiseParamsSlice.js'
+import { isoLineNoiseParamsSlice } from '../../features/IsoLineNoiseParamsSlice.js'
+import { rotating3DNoiseParamsSlice } from '../../features/Rotating3DNoiseParamsSlice.js'
 
 const INIT = { type: '@@noiseEditor/init' }
 
@@ -155,6 +158,9 @@ export const NOISE_SLICES = {
   "lineNoiseProps": lineNoiseParamsSlice.reducer,
   "warpedNoiseProps": warpedNoiseParamsSlice.reducer,
   "waveLineNoiseProps": waveLineNoiseParamsSlice.reducer,
+  "marchingSquaresNoiseProps": marchingSquaresNoiseParamsSlice.reducer,
+  "isoLineNoiseProps": isoLineNoiseParamsSlice.reducer,
+  "rotating3DNoiseProps": rotating3DNoiseParamsSlice.reducer,
 }
 
 export function getNoiseDefaults(noiseName) {

@@ -959,6 +959,52 @@ export function PropsUniforms(noiseName, noiseSpecialProps, hexToRgb) {
       }
       break;
 
+    case "marchingSquaresNoise":
+      noiseUniforms = {
+        gridScale: { value: noiseSpecialProps.noiseGridScale },
+        noiseFreq: { value: noiseSpecialProps.noiseNoiseFreq },
+        threshold: { value: noiseSpecialProps.noiseThreshold },
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        lineWidth: { value: noiseSpecialProps.noiseLineWidth },
+        dotSize: { value: noiseSpecialProps.noiseDotSize },
+        edgeSoft: { value: noiseSpecialProps.noiseEdgeSoft },
+        lineColor: { value: hexToRgb(noiseSpecialProps.noiseLineColor) },
+        bgColor: { value: hexToRgb(noiseSpecialProps.noiseBgColor) },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "isoLineNoise":
+      noiseUniforms = {
+        scale: { value: noiseSpecialProps.noiseScale },
+        speed: { value: noiseSpecialProps.noiseSpeed },
+        levels: { value: noiseSpecialProps.noiseLevels },
+        layerOffset: { value: noiseSpecialProps.noiseLayerOffset },
+        skew: { value: noiseSpecialProps.noiseSkew },
+        yScale: { value: noiseSpecialProps.noiseYScale },
+        bias: { value: noiseSpecialProps.noiseBias },
+        gain: { value: noiseSpecialProps.noiseGain },
+        edgeBase: { value: noiseSpecialProps.noiseEdgeBase },
+        edgeHeight: { value: noiseSpecialProps.noiseEdgeHeight },
+        edgeSharp: { value: noiseSpecialProps.noiseEdgeSharp },
+        color1: { value: hexToRgb(noiseSpecialProps.noiseColor1) },
+        color2: { value: hexToRgb(noiseSpecialProps.noiseColor2) },
+        bgColor: { value: hexToRgb(noiseSpecialProps.noiseBgColor) },
+        colorRem: { value: noiseSpecialProps.noiseRemoveCol }
+      }
+      break;
+
+    case "rotating3DNoise":
+      noiseUniforms = {
+        warpAmount: { value: noiseSpecialProps.noiseWarpAmount },
+        freq: { value: noiseSpecialProps.noiseFreq },
+        seed: { value: noiseSpecialProps.noiseSeed },
+        mixSoft: { value: noiseSpecialProps.noiseMixSoft },
+        contrast: { value: noiseSpecialProps.noiseContrast },
+        octaves: { value: noiseSpecialProps.noiseOctaves }
+      }
+      break;
+
     default:
       break;
   }

@@ -37,6 +37,8 @@
    },
    { "id": 14, "imgSrc": "../images/smokeNoise.png", "title": "smoke Noise", "routeHref": "noiseDetail/smokeNoise", "FragmentShaderPath": "../glsl/SmokeNoiseFragment.js"
    },
+   { "id": 84, "imgSrc": "../images/rotating3DNoise.png", "title": "达芬奇扭曲噪波", "routeHref": "noiseDetail/rotating3DNoise", "FragmentShaderPath": "../glsl/Rotating3DNoiseFragment.js"
+   },
    { "id": 15, "imgSrc": "../images/honeycompNoise_A.png", "title": "honeycomp Noise_A", "routeHref": "noiseDetail/honeycompNoiseA", "FragmentShaderPath": "../glsl/HoneycompNoiseAFragment.js"
    },
    { "id": 16, "imgSrc": "../images/honeycompNoise_B.png", "title": "honeycomp Noise_B", "routeHref": "noiseDetail/honeycompNoiseB", "FragmentShaderPath": "../glsl/HoneycompNoiseBFragment.js"
@@ -61,6 +63,8 @@
    },
    { "id": 52, "imgSrc": "../images/worleyNoise.png", "title": "worley Noise", "routeHref": "noiseDetail/worleyNoise", "FragmentShaderPath": "../glsl/WorleyNoiseFragment.js"
    },
+   { "id": 82, "imgSrc": "../images/marchingSquaresNoise.png", "title": "电路板噪波", "routeHref": "noiseDetail/marchingSquaresNoise", "FragmentShaderPath": "../glsl/MarchingSquaresNoiseFragment.js"
+   },
    { "id": 25, "imgSrc": "../images/bandingGradients.png", "title": "banding Gradients Noise", "routeHref": "noiseDetail/bandingGradientsNoise", "FragmentShaderPath": "../glsl/BandingGradientsNoiseFragment.js"
    },
    { "id": 56, "imgSrc": "../images/dashLineNoise.png", "title": "虚线滚动", "routeHref": "noiseDetail/dashLineNoise", "FragmentShaderPath": "../glsl/DashLineNoiseFragment.js"
@@ -68,6 +72,8 @@
    { "id": 78, "imgSrc": "../images/lineNoise.png", "title": "线条生长噪波", "routeHref": "noiseDetail/lineNoise", "FragmentShaderPath": "../glsl/LineNoiseFragment.js"
    },
    { "id": 80, "imgSrc": "../images/waveLineNoise.png", "title": "波浪线条", "routeHref": "noiseDetail/waveLineNoise", "FragmentShaderPath": "../glsl/WaveLineNoiseFragment.js"
+   },
+   { "id": 83, "imgSrc": "../images/isoLineNoise.png", "title": "等值线噪波", "routeHref": "noiseDetail/isoLineNoise", "FragmentShaderPath": "../glsl/IsoLineNoiseFragment.js"
    },
    { "id": 26, "imgSrc": "../images/squircleColorNoise.png", "title": "squircle color Noise", "routeHref": "noiseDetail/squircleColorNoise", "FragmentShaderPath": "../glsl/SquircleColorNoiseFragment.js"
    },
