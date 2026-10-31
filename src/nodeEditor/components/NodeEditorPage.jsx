@@ -48,6 +48,14 @@ function drawPixels(canvas, pixels) {
   ctx.putImageData(image, 0, 0)
 }
 
+// 下载文件名：固定前缀 + 本地时间 YYYYMMDD-HHmmss，如 noiseImage_20261030-203015.png。
+function timestampFileName(prefix, ext) {
+  const d = new Date()
+  const p = (n) => String(n).padStart(2, '0')
+  const stamp = `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`
+  return `${prefix}_${stamp}${ext}`
+}
+
 function pixelsToDataURL(pixels) {
   const canvas = document.createElement('canvas')
   drawPixels(canvas, pixels)
@@ -459,18 +467,18 @@ function Editor() {
     if (!acquireDownload('exportPng')) return
     const canvas = document.createElement('canvas')
     drawPixels(canvas, pixels)
-    const fileName = `${graphName || 'nodeGraph'}.png`
+    const fileName = timestampFileName('noiseImage', '.png')
     saveAs(canvas.toDataURL('image/png'), fileName)
     reportDownload(fileName)
-  }, [graphName, outputSize])
+  }, [outputSize])
 
   const saveGraph = useCallback(() => {
     if (!acquireDownload('saveGraph')) return
     const graph = toGraphModel(nodesRef.current, edgesRef.current, metaRef.current)
-    const fileName = `${graphName || '未命名节点图'}.ncgraph`
+    const fileName = timestampFileName('noiseGraph', '.ncgraph')
     downloadGraph(graph, fileName)
     reportDownload(fileName)
-  }, [graphName])
+  }, [])
 
   const handleFile = useCallback(async (event) => {
     const file = event.target.files?.[0]

@@ -1,6 +1,7 @@
 // 下载按钮埋点：同一按钮 3 秒冷却 + 上报实际下载文件名。
 // 真实 IP 由后端从请求连接 / 可信代理头获取，前端不能也不应自行上报。
-const API_URL = "https://www.hptd.cn/api/downloads"
+const API_URL = "https://www.hptd.cn/api/downloads" // 真实后端访问接口地址
+// const API_URL = "http://127.0.0.1:8000/api/downloads"  // 临时改用本地数据库
 const COOLDOWN_MS = 3000
 const lastClickAt = new Map()
 
