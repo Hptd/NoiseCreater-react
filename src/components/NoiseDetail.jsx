@@ -9,6 +9,7 @@ import { saveAs } from 'file-saver'
 import MainCanvas from "./MainCanvas.jsx"
 import VertShader from '../../public/glsl/NoiseVertexShader.js'
 import { computeExportSize } from '../features/exportAspect.js'
+import { acquireDownload, reportDownload } from '../features/downloadTracker.js'
 
 import SampleNoiseAB from './noiseSpecialPropsComponents/SampleNoiseAB.jsx'
 import VoronoiWaterNoise from './noiseSpecialPropsComponents/VoronoiWaterNoise.jsx'
@@ -284,14 +285,18 @@ export default function NoiseDetail() {
   // 处理下载图片的逻辑
   const [clicked, setClicked] = useState(0)
   function clickDownloadImg() {
+    if (!acquireDownload('downloadImage')) return
     setClicked(clicked + 1)
+    reportDownload(`${noiseName}.png`)
   }
 
   // 处理下载GLSL源码的逻辑
   function clickDownloadGlsl() {
     if (!fragmentShader) return
+    if (!acquireDownload('downloadGlsl')) return
     // file-saver 传字符串会当作URL处理，必须用 Blob 才能下载源码本身
     saveAs(new Blob([fragmentShader], { type: 'text/plain;charset=utf-8' }), `${noiseName}.glsl`)
+    reportDownload(`${noiseName}.glsl`)
   }
 
   // 视频下载处理逻辑
@@ -306,14 +311,17 @@ export default function NoiseDetail() {
   }, [])
   function handleDownloadVideo() {
     if (videoDownload) {
-      // 停止收集，FileSave 收到 videoDownload=false 后统一打包
+      // 停止收集，FileSave 收到 videoDownload=false 后统一打包。
+      // 停止操作不做冷却，避免用户无法立即结束导出。
       setVideoDownload(false)
       setIsPacking(true)
     } else {
       // 开始记录
+      if (!acquireDownload('downloadFrames')) return
       setVideoDownload(true)
       setFrameCount(0)
       setIsPacking(false)
+      reportDownload(`${noiseName}_序列帧.zip`)
     }
   }
 

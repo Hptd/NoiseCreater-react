@@ -11,6 +11,7 @@ import { getNodeDef } from '../graph/nodeRegistry.js'
 import { createGraphNode, newEdgeId } from './nodeFactory.js'
 import { GraphRuntime, MAX_RESOLUTION, MIN_RESOLUTION } from '../runtime/graphRuntime.js'
 import { ASPECT_LABELS, DEFAULT_ASPECT, computeExportSize } from '../../features/exportAspect.js'
+import { acquireDownload, reportDownload } from '../../features/downloadTracker.js'
 import { createNodeStore, readNodeParams, readCommonParams } from '../runtime/scopedStore.js'
 import { getNoiseDefaults, getCommonDefaults } from '../runtime/noiseSliceRegistry.js'
 import { downloadGraph, readGraphFile } from '../graph/ncgraphIO.js'
@@ -455,14 +456,20 @@ function Editor() {
     if (!rt) return
     const pixels = rt.readOutputPixels(outputSize.width, outputSize.height)
     if (!pixels) { setStatus('没有可导出的输出（请连接 Output 节点）'); return }
+    if (!acquireDownload('exportPng')) return
     const canvas = document.createElement('canvas')
     drawPixels(canvas, pixels)
-    saveAs(canvas.toDataURL('image/png'), `${graphName || 'nodeGraph'}.png`)
+    const fileName = `${graphName || 'nodeGraph'}.png`
+    saveAs(canvas.toDataURL('image/png'), fileName)
+    reportDownload(fileName)
   }, [graphName, outputSize])
 
   const saveGraph = useCallback(() => {
+    if (!acquireDownload('saveGraph')) return
     const graph = toGraphModel(nodesRef.current, edgesRef.current, metaRef.current)
-    downloadGraph(graph, `${graphName || '未命名节点图'}.ncgraph`)
+    const fileName = `${graphName || '未命名节点图'}.ncgraph`
+    downloadGraph(graph, fileName)
+    reportDownload(fileName)
   }, [graphName])
 
   const handleFile = useCallback(async (event) => {
