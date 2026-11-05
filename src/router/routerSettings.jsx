@@ -1,10 +1,23 @@
+import { lazy, Suspense } from 'react'
 import HomePage from '../components/HomePage.jsx'
-import ThanksPage from '../components/ThanksPage.jsx'
-import NoiseDetail from '../components/NoiseDetail.jsx'
-import UpdateHistory from '../components/UpdateHistory.jsx'
-import NodeEditorPage from '../nodeEditor/components/NodeEditorPage.jsx'
-import NodeDocumentPage from '../nodeEditor/components/NodeDocumentPage.jsx'
 import { createBrowserRouter } from 'react-router-dom'
+
+// 首页保持同步加载；其余页面按路由拆包，避免 three / xyflow / jszip 进入首屏
+const pageLoading = (
+  <div className="page-loading" role="status" aria-live="polite">
+    <span className="page-loading-spinner" aria-hidden="true" />
+    <span>加载中...</span>
+  </div>
+)
+
+const lazyPage = (loader) => {
+  const Page = lazy(loader)
+  return (
+    <Suspense fallback={pageLoading}>
+      <Page />
+    </Suspense>
+  )
+}
 
 const routers = createBrowserRouter(
   [
@@ -15,27 +28,27 @@ const routers = createBrowserRouter(
 
     {
       path: '/noiseDetail/:name',
-      element: <NoiseDetail />
+      element: lazyPage(() => import('../components/NoiseDetail.jsx'))
     },
     {
       path: '/nodeEditor',
-      element: <NodeEditorPage />
+      element: lazyPage(() => import('../nodeEditor/components/NodeEditorPage.jsx'))
     },
     {
       path: '/nodeDocument',
-      element: <NodeDocumentPage />
+      element: lazyPage(() => import('../nodeEditor/components/NodeDocumentPage.jsx'))
     },
     {
       path: '/nodeDocument/:slug',
-      element: <NodeDocumentPage />
+      element: lazyPage(() => import('../nodeEditor/components/NodeDocumentPage.jsx'))
     },
     {
       path: '/thanksList',
-      element: <ThanksPage />
+      element: lazyPage(() => import('../components/ThanksPage.jsx'))
     },
     {
       path: 'updateLog',
-      element: <UpdateHistory />
+      element: lazyPage(() => import('../components/UpdateHistory.jsx'))
     }
   ]
 )

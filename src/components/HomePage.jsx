@@ -2,11 +2,18 @@ import { Link } from "react-router-dom"
 import noiseListInformations from '../../public/mySQL/noiseList.json'
 
 export default function HomePage() {
-  const noiseLi = noiseListInformations.map(item => (
+  const noiseLi = noiseListInformations.map((item, index) => (
     <li key={item.id}>
       {/* 路由跳转并带参state */}
       <Link to={item.routeHref} state={{'id': item.id, 'noiseName': item.routeHref.split('/').pop() || ''}}>
-        <img src={item.imgSrc} />
+        <img
+          src={item.imgSrc}
+          alt={item.title}
+          width="160"
+          height="160"
+          loading={index < 10 ? 'eager' : 'lazy'}
+          decoding="async"
+        />
         {item.routeHref === 'nodeEditor' || item.title === '去点赞支持！' || item.title === '欢迎加群' ? (
           <span className="rainbow-title">
             {Array.from(item.title).map((char, index) => (
