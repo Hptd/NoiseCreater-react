@@ -1,172 +1,172 @@
 [
-   { "id": 1, "imgSrc": "../images/thanks.png", "title": "致谢名单", "routeHref": "thanksList"
+   { "id": 1, "imgSrc": "../images/thanks.webp", "title": "致谢名单", "routeHref": "thanksList"
    },
-   { "id": 2, "imgSrc": "../images/更新日志.png", "title": "更新日志", "routeHref": "updateLog"
+   { "id": 2, "imgSrc": "../images/更新日志.webp", "title": "更新日志", "routeHref": "updateLog"
    },
    { "id": 59, "imgSrc": "../images/nodeEditor.svg", "title": "节点混合画布工具", "routeHref": "nodeEditor"
    },
-   { "id": 81, "imgSrc": "../images/NoiseCreater-Vip群.png", "title": "欢迎加群", "routeHref": ""
+   { "id": 81, "imgSrc": "../images/NoiseCreater-Vip群.webp", "title": "欢迎加群", "routeHref": ""
    },
    { "id": 81, "imgSrc": "../images/点赞.svg", "title": "去点赞支持！", "routeHref": "https://www.bilibili.com/video/BV1v34y1g7gU/?share_source=copy_web&vd_source=110ed7db11df1a8abe7054540cd48ee3"
    },
-   { "id": 3, "imgSrc": "../images/sampleNoise.png", "title": "Sample Noise", "routeHref": "noiseDetail/sampleNoise", "FragmentShaderPath": "../glsl/SampleNoiseFragment.js"
+   { "id": 3, "imgSrc": "../images/sampleNoise.webp", "title": "Sample Noise", "routeHref": "noiseDetail/sampleNoise", "FragmentShaderPath": "../glsl/SampleNoiseFragment.js"
    },
-   { "id": 4, "imgSrc": "../images/sampleColorNoise.png", "title": "Sample Color Noise", "routeHref": "noiseDetail/sampleColorNoise", "FragmentShaderPath": "../glsl/SampleColorNoiseFragment.js"
+   { "id": 4, "imgSrc": "../images/sampleColorNoise.webp", "title": "Sample Color Noise", "routeHref": "noiseDetail/sampleColorNoise", "FragmentShaderPath": "../glsl/SampleColorNoiseFragment.js"
    },
-   { "id": 5, "imgSrc": "../images/cloudNoise.png", "title": "Cloud Noise", "routeHref": "noiseDetail/cloudNoise", "FragmentShaderPath": "../glsl/CloudNoiseFragment.js"
+   { "id": 5, "imgSrc": "../images/cloudNoise.webp", "title": "Cloud Noise", "routeHref": "noiseDetail/cloudNoise", "FragmentShaderPath": "../glsl/CloudNoiseFragment.js"
    },
-   { "id": 6, "imgSrc": "../images/sampleNoise_A.png", "title": "sample Noise_A", "routeHref": "noiseDetail/sampleNoiseAB", "FragmentShaderPath": "../glsl/SampleNoiseAFragment.js"
+   { "id": 6, "imgSrc": "../images/sampleNoise_A.webp", "title": "sample Noise_A", "routeHref": "noiseDetail/sampleNoiseAB", "FragmentShaderPath": "../glsl/SampleNoiseAFragment.js"
    },
-   { "id": 7, "imgSrc": "../images/sampleNoise_B.png", "title": "sample Noise_B", "routeHref": "noiseDetail/sampleNoiseAB", "FragmentShaderPath": "../glsl/SampleNoiseBFragment.js"
+   { "id": 7, "imgSrc": "../images/sampleNoise_B.webp", "title": "sample Noise_B", "routeHref": "noiseDetail/sampleNoiseAB", "FragmentShaderPath": "../glsl/SampleNoiseBFragment.js"
    },
-   { "id": 76, "imgSrc": "../images/galacticCloudNoise.png", "title": "银河云团", "routeHref": "noiseDetail/galacticCloudNoise", "FragmentShaderPath": "../glsl/GalacticCloudNoiseFragment.js"
+   { "id": 76, "imgSrc": "../images/galacticCloudNoise.webp", "title": "银河云团", "routeHref": "noiseDetail/galacticCloudNoise", "FragmentShaderPath": "../glsl/GalacticCloudNoiseFragment.js"
    },
-   { "id": 8, "imgSrc": "../images/voronoiWaterNoise.png", "title": "voronoi Water Noise", "routeHref": "noiseDetail/voronoiWaterNoise", "FragmentShaderPath": "../glsl/VoronoiWaterNoiseFragment.js"
+   { "id": 8, "imgSrc": "../images/voronoiWaterNoise.webp", "title": "voronoi Water Noise", "routeHref": "noiseDetail/voronoiWaterNoise", "FragmentShaderPath": "../glsl/VoronoiWaterNoiseFragment.js"
    },
-   { "id": 9, "imgSrc": "../images/tileableWaterNoise.png", "title": "tileable Water Noise", "routeHref": "noiseDetail/tileableWaterNoise", "FragmentShaderPath": "../glsl/TileableWaterNoiseFragment.js"
+   { "id": 9, "imgSrc": "../images/tileableWaterNoise.webp", "title": "tileable Water Noise", "routeHref": "noiseDetail/tileableWaterNoise", "FragmentShaderPath": "../glsl/TileableWaterNoiseFragment.js"
    },
-   { "id": 10, "imgSrc": "../images/causticsWaterNoise.png", "title": "caustics Water Noise", "routeHref": "noiseDetail/causticsWaterNoise", "FragmentShaderPath": "../glsl/CausticsWaterNoiseFragment.js"
+   { "id": 10, "imgSrc": "../images/causticsWaterNoise.webp", "title": "caustics Water Noise", "routeHref": "noiseDetail/causticsWaterNoise", "FragmentShaderPath": "../glsl/CausticsWaterNoiseFragment.js"
    },
-   { "id": 11, "imgSrc": "../images/glareWaterNoise.png", "title": "glare Water Noise", "routeHref": "noiseDetail/glareWaterNoise", "FragmentShaderPath": "../glsl/GlareWaterNoiseFragment.js"
+   { "id": 11, "imgSrc": "../images/glareWaterNoise.webp", "title": "glare Water Noise", "routeHref": "noiseDetail/glareWaterNoise", "FragmentShaderPath": "../glsl/GlareWaterNoiseFragment.js"
    },
-   { "id": 12, "imgSrc": "../images/forkedWaterNoise.png", "title": "forked Water Noise", "routeHref": "noiseDetail/forkedWaterNoise", "FragmentShaderPath": "../glsl/ForkedWaterNoiseFragment.js"
+   { "id": 12, "imgSrc": "../images/forkedWaterNoise.webp", "title": "forked Water Noise", "routeHref": "noiseDetail/forkedWaterNoise", "FragmentShaderPath": "../glsl/ForkedWaterNoiseFragment.js"
    },
-   { "id": 57, "imgSrc": "../images/causticChromaNoise.png", "title": "色差焦散", "routeHref": "noiseDetail/causticChromaNoise", "FragmentShaderPath": "../glsl/CausticChromaNoiseFragment.js"
+   { "id": 57, "imgSrc": "../images/causticChromaNoise.webp", "title": "色差焦散", "routeHref": "noiseDetail/causticChromaNoise", "FragmentShaderPath": "../glsl/CausticChromaNoiseFragment.js"
    },
-   { "id": 13, "imgSrc": "../images/rainWaterNoise.png", "title": "rain Water Noise", "routeHref": "noiseDetail/rainWaterNoise", "FragmentShaderPath": "../glsl/RainWaterNoiseFragment.js"
+   { "id": 13, "imgSrc": "../images/rainWaterNoise.webp", "title": "rain Water Noise", "routeHref": "noiseDetail/rainWaterNoise", "FragmentShaderPath": "../glsl/RainWaterNoiseFragment.js"
    },
-   { "id": 14, "imgSrc": "../images/smokeNoise.png", "title": "smoke Noise", "routeHref": "noiseDetail/smokeNoise", "FragmentShaderPath": "../glsl/SmokeNoiseFragment.js"
+   { "id": 14, "imgSrc": "../images/smokeNoise.webp", "title": "smoke Noise", "routeHref": "noiseDetail/smokeNoise", "FragmentShaderPath": "../glsl/SmokeNoiseFragment.js"
    },
-   { "id": 84, "imgSrc": "../images/rotating3DNoise.png", "title": "达芬奇扭曲噪波", "routeHref": "noiseDetail/rotating3DNoise", "FragmentShaderPath": "../glsl/Rotating3DNoiseFragment.js"
+   { "id": 84, "imgSrc": "../images/rotating3DNoise.webp", "title": "达芬奇扭曲噪波", "routeHref": "noiseDetail/rotating3DNoise", "FragmentShaderPath": "../glsl/Rotating3DNoiseFragment.js"
    },
-   { "id": 15, "imgSrc": "../images/honeycompNoise_A.png", "title": "honeycomp Noise_A", "routeHref": "noiseDetail/honeycompNoiseA", "FragmentShaderPath": "../glsl/HoneycompNoiseAFragment.js"
+   { "id": 15, "imgSrc": "../images/honeycompNoise_A.webp", "title": "honeycomp Noise_A", "routeHref": "noiseDetail/honeycompNoiseA", "FragmentShaderPath": "../glsl/HoneycompNoiseAFragment.js"
    },
-   { "id": 16, "imgSrc": "../images/honeycompNoise_B.png", "title": "honeycomp Noise_B", "routeHref": "noiseDetail/honeycompNoiseB", "FragmentShaderPath": "../glsl/HoneycompNoiseBFragment.js"
+   { "id": 16, "imgSrc": "../images/honeycompNoise_B.webp", "title": "honeycomp Noise_B", "routeHref": "noiseDetail/honeycompNoiseB", "FragmentShaderPath": "../glsl/HoneycompNoiseBFragment.js"
    },
-   { "id": 17, "imgSrc": "../images/hexMazeNoise.png", "title": "hex Maze Noise", "routeHref": "noiseDetail/hexMazeNoise", "FragmentShaderPath": "../glsl/HexMazeNoiseFragment.js"
+   { "id": 17, "imgSrc": "../images/hexMazeNoise.webp", "title": "hex Maze Noise", "routeHref": "noiseDetail/hexMazeNoise", "FragmentShaderPath": "../glsl/HexMazeNoiseFragment.js"
    },
-   { "id": 18, "imgSrc": "../images/hexNoise.png", "title": "hex Noise", "routeHref": "noiseDetail/hexNoise", "FragmentShaderPath": "../glsl/HexNoiseFragment.js"
+   { "id": 18, "imgSrc": "../images/hexNoise.webp", "title": "hex Noise", "routeHref": "noiseDetail/hexNoise", "FragmentShaderPath": "../glsl/HexNoiseFragment.js"
    },
-   { "id": 19, "imgSrc": "../images/silkNoise.png", "title": "silk Noise", "routeHref": "noiseDetail/silkNoise", "FragmentShaderPath": "../glsl/SilkNoiseFragment.js"
+   { "id": 19, "imgSrc": "../images/silkNoise.webp", "title": "silk Noise", "routeHref": "noiseDetail/silkNoise", "FragmentShaderPath": "../glsl/SilkNoiseFragment.js"
    },
-   { "id": 20, "imgSrc": "../images/gridNoise.png", "title": "grid Noise", "routeHref": "noiseDetail/gridNoise", "FragmentShaderPath": "../glsl/GridNoiseFragment.js"
+   { "id": 20, "imgSrc": "../images/gridNoise.webp", "title": "grid Noise", "routeHref": "noiseDetail/gridNoise", "FragmentShaderPath": "../glsl/GridNoiseFragment.js"
    },
-   { "id": 21, "imgSrc": "../images/voroNoise.png", "title": "voro Noise", "routeHref": "noiseDetail/voroNoise", "FragmentShaderPath": "../glsl/VoroNoiseFragment.js"
+   { "id": 21, "imgSrc": "../images/voroNoise.webp", "title": "voro Noise", "routeHref": "noiseDetail/voroNoise", "FragmentShaderPath": "../glsl/VoroNoiseFragment.js"
    },
-   { "id": 22, "imgSrc": "../images/cellNoise_A.png", "title": "cell Noise_A", "routeHref": "noiseDetail/cellNoiseA", "FragmentShaderPath": "../glsl/CellNoiseAFragment.js"
+   { "id": 22, "imgSrc": "../images/cellNoise_A.webp", "title": "cell Noise_A", "routeHref": "noiseDetail/cellNoiseA", "FragmentShaderPath": "../glsl/CellNoiseAFragment.js"
    },
-   { "id": 23, "imgSrc": "../images/cellNoise_B.png", "title": "cell Noise_B", "routeHref": "noiseDetail/cellNoiseB", "FragmentShaderPath": "../glsl/CellNoiseBFragment.js"
+   { "id": 23, "imgSrc": "../images/cellNoise_B.webp", "title": "cell Noise_B", "routeHref": "noiseDetail/cellNoiseB", "FragmentShaderPath": "../glsl/CellNoiseBFragment.js"
    },
-   { "id": 24, "imgSrc": "../images/cellNoise_C.png", "title": "cell Noise_C", "routeHref": "noiseDetail/cellNoiseC", "FragmentShaderPath": "../glsl/CellNoiseCFragment.js"
+   { "id": 24, "imgSrc": "../images/cellNoise_C.webp", "title": "cell Noise_C", "routeHref": "noiseDetail/cellNoiseC", "FragmentShaderPath": "../glsl/CellNoiseCFragment.js"
    },
-   { "id": 77, "imgSrc": "../images/worleyEdgeNoise.png", "title": "cell Noise_D", "routeHref": "noiseDetail/worleyEdgeNoise", "FragmentShaderPath": "../glsl/WorleyEdgeNoiseFragment.js"
+   { "id": 77, "imgSrc": "../images/worleyEdgeNoise.webp", "title": "cell Noise_D", "routeHref": "noiseDetail/worleyEdgeNoise", "FragmentShaderPath": "../glsl/WorleyEdgeNoiseFragment.js"
    },
-   { "id": 52, "imgSrc": "../images/worleyNoise.png", "title": "worley Noise", "routeHref": "noiseDetail/worleyNoise", "FragmentShaderPath": "../glsl/WorleyNoiseFragment.js"
+   { "id": 52, "imgSrc": "../images/worleyNoise.webp", "title": "worley Noise", "routeHref": "noiseDetail/worleyNoise", "FragmentShaderPath": "../glsl/WorleyNoiseFragment.js"
    },
-   { "id": 82, "imgSrc": "../images/marchingSquaresNoise.png", "title": "电路板噪波", "routeHref": "noiseDetail/marchingSquaresNoise", "FragmentShaderPath": "../glsl/MarchingSquaresNoiseFragment.js"
+   { "id": 82, "imgSrc": "../images/marchingSquaresNoise.webp", "title": "电路板噪波", "routeHref": "noiseDetail/marchingSquaresNoise", "FragmentShaderPath": "../glsl/MarchingSquaresNoiseFragment.js"
    },
-   { "id": 25, "imgSrc": "../images/bandingGradients.png", "title": "banding Gradients Noise", "routeHref": "noiseDetail/bandingGradientsNoise", "FragmentShaderPath": "../glsl/BandingGradientsNoiseFragment.js"
+   { "id": 25, "imgSrc": "../images/bandingGradients.webp", "title": "banding Gradients Noise", "routeHref": "noiseDetail/bandingGradientsNoise", "FragmentShaderPath": "../glsl/BandingGradientsNoiseFragment.js"
    },
-   { "id": 56, "imgSrc": "../images/dashLineNoise.png", "title": "虚线滚动", "routeHref": "noiseDetail/dashLineNoise", "FragmentShaderPath": "../glsl/DashLineNoiseFragment.js"
+   { "id": 56, "imgSrc": "../images/dashLineNoise.webp", "title": "虚线滚动", "routeHref": "noiseDetail/dashLineNoise", "FragmentShaderPath": "../glsl/DashLineNoiseFragment.js"
    },
-   { "id": 78, "imgSrc": "../images/lineNoise.png", "title": "线条生长噪波", "routeHref": "noiseDetail/lineNoise", "FragmentShaderPath": "../glsl/LineNoiseFragment.js"
+   { "id": 78, "imgSrc": "../images/lineNoise.webp", "title": "线条生长噪波", "routeHref": "noiseDetail/lineNoise", "FragmentShaderPath": "../glsl/LineNoiseFragment.js"
    },
-   { "id": 80, "imgSrc": "../images/waveLineNoise.png", "title": "波浪线条", "routeHref": "noiseDetail/waveLineNoise", "FragmentShaderPath": "../glsl/WaveLineNoiseFragment.js"
+   { "id": 80, "imgSrc": "../images/waveLineNoise.webp", "title": "波浪线条", "routeHref": "noiseDetail/waveLineNoise", "FragmentShaderPath": "../glsl/WaveLineNoiseFragment.js"
    },
-   { "id": 83, "imgSrc": "../images/isoLineNoise.png", "title": "等值线噪波", "routeHref": "noiseDetail/isoLineNoise", "FragmentShaderPath": "../glsl/IsoLineNoiseFragment.js"
+   { "id": 83, "imgSrc": "../images/isoLineNoise.webp", "title": "等值线噪波", "routeHref": "noiseDetail/isoLineNoise", "FragmentShaderPath": "../glsl/IsoLineNoiseFragment.js"
    },
-   { "id": 26, "imgSrc": "../images/squircleColorNoise.png", "title": "squircle color Noise", "routeHref": "noiseDetail/squircleColorNoise", "FragmentShaderPath": "../glsl/SquircleColorNoiseFragment.js"
+   { "id": 26, "imgSrc": "../images/squircleColorNoise.webp", "title": "squircle color Noise", "routeHref": "noiseDetail/squircleColorNoise", "FragmentShaderPath": "../glsl/SquircleColorNoiseFragment.js"
    },
-   { "id": 27, "imgSrc": "../images/squaresNoise.png", "title": "squares Noise", "routeHref": "noiseDetail/squaresNoise", "FragmentShaderPath": "../glsl/SquaresNoiseFragment.js"
+   { "id": 27, "imgSrc": "../images/squaresNoise.webp", "title": "squares Noise", "routeHref": "noiseDetail/squaresNoise", "FragmentShaderPath": "../glsl/SquaresNoiseFragment.js"
    },
-   { "id": 28, "imgSrc": "../images/circleNoise_A.png", "title": "circle Noise_A", "routeHref": "noiseDetail/circleNoiseA", "FragmentShaderPath": "../glsl/CircleNoiseAFragment.js"
+   { "id": 28, "imgSrc": "../images/circleNoise_A.webp", "title": "circle Noise_A", "routeHref": "noiseDetail/circleNoiseA", "FragmentShaderPath": "../glsl/CircleNoiseAFragment.js"
    },
-   { "id": 29, "imgSrc": "../images/circleNoise_B.png", "title": "circle Noise_B", "routeHref": "noiseDetail/circleNoiseB", "FragmentShaderPath": "../glsl/CircleNoiseBFragment.js"
+   { "id": 29, "imgSrc": "../images/circleNoise_B.webp", "title": "circle Noise_B", "routeHref": "noiseDetail/circleNoiseB", "FragmentShaderPath": "../glsl/CircleNoiseBFragment.js"
    },
-   { "id": 30, "imgSrc": "../images/circleNoise_C.png", "title": "circle Noise_C", "routeHref": "noiseDetail/circleNoiseC", "FragmentShaderPath": "../glsl/CircleNoiseCFragment.js"
+   { "id": 30, "imgSrc": "../images/circleNoise_C.webp", "title": "circle Noise_C", "routeHref": "noiseDetail/circleNoiseC", "FragmentShaderPath": "../glsl/CircleNoiseCFragment.js"
    },
-   { "id": 53, "imgSrc": "../images/haloVoroNoise.png", "title": "光晕 Voronoi", "routeHref": "noiseDetail/haloVoroNoise", "FragmentShaderPath": "../glsl/HaloVoroNoiseFragment.js"
+   { "id": 53, "imgSrc": "../images/haloVoroNoise.webp", "title": "光晕 Voronoi", "routeHref": "noiseDetail/haloVoroNoise", "FragmentShaderPath": "../glsl/HaloVoroNoiseFragment.js"
    },
-   { "id": 54, "imgSrc": "../images/cloudTunnelNoise.png", "title": "云洞隧道", "routeHref": "noiseDetail/cloudTunnelNoise", "FragmentShaderPath": "../glsl/CloudTunnelNoiseFragment.js"
+   { "id": 54, "imgSrc": "../images/cloudTunnelNoise.webp", "title": "云洞隧道", "routeHref": "noiseDetail/cloudTunnelNoise", "FragmentShaderPath": "../glsl/CloudTunnelNoiseFragment.js"
    },
-   { "id": 61, "imgSrc": "../images/cloudSkyNoise.png", "title": "天空云层", "routeHref": "noiseDetail/cloudSkyNoise", "FragmentShaderPath": "../glsl/CloudSkyNoiseFragment.js"
+   { "id": 61, "imgSrc": "../images/cloudSkyNoise.webp", "title": "天空云层", "routeHref": "noiseDetail/cloudSkyNoise", "FragmentShaderPath": "../glsl/CloudSkyNoiseFragment.js"
    },
-   { "id": 31, "imgSrc": "../images/isovaluesNoise.png", "title": "isovalues Noise", "routeHref": "noiseDetail/isovaluesNoise", "FragmentShaderPath": "../glsl/IsovaluesNoiseFragment.js"
+   { "id": 31, "imgSrc": "../images/isovaluesNoise.webp", "title": "isovalues Noise", "routeHref": "noiseDetail/isovaluesNoise", "FragmentShaderPath": "../glsl/IsovaluesNoiseFragment.js"
    },
-   { "id": 32, "imgSrc": "../images/gyroidNoise.png", "title": "gyroid Noise", "routeHref": "noiseDetail/gyroidNoise", "FragmentShaderPath": "../glsl/GyroidNoiseFragment.js"
+   { "id": 32, "imgSrc": "../images/gyroidNoise.webp", "title": "gyroid Noise", "routeHref": "noiseDetail/gyroidNoise", "FragmentShaderPath": "../glsl/GyroidNoiseFragment.js"
    },
-   { "id": 72, "imgSrc": "../images/domainWarpNoise.png", "title": "域扭曲噪波", "routeHref": "noiseDetail/domainWarpNoise", "FragmentShaderPath": "../glsl/DomainWarpNoiseFragment.js"
+   { "id": 72, "imgSrc": "../images/domainWarpNoise.webp", "title": "域扭曲噪波", "routeHref": "noiseDetail/domainWarpNoise", "FragmentShaderPath": "../glsl/DomainWarpNoiseFragment.js"
    },
-   { "id": 79, "imgSrc": "../images/warpedNoise.png", "title": "标准域扭曲噪波", "routeHref": "noiseDetail/warpedNoise", "FragmentShaderPath": "../glsl/WarpedNoiseFragment.js"
+   { "id": 79, "imgSrc": "../images/warpedNoise.webp", "title": "标准域扭曲噪波", "routeHref": "noiseDetail/warpedNoise", "FragmentShaderPath": "../glsl/WarpedNoiseFragment.js"
    },
-   { "id": 51, "imgSrc": "../images/petroleumNoise.png", "title": "petroleum Noise", "routeHref": "noiseDetail/petroleumNoise", "FragmentShaderPath": "../glsl/PetroleumNoiseFragment.js"
+   { "id": 51, "imgSrc": "../images/petroleumNoise.webp", "title": "petroleum Noise", "routeHref": "noiseDetail/petroleumNoise", "FragmentShaderPath": "../glsl/PetroleumNoiseFragment.js"
    },
-   { "id": 55, "imgSrc": "../images/fbmColorNoise.png", "title": "FBM 彩色", "routeHref": "noiseDetail/fbmColorNoise", "FragmentShaderPath": "../glsl/FbmColorNoiseFragment.js"
+   { "id": 55, "imgSrc": "../images/fbmColorNoise.webp", "title": "FBM 彩色", "routeHref": "noiseDetail/fbmColorNoise", "FragmentShaderPath": "../glsl/FbmColorNoiseFragment.js"
    },
-   { "id": 71, "imgSrc": "../images/dynamismNoise.png", "title": "动力噪波", "routeHref": "noiseDetail/dynamismNoise", "FragmentShaderPath": "../glsl/DynamismNoiseFragment.js"
+   { "id": 71, "imgSrc": "../images/dynamismNoise.webp", "title": "动力噪波", "routeHref": "noiseDetail/dynamismNoise", "FragmentShaderPath": "../glsl/DynamismNoiseFragment.js"
    },
-   { "id": 73, "imgSrc": "../images/trabeculumNoise.png", "title": "体积脉络", "routeHref": "noiseDetail/trabeculumNoise", "FragmentShaderPath": "../glsl/TrabeculumNoiseFragment.js"
+   { "id": 73, "imgSrc": "../images/trabeculumNoise.webp", "title": "体积脉络", "routeHref": "noiseDetail/trabeculumNoise", "FragmentShaderPath": "../glsl/TrabeculumNoiseFragment.js"
    },
-   { "id": 62, "imgSrc": "../images/lavaNoise.png", "title": "熔岩噪波", "routeHref": "noiseDetail/lavaNoise", "FragmentShaderPath": "../glsl/LavaNoiseFragment.js"
+   { "id": 62, "imgSrc": "../images/lavaNoise.webp", "title": "熔岩噪波", "routeHref": "noiseDetail/lavaNoise", "FragmentShaderPath": "../glsl/LavaNoiseFragment.js"
    },
-   { "id": 64, "imgSrc": "../images/particleNoise.png", "title": "粒子噪波", "routeHref": "noiseDetail/particleNoise", "FragmentShaderPath": "../glsl/ParticleNoiseFragment.js"
+   { "id": 64, "imgSrc": "../images/particleNoise.webp", "title": "粒子噪波", "routeHref": "noiseDetail/particleNoise", "FragmentShaderPath": "../glsl/ParticleNoiseFragment.js"
    },
-   { "id": 65, "imgSrc": "../images/balatroNoise.png", "title": "Balatro 漩涡", "routeHref": "noiseDetail/balatroNoise", "FragmentShaderPath": "../glsl/BalatroNoiseFragment.js"
+   { "id": 65, "imgSrc": "../images/balatroNoise.webp", "title": "Balatro 漩涡", "routeHref": "noiseDetail/balatroNoise", "FragmentShaderPath": "../glsl/BalatroNoiseFragment.js"
    },
-   { "id": 70, "imgSrc": "../images/liquidWarpNoise.png", "title": "液态波纹", "routeHref": "noiseDetail/liquidWarpNoise", "FragmentShaderPath": "../glsl/LiquidWarpNoiseFragment.js"
+   { "id": 70, "imgSrc": "../images/liquidWarpNoise.webp", "title": "液态波纹", "routeHref": "noiseDetail/liquidWarpNoise", "FragmentShaderPath": "../glsl/LiquidWarpNoiseFragment.js"
    },
-   { "id": 66, "imgSrc": "../images/hexTerminalNoise.png", "title": "六边形终端", "routeHref": "noiseDetail/hexTerminalNoise", "FragmentShaderPath": "../glsl/HexTerminalNoiseFragment.js"
+   { "id": 66, "imgSrc": "../images/hexTerminalNoise.webp", "title": "六边形终端", "routeHref": "noiseDetail/hexTerminalNoise", "FragmentShaderPath": "../glsl/HexTerminalNoiseFragment.js"
    },
-   { "id": 67, "imgSrc": "../images/runeRainNoise.png", "title": "符文数字雨", "routeHref": "noiseDetail/runeRainNoise", "FragmentShaderPath": "../glsl/RuneRainNoiseFragment.js"
+   { "id": 67, "imgSrc": "../images/runeRainNoise.webp", "title": "符文数字雨", "routeHref": "noiseDetail/runeRainNoise", "FragmentShaderPath": "../glsl/RuneRainNoiseFragment.js"
    },
-   { "id": 74, "imgSrc": "../images/starGlowNoise.png", "title": "星光", "routeHref": "noiseDetail/starGlowNoise", "FragmentShaderPath": "../glsl/StarGlowNoiseFragment.js"
+   { "id": 74, "imgSrc": "../images/starGlowNoise.webp", "title": "星光", "routeHref": "noiseDetail/starGlowNoise", "FragmentShaderPath": "../glsl/StarGlowNoiseFragment.js"
    },
-   { "id": 75, "imgSrc": "../images/gaborNoise.png", "title": "Gabor 涡流", "routeHref": "noiseDetail/gaborNoise", "FragmentShaderPath": "../glsl/GaborNoiseFragment.js"
+   { "id": 75, "imgSrc": "../images/gaborNoise.webp", "title": "Gabor 涡流", "routeHref": "noiseDetail/gaborNoise", "FragmentShaderPath": "../glsl/GaborNoiseFragment.js"
    },
-   { "id": 33, "imgSrc": "../images/knitNoise_A.png", "title": "knit Noise_A", "routeHref": "noiseDetail/knitNoiseA", "FragmentShaderPath": "../glsl/KnitNoiseAFragment.js"
+   { "id": 33, "imgSrc": "../images/knitNoise_A.webp", "title": "knit Noise_A", "routeHref": "noiseDetail/knitNoiseA", "FragmentShaderPath": "../glsl/KnitNoiseAFragment.js"
    },
-   { "id": 34, "imgSrc": "../images/knitNoise_B.png", "title": "knit Noise_B", "routeHref": "noiseDetail/knitNoiseB", "FragmentShaderPath": "../glsl/KnitNoiseBFragment.js"
+   { "id": 34, "imgSrc": "../images/knitNoise_B.webp", "title": "knit Noise_B", "routeHref": "noiseDetail/knitNoiseB", "FragmentShaderPath": "../glsl/KnitNoiseBFragment.js"
    },
-   { "id": 35, "imgSrc": "../images/knitNoise_C.png", "title": "knit Noise_C", "routeHref": "noiseDetail/knitNoiseC", "FragmentShaderPath": "../glsl/KnitNoiseCFragment.js"
+   { "id": 35, "imgSrc": "../images/knitNoise_C.webp", "title": "knit Noise_C", "routeHref": "noiseDetail/knitNoiseC", "FragmentShaderPath": "../glsl/KnitNoiseCFragment.js"
    },
-   { "id": 36, "imgSrc": "../images/knitNoise_D.png", "title": "knit Noise_D", "routeHref": "noiseDetail/knitNoiseD", "FragmentShaderPath": "../glsl/KnitNoiseDFragment.js"
+   { "id": 36, "imgSrc": "../images/knitNoise_D.webp", "title": "knit Noise_D", "routeHref": "noiseDetail/knitNoiseD", "FragmentShaderPath": "../glsl/KnitNoiseDFragment.js"
    },
-   { "id": 37, "imgSrc": "../images/knitNoise_E.png", "title": "knit Noise_E", "routeHref": "noiseDetail/knitNoiseE", "FragmentShaderPath": "../glsl/KnitNoiseEFragment.js"
+   { "id": 37, "imgSrc": "../images/knitNoise_E.webp", "title": "knit Noise_E", "routeHref": "noiseDetail/knitNoiseE", "FragmentShaderPath": "../glsl/KnitNoiseEFragment.js"
    },
-   { "id": 38, "imgSrc": "../images/knitNoise_F.png", "title": "knit Noise_F", "routeHref": "noiseDetail/knitNoiseF", "FragmentShaderPath": "../glsl/KnitNoiseFFragment.js"
+   { "id": 38, "imgSrc": "../images/knitNoise_F.webp", "title": "knit Noise_F", "routeHref": "noiseDetail/knitNoiseF", "FragmentShaderPath": "../glsl/KnitNoiseFFragment.js"
    },
-   { "id": 58, "imgSrc": "../images/boomSmokeNoise.png", "title": "爆炸烟雾", "routeHref": "noiseDetail/boomSmokeNoise", "FragmentShaderPath": "../glsl/BoomSmokeNoiseFragment.js"
+   { "id": 58, "imgSrc": "../images/boomSmokeNoise.webp", "title": "爆炸烟雾", "routeHref": "noiseDetail/boomSmokeNoise", "FragmentShaderPath": "../glsl/BoomSmokeNoiseFragment.js"
    },
-   { "id": 39, "imgSrc": "../images/fireNoise_A.png", "title": "fire Noise_A", "routeHref": "noiseDetail/fireNoiseA", "FragmentShaderPath": "../glsl/FireNoiseAFragment.js"
+   { "id": 39, "imgSrc": "../images/fireNoise_A.webp", "title": "fire Noise_A", "routeHref": "noiseDetail/fireNoiseA", "FragmentShaderPath": "../glsl/FireNoiseAFragment.js"
    },
-   { "id": 40, "imgSrc": "../images/fireNoise_B.png", "title": "fire Noise_B", "routeHref": "noiseDetail/fireNoiseB", "FragmentShaderPath": "../glsl/FireNoiseBFragment.js"
+   { "id": 40, "imgSrc": "../images/fireNoise_B.webp", "title": "fire Noise_B", "routeHref": "noiseDetail/fireNoiseB", "FragmentShaderPath": "../glsl/FireNoiseBFragment.js"
    },
-   { "id": 41, "imgSrc": "../images/fireNoise_C.png", "title": "fire Noise_C", "routeHref": "noiseDetail/fireNoiseC", "FragmentShaderPath": "../glsl/FireNoiseCFragment.js"
+   { "id": 41, "imgSrc": "../images/fireNoise_C.webp", "title": "fire Noise_C", "routeHref": "noiseDetail/fireNoiseC", "FragmentShaderPath": "../glsl/FireNoiseCFragment.js"
    },
-   { "id": 49, "imgSrc": "../images/fireSmokeNoise.png", "title": "fire Smoke Noise", "routeHref": "noiseDetail/fireSmokeNoise", "FragmentShaderPath": "../glsl/FireSmokeNoiseFragment.js"
+   { "id": 49, "imgSrc": "../images/fireSmokeNoise.webp", "title": "fire Smoke Noise", "routeHref": "noiseDetail/fireSmokeNoise", "FragmentShaderPath": "../glsl/FireSmokeNoiseFragment.js"
    },
-   { "id": 69, "imgSrc": "../images/lightningNoise.png", "title": "闪电", "routeHref": "noiseDetail/lightningNoise", "FragmentShaderPath": "../glsl/LightningNoiseFragment.js"
+   { "id": 69, "imgSrc": "../images/lightningNoise.webp", "title": "闪电", "routeHref": "noiseDetail/lightningNoise", "FragmentShaderPath": "../glsl/LightningNoiseFragment.js"
    },
-   { "id": 42, "imgSrc": "../images/etherNoise_A.png", "title": "ether Noise_A", "routeHref": "noiseDetail/etherNoiseA", "FragmentShaderPath": "../glsl/EtherNoiseAFragment.js"
+   { "id": 42, "imgSrc": "../images/etherNoise_A.webp", "title": "ether Noise_A", "routeHref": "noiseDetail/etherNoiseA", "FragmentShaderPath": "../glsl/EtherNoiseAFragment.js"
    },
-   { "id": 43, "imgSrc": "../images/etherNoise_B.png", "title": "ether Noise_B", "routeHref": "noiseDetail/etherNoiseB", "FragmentShaderPath": "../glsl/EtherNoiseBFragment.js"
+   { "id": 43, "imgSrc": "../images/etherNoise_B.webp", "title": "ether Noise_B", "routeHref": "noiseDetail/etherNoiseB", "FragmentShaderPath": "../glsl/EtherNoiseBFragment.js"
    },
-   { "id": 44, "imgSrc": "../images/etherNoise_C.png", "title": "ether Noise_C", "routeHref": "noiseDetail/etherNoiseC", "FragmentShaderPath": "../glsl/EtherNoiseCFragment.js"
+   { "id": 44, "imgSrc": "../images/etherNoise_C.webp", "title": "ether Noise_C", "routeHref": "noiseDetail/etherNoiseC", "FragmentShaderPath": "../glsl/EtherNoiseCFragment.js"
    },
-   { "id": 50, "imgSrc": "../images/satisfyNoise.png", "title": "治愈同心圆环", "routeHref": "noiseDetail/satisfyNoise", "FragmentShaderPath": "../glsl/SatisfyNoiseFragment.js"
+   { "id": 50, "imgSrc": "../images/satisfyNoise.webp", "title": "治愈同心圆环", "routeHref": "noiseDetail/satisfyNoise", "FragmentShaderPath": "../glsl/SatisfyNoiseFragment.js"
    },
-   { "id": 63, "imgSrc": "../images/sphereNoise.png", "title": "体积噪波球", "routeHref": "noiseDetail/sphereNoise", "FragmentShaderPath": "../glsl/SphereNoiseFragment.js"
+   { "id": 63, "imgSrc": "../images/sphereNoise.webp", "title": "体积噪波球", "routeHref": "noiseDetail/sphereNoise", "FragmentShaderPath": "../glsl/SphereNoiseFragment.js"
    },
-   { "id": 60, "imgSrc": "../images/synthwaveNoise.png", "title": "合成波日落", "routeHref": "noiseDetail/synthwaveNoise", "FragmentShaderPath": "../glsl/SynthwaveNoiseFragment.js"
+   { "id": 60, "imgSrc": "../images/synthwaveNoise.webp", "title": "合成波日落", "routeHref": "noiseDetail/synthwaveNoise", "FragmentShaderPath": "../glsl/SynthwaveNoiseFragment.js"
    },
-   { "id": 68, "imgSrc": "../images/mountainSunsetNoise.png", "title": "日落山峦", "routeHref": "noiseDetail/mountainSunsetNoise", "FragmentShaderPath": "../glsl/MountainSunsetNoiseFragment.js"
+   { "id": 68, "imgSrc": "../images/mountainSunsetNoise.webp", "title": "日落山峦", "routeHref": "noiseDetail/mountainSunsetNoise", "FragmentShaderPath": "../glsl/MountainSunsetNoiseFragment.js"
    },
-   { "id": 45, "imgSrc": "../images/太极.png", "title": "太极阴阳鱼", "routeHref": "noiseDetail/taiji", "FragmentShaderPath": "../glsl/TaijiFragment.js"
+   { "id": 45, "imgSrc": "../images/太极.webp", "title": "太极阴阳鱼", "routeHref": "noiseDetail/taiji", "FragmentShaderPath": "../glsl/TaijiFragment.js"
    },
-   { "id": 46, "imgSrc": "../images/eye.png", "title": "eye", "routeHref": "noiseDetail/eye", "FragmentShaderPath": "../glsl/EyeFragment.js"
+   { "id": 46, "imgSrc": "../images/eye.webp", "title": "eye", "routeHref": "noiseDetail/eye", "FragmentShaderPath": "../glsl/EyeFragment.js"
    },
-   { "id": 47, "imgSrc": "../images/brushNoise_A.png", "title": "brush Noise_A", "routeHref": "noiseDetail/brushNoiseA", "FragmentShaderPath": "../glsl/BrushNoiseAFragment.js"
+   { "id": 47, "imgSrc": "../images/brushNoise_A.webp", "title": "brush Noise_A", "routeHref": "noiseDetail/brushNoiseA", "FragmentShaderPath": "../glsl/BrushNoiseAFragment.js"
    },
-   { "id": 48, "imgSrc": "../images/brushNoise_B.png", "title": "brush Noise_B", "routeHref": "noiseDetail/brushNoiseB", "FragmentShaderPath": "../glsl/BrushNoiseBFragment.js"
+   { "id": 48, "imgSrc": "../images/brushNoise_B.webp", "title": "brush Noise_B", "routeHref": "noiseDetail/brushNoiseB", "FragmentShaderPath": "../glsl/BrushNoiseBFragment.js"
    }
    ]
