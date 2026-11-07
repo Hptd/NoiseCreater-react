@@ -1,0 +1,232 @@
+/* 本文件用于展示画布引导效果，可随时删除 */
+
+@property --guide-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* 引导层最外层：本身不拦截事件，只有模糊块 / 弹窗拦截 */
+.guide-root {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  pointer-events: none;
+}
+
+/* -- 高斯模糊遮罩：四块拼接，中间留出目标卡片的清晰区域 -- */
+.guide-blur {
+  position: fixed;
+  background-color: rgba(8, 10, 14, 0.62);
+  -webkit-backdrop-filter: blur(14px) saturate(0.8);
+  backdrop-filter: blur(14px) saturate(0.8);
+  pointer-events: auto;
+  cursor: pointer;
+}
+.guide-blur-top {
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.guide-blur-bottom {
+  left: 0;
+  width: 100%;
+}
+
+/* -- 目标卡片外围跑马灯 -- */
+.guide-target-ring {
+  position: fixed;
+  z-index: 2147483001;
+  padding: 3px;
+  border-radius: 14px;
+  background: conic-gradient(
+    from var(--guide-angle),
+    #ff2d55,
+    #ff9500,
+    #ffcc00,
+    #34c759,
+    #00c7be,
+    #007aff,
+    #af52de,
+    #ff2d55
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: guide-angle-spin 4s linear infinite;
+  pointer-events: none;
+}
+
+/* -- 指引连线 -- */
+.guide-line {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2147483001;
+  pointer-events: none;
+}
+.guide-line-glow {
+  fill: none;
+  stroke: rgba(0, 199, 190, 0.45);
+  stroke-width: 9;
+  filter: blur(5px);
+}
+.guide-line-dash {
+  fill: none;
+  stroke: #66fcf1;
+  stroke-width: 2.5;
+  stroke-dasharray: 9 11;
+  stroke-linecap: round;
+  animation: guide-dash-run 0.9s linear infinite;
+}
+.guide-dot {
+  fill: #ffffff;
+  filter: drop-shadow(0 0 6px #66fcf1);
+}
+
+/* -- 提示弹窗 -- */
+.guide-modal-frame {
+  position: fixed;
+  z-index: 2147483002;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(460px, calc(100vw - 32px));
+  border-radius: 16px;
+  pointer-events: auto;
+}
+.guide-modal-frame::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  padding: 3px;
+  border-radius: 19px;
+  background: conic-gradient(
+    from var(--guide-angle),
+    #ff2d55,
+    #ff9500,
+    #ffcc00,
+    #34c759,
+    #00c7be,
+    #007aff,
+    #af52de,
+    #ff2d55
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: guide-angle-spin 4s linear infinite;
+  pointer-events: none;
+}
+.guide-modal {
+  position: relative;
+  box-sizing: border-box;
+  padding: 20px 24px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(22, 24, 29, 0.97);
+  color: rgb(232, 230, 226);
+  font-size: 14px;
+  line-height: 1.75;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+}
+.guide-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.guide-modal-title {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: transparent;
+  background-image: linear-gradient(90deg, #ff9500, #34c759, #00c7be, #007aff, #af52de);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.guide-close {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: 8px;
+  background-color: transparent;
+  color: rgb(222, 220, 220);
+  font-size: 18px;
+  line-height: 1.2;
+}
+.guide-close:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+.guide-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+}
+.guide-list li {
+  position: relative;
+  padding-left: 16px;
+}
+.guide-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #00c7be;
+  box-shadow: 0 0 8px #00c7be;
+}
+.guide-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+.guide-hint {
+  margin: 0;
+  color: rgba(232, 230, 226, 0.45);
+  font-size: 12px;
+}
+.guide-cta {
+  flex-shrink: 0;
+  padding: 7px 22px;
+  border-radius: 999px;
+  color: #061014;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background-image: linear-gradient(90deg, #66fcf1, #00c7be);
+  box-shadow: 0 0 16px rgba(0, 199, 190, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.guide-cta:hover {
+  color: #061014;
+  transform: translateY(-1px);
+  box-shadow: 0 0 24px rgba(0, 199, 190, 0.75);
+}
+
+/* 矮屏时稍微下移弹窗，给连接线留出空间（仍然近似居中） */
+@media (max-height: 820px) {
+  .guide-modal-frame {
+    top: 56%;
+  }
+}
+
+@keyframes guide-angle-spin {
+  to {
+    --guide-angle: 360deg;
+  }
+}
+@keyframes guide-dash-run {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
