@@ -1,12 +1,13 @@
 // 通用节点组件：所有节点共用，端口/参数完全由注册表驱动。
-import { memo, useState } from 'react'
+import { memo, useRef, useState } from 'react'
 import { Handle, Position } from '@xyflow/react'
 import { getNodeDef } from '../graph/nodeRegistry.js'
 import { nodeDocSlug } from '../graph/nodeDocSlug.js'
 import { useThumbnail } from './thumbnailStore.js'
 import { isPreviewData, isThumbnailData, previewSize, PREVIEW_SIZES } from './nodeKinds.js'
 import { NODE_LEVEL_COMMON_KEYS, getNoiseDefaults } from '../runtime/noiseSliceRegistry.js'
-import { useLang, tNode } from '../i18n/index.js'
+import { readImageFile } from './imageFile.js'
+import { useLang, tNode, tUi } from '../i18n/index.js'
 
 const NODE_WIDTH = 210
 const HEADER_H = 28
@@ -23,12 +24,43 @@ function paramPortNames(data) {
   return names
 }
 
+// 上传图片节点的缩略图区域：空状态显示上传按钮，上传后按 contain 显示完整图片。
+function ImageNodeThumb({ data }) {
+  useLang()
+  const fileRef = useRef(null)
+  const onPick = async (event) => {
+    const file = event.target.files?.[0]
+    event.target.value = ''
+    if (!file || !data.onImageChange) return
+    try {
+      data.onImageChange(await readImageFile(file))
+    } catch {
+      /* 读取失败时保持空状态 */
+    }
+  }
+  if (data.image?.src) {
+    return <img className="nc-node-image" src={data.image.src} alt="" draggable={false} />
+  }
+  return (
+    <>
+      <button
+        className="nc-node-upload nodrag nopan"
+        onClick={() => fileRef.current?.click()}
+      >
+        {tUi('uploadImage')}
+      </button>
+      <input ref={fileRef} className="nodrag" type="file" accept="image/*" style={{ display: 'none' }} onChange={onPick} />
+    </>
+  )
+}
+
 function GenericNode({ id, data, selected }) {
   const def = getNodeDef(data.type, data.op)
   useLang()
   const [showParams, setShowParams] = useState(false)
 
   const isPreview = isPreviewData(data)
+  const isImage = data.type === 'image'
   const hasThumbnail = isThumbnailData(data)
   const thumbnail = useThumbnail(id)
 
@@ -74,7 +106,9 @@ function GenericNode({ id, data, selected }) {
 
       {hasThumbnail && (
         <div className={`nc-node-thumb${isPreview ? ' preview' : ''}`} style={{ height: thumbArea, top: HEADER_H }}>
-          {isPreview ? (
+          {isImage ? (
+            <ImageNodeThumb data={data} />
+          ) : isPreview ? (
             <>
               <div className="nc-node-preview-bar nodrag">
                 <select

@@ -64,6 +64,7 @@ export const NODE_LABEL_ZH = {
   'constant:time': '时间',
   'constant:vector2': '二维向量',
   'constant:vector3': '三维向量',
+  'image:upload': '上传图片',
   'gradient:gradient': '渐变',
   'gradient:sampleGradient': '采样渐变',
   'math:add': '加法',
@@ -160,6 +161,8 @@ const PARAM_ZH = {
   radius: '圆角半径', width: '宽度', height: '高度', sides: '边数', angle: '旋转角度',
   size: '预览尺寸', resolution: '宽度', aspect: '比例', alphaChannel: '透明通道',
   edgeBand: '边缘带宽', tileCheck: '平铺检测',
+  cropLeft: '左侧裁剪', cropRight: '右侧裁剪', cropTop: '顶部裁剪', cropBottom: '底部裁剪',
+  symmetricX: '水平对称', symmetricY: '垂直对称', squareCrop: '正方形裁剪', outputFit: '图片输出尺寸',
 }
 
 // 同名参数在不同节点下的差异化译名
@@ -184,6 +187,38 @@ const ENUM_ZH = {
   wrap: '平铺', clamp: '钳制', mirror: '镜像',
   whiteout: 'Whiteout', udn: 'UDN', partialDerivative: '偏导数',
   '2x2': '2×2', '3x3': '3×3', '4x4': '4×4',
+  autoSquare: '自适应方形', original: '原图模式',
+}
+
+// 非噪波节点的界面文案（裁剪面板等），供组件直接用 key 取词。
+const UI_ZH = {
+  uploadImage: '上传图片',
+  symmetric: '对称',
+  reset: '重置',
+  squareCrop: '正方形裁剪',
+  imageOutputSize: '图片输出尺寸',
+  autoSquare: '自适应方形',
+  original: '原图模式',
+  noImage: '请先在节点中上传图片',
+  cropHorizontal: '左右裁剪',
+  cropVertical: '上下裁剪',
+}
+
+const UI_EN = {
+  uploadImage: 'Upload Image',
+  symmetric: 'Symmetric',
+  reset: 'Reset',
+  squareCrop: 'Square Crop',
+  imageOutputSize: 'Image Output Size',
+  autoSquare: 'Auto Square',
+  original: 'Original',
+  noImage: 'Upload an image on the node first',
+  cropHorizontal: 'Left / Right Crop',
+  cropVertical: 'Top / Bottom Crop',
+}
+
+export function tUi(key) {
+  return (lang === 'zh' ? UI_ZH[key] : UI_EN[key]) || key
 }
 
 export function tNode(def) {

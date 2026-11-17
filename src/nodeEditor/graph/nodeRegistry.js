@@ -108,6 +108,21 @@ export const NODE_DEFS = [
       default: [{ pos: 0, color: '#000000' }, { pos: 1, color: '#ffffff' }],
     }],
   },
+  {
+    // 上传图片：图像数据存于节点 data.image（见 ncgraph.js），此处只描述裁剪参数。
+    type: 'image', op: 'upload', label: 'Upload Image', category: 'Input', shader: 'image',
+    inputs: [], outputs: ['out'],
+    params: [
+      float('cropLeft', 0, 0, 1, 0.01),
+      float('cropRight', 1, 0, 1, 0.01),
+      float('cropTop', 0, 0, 1, 0.01),
+      float('cropBottom', 1, 0, 1, 0.01),
+      bool('symmetricX', true),
+      bool('symmetricY', true),
+      bool('squareCrop', false),
+      enumP('outputFit', 'autoSquare', ['autoSquare', 'original']),
+    ],
+  },
 
   // ---------------------------------------------------------------- Math / Basic
   binaryMath('add', 'Add', { a: 0, b: 0 }),

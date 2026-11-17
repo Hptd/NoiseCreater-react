@@ -39,6 +39,15 @@ void main() {
   vec4 blend = readB();
   vec4 blended = inMode(uMode, base, blend);
   float mask = uHasC ? dot(readC().rgb, vec3(0.2126, 0.7152, 0.0722)) : 1.0;
-  gl_FragColor = vec4(mix(base.rgb, blended.rgb, clamp(uOpacity * mask, 0.0, 1.0)), base.a);
+
+  float baseCoverage = clamp(base.a, 0.0, 1.0);
+  float blendCoverage = clamp(blend.a, 0.0, 1.0);
+  // blend 层 alpha = 0 的区域（如图片节点“原图模式”的留空区）不参与混合，保留底图。
+  float amount = clamp(uOpacity * mask * blendCoverage, 0.0, 1.0);
+
+  vec3 mixed = mix(base.rgb, blended.rgb, amount);
+  // 底图缺失（alpha = 0）时直接显示另一张图；两侧都有内容时才按模式混合。
+  vec3 result = mix(blend.rgb, mixed, baseCoverage);
+  gl_FragColor = vec4(result, clamp(baseCoverage + blendCoverage - baseCoverage * blendCoverage, 0.0, 1.0));
 }
 `

@@ -167,6 +167,11 @@ export function createNodeUniforms(def) {
   }
   if (def.shader === 'solid') uniforms.uValue = { value: new THREE.Vector4(...BLACK) }
   if (def.shader === 'gradient') uniforms.uGradient = { value: makeGradientTexture(null) }
+  if (def.shader === 'image') {
+    uniforms.uImage = { value: null }
+    uniforms.uHasImage = { value: false }
+    uniforms.uImageAspect = { value: 1 }
+  }
   return uniforms
 }
 
@@ -184,6 +189,7 @@ export function updateNodeUniforms(material, def, params, ctx) {
   const u = material.uniforms
   u.uTexel.value.set(ctx.texel[0], ctx.texel[1])
   u.uTime.value = ctx.time
+  if (def.shader === 'image') u.uImageAspect.value = Number(ctx.imageAspect) || 1
   const list = FAMILY_OPS[def.shader]
   u.uOp.value = list ? opIndex(list, def.op) : -1
 

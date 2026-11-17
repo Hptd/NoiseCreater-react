@@ -9,6 +9,7 @@ import uvShader from './uvShader.js'
 import shapeShader from './shapeShader.js'
 import solidShader from './solidShader.js'
 import gradientShader from './gradientShader.js'
+import imageShader from './imageShader.js'
 import { outputShader, copyShader } from './outputShader.js'
 import { MATH_OPS, CHANNEL_OPS, ARTISTIC_OPS, NORMAL_OPS, UV_OPS, SHAPE_OPS, SOLID_OPS, BLEND_MODES, SEAMLESS_OPS } from './ops.js'
 
@@ -23,6 +24,7 @@ export const FAMILY_SHADERS = {
   shape: shapeShader,
   solid: solidShader,
   gradient: gradientShader,
+  image: imageShader,
   output: outputShader,
   copy: copyShader,
 }

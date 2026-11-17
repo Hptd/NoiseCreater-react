@@ -29,6 +29,7 @@ const DESC = {
   'constant:vector3': '输出三维向量常量。',
   'gradient:gradient': '生成横向渐变色带，可自定义色标。',
   'gradient:sampleGradient': '按输入灰度值在渐变上采样颜色。',
+  'image:upload': '上传本地图片并裁剪，可作为混合素材与噪波或其它图片节点混合；原图模式下长边占满、短边留空（留空区不参与混合）。',
   'math:add': '两个输入逐通道相加。',
   'math:subtract': 'A 减 B。',
   'math:multiply': '两个输入逐通道相乘。',
@@ -167,7 +168,9 @@ function nonNoiseDoc(def) {
   const title = tNode(def)
   const en = def.label !== title ? `（${def.label}）` : ''
   const category = CATEGORY_ZH[def.category] || def.category
-  const usage = USAGE_BY_CATEGORY[def.category] || '连接输入后按参数调整。'
+  const usage = def.type === 'image'
+    ? '在节点中上传本地图片，或直接把本地图片拖到画布（自动创建本节点）；在右侧属性面板设置裁剪与“图片输出尺寸”，在预览图上拖动可平移裁剪区，再连接到 Blend 等节点进行混合。'
+    : USAGE_BY_CATEGORY[def.category] || '连接输入后按参数调整。'
   return `# ${title}${en}
 
 - 分类：${category}

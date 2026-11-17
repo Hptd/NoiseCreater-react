@@ -72,6 +72,14 @@
   "title": "采样渐变"
  },
  {
+  "slug": "image-upload",
+  "type": "image",
+  "op": "upload",
+  "en": "Upload Image",
+  "category": "Input",
+  "title": "上传图片"
+ },
+ {
   "slug": "math-add",
   "type": "math",
   "op": "add",

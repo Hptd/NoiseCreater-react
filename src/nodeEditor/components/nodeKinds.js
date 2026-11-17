@@ -9,7 +9,7 @@ export function isPreviewData(data) {
 }
 
 export function isThumbnailData(data) {
-  return data?.type === 'noise' || data?.type === 'output' || isPreviewData(data)
+  return data?.type === 'noise' || data?.type === 'output' || data?.type === 'image' || isPreviewData(data)
 }
 
 export function previewSize(data) {

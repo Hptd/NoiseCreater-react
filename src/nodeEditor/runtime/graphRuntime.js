@@ -37,6 +37,9 @@ export class GraphRuntime {
     this.ready = false
     this._captureMaterial = null
     this._captureTargets = new Map()
+    this._imageTextures = new Map()
+    // 图片纹理异步加载完成后置 true，供渲染循环重新求值。
+    this.imageDirty = false
   }
 
   setGraph(graph) {
@@ -60,7 +63,13 @@ export class GraphRuntime {
         targets: [],
         targetResolution: 0,
         iTime: prevTime.get(node.id) || 0,
+        image: node.image || null,
+        imageSrc: null,
+        imageTexture: null,
       })
+    }
+    for (const node of this.graph.nodes || []) {
+      this.setNodeImage(node.id, node.image)
     }
     for (const edge of this.graph.edges || []) {
       if (!edge?.to?.node) continue
@@ -84,6 +93,35 @@ export class GraphRuntime {
     if (!entry) return
     entry.params = params || {}
     if (commonParams) entry.commonParams = commonParams
+  }
+
+  // 上传图片节点的图像数据（dataURL + 原始宽高）同步到纹理。
+  // 同一张图在多个节点间共享纹理；纹理加载完成后通过 imageDirty 触发重新求值。
+  setNodeImage(id, image) {
+    const entry = this.nodes.get(id)
+    if (!entry) return
+    const src = image?.src || null
+    if (entry.imageSrc === src) {
+      entry.image = image || null
+      return
+    }
+    entry.image = image || null
+    entry.imageSrc = src
+    if (!src) {
+      entry.imageTexture = null
+      return
+    }
+    let texture = this._imageTextures.get(src)
+    if (!texture) {
+      texture = new THREE.TextureLoader().load(src, () => { this.imageDirty = true })
+      texture.wrapS = THREE.ClampToEdgeWrapping
+      texture.wrapT = THREE.ClampToEdgeWrapping
+      texture.minFilter = THREE.LinearFilter
+      texture.magFilter = THREE.LinearFilter
+      texture.generateMipmaps = false
+      this._imageTextures.set(src, texture)
+    }
+    entry.imageTexture = texture
   }
 
   // 预加载图中全部噪波着色器；返回缺失列表（正常情况下为空）。
@@ -179,9 +217,16 @@ export class GraphRuntime {
         updateNoiseUniforms(material, entry.def.noiseName, entry.commonParams, entry.params, entry.iTime)
       } else {
         this.bindInputs(entry, material)
+        if (entry.def.type === 'image') {
+          material.uniforms.uImage.value = entry.imageTexture || null
+          material.uniforms.uHasImage.value = Boolean(entry.imageTexture)
+        }
         updateNodeUniforms(material, entry.def, entry.params, {
           texel: [1 / this.resolution, 1 / this.resolution],
           time: this.time,
+          imageAspect: entry.image?.width && entry.image?.height
+            ? entry.image.width / entry.image.height
+            : 1,
         })
         if (material.uniforms.uOutputIndex) material.uniforms.uOutputIndex.value = out
       }
@@ -314,6 +359,8 @@ export class GraphRuntime {
     this.disposeNodes()
     for (const target of this._captureTargets.values()) target.dispose()
     this._captureTargets.clear()
+    for (const texture of this._imageTextures.values()) texture.dispose()
+    this._imageTextures.clear()
     if (this._captureMaterial) { this._captureMaterial.dispose(); this._captureMaterial = null }
     this.quad.geometry.dispose()
     this.scene.remove(this.quad)

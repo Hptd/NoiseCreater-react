@@ -4,10 +4,11 @@ import { Provider } from 'react-redux'
 import NoiseCommonProps from '../../components/NoiseCommonProps.jsx'
 import { SpecialComponentChoose } from '../../components/NoiseDetail.jsx'
 import ParamControls from './ParamControls.jsx'
+import ImageCropControls from './ImageCropControls.jsx'
 import SeamlessPreview from './SeamlessPreview.jsx'
 import { useLang, tNode } from '../i18n/index.js'
 
-export default function NodeParamsPanel({ node, def, store, overridden, onChange, onDelete, canDelete = true, captureNode }) {
+export default function NodeParamsPanel({ node, def, store, overridden, onChange, onChangeMany, onDelete, canDelete = true, captureNode }) {
   useLang()
   if (!node || !def) {
     return <div className="nc-panel nc-panel-empty">选中一个节点以编辑参数</div>
@@ -35,6 +36,13 @@ export default function NodeParamsPanel({ node, def, store, overridden, onChange
             <NoiseCommonProps hideOutputParams />
             <SpecialComponentChoose noiseName={def.noiseName} />
           </Provider>
+        ) : def.type === 'image' ? (
+          <ImageCropControls
+            params={node.data.params || {}}
+            image={node.data.image}
+            onChange={onChange}
+            onChangeMany={onChangeMany}
+          />
         ) : (
           <ParamControls def={def} params={node.data.params || {}} onChange={onChange} />
         )}

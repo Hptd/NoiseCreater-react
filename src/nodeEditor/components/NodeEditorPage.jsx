@@ -21,6 +21,7 @@ import NodePalette from './NodePalette.jsx'
 import NodeParamsPanel from './NodeParamsPanel.jsx'
 import { setThumbnail, clearThumbnails } from './thumbnailStore.js'
 import { isPreviewData, isThumbnailData, previewSize } from './nodeKinds.js'
+import { readImageFile, isImageFile, hasFileDrag } from './imageFile.js'
 import { useLang, toggleLang } from '../i18n/index.js'
 import './nodeEditor.css'
 
@@ -215,6 +216,7 @@ function Editor() {
     for (const node of ns) {
       const { params, commonParams } = resolveNodeState(node, ns, es, rt.time)
       rt.setNodeParams(node.id, params, commonParams)
+      if (node.data.type === 'image') rt.setNodeImage(node.id, node.data.image)
     }
   }, [])
 
@@ -230,7 +232,8 @@ function Editor() {
       const rt = runtimeRef.current
       if (rt && rt.ready) {
         const animating = playingRef.current && graphAnimates(nodesRef.current)
-        if (dirtyRef.current || animating) {
+        if (dirtyRef.current || animating || rt.imageDirty) {
+          rt.imageDirty = false
           pushParams(rt)
           rt.evaluate(animating ? delta : 0)
           dirtyRef.current = false
@@ -241,7 +244,7 @@ function Editor() {
           lastThumb = now
           thumbDirtyRef.current = false
           for (const node of nodesRef.current) {
-            if (!isThumbnailData(node.data)) continue
+            if (!isThumbnailData(node.data) || node.data.type === 'image') continue
             const size = isPreviewData(node.data) ? previewSize(node.data) : 96
             const pixels = rt.captureNode(node.id, 'out', size)
             if (pixels) setThumbnail(node.id, pixelsToDataURL(pixels))
@@ -311,6 +314,48 @@ function Editor() {
     setCreatorOpen(true)
   }, [screenToFlowPosition])
 
+  // 拖拽本地图片到画布：以落点为位置创建“上传图片”节点并填入图片。
+  const handleCanvasDragOver = useCallback((event) => {
+    if (!hasFileDrag(event.dataTransfer)) return
+    event.preventDefault()
+    event.dataTransfer.dropEffect = 'copy'
+  }, [])
+
+  const handleCanvasDrop = useCallback(async (event) => {
+    const dropped = Array.from(event.dataTransfer?.files || [])
+    if (dropped.length === 0) return
+    event.preventDefault()
+    event.stopPropagation()
+    const files = dropped.filter(isImageFile)
+    if (files.length === 0) return
+    const base = screenToFlowPosition({ x: event.clientX, y: event.clientY })
+    const images = []
+    for (const file of files) {
+      try {
+        images.push(await readImageFile(file))
+      } catch {
+        /* 跳过无法解码的文件 */
+      }
+    }
+    if (images.length === 0) return
+    const created = images.map((image, index) => {
+      const node = createGraphNode(getNodeDef('image', 'upload'), {
+        x: base.x + index * 36,
+        y: base.y + index * 36,
+      })
+      node.data.image = image
+      return node
+    })
+    setNodes(nds => nds.concat(created))
+    setSelectedId(created[0].id)
+    dirtyRef.current = true
+  }, [screenToFlowPosition, setNodes])
+
+  // 画布外的文件拖放也拦截默认行为，避免浏览器直接打开文件导致页面跳走。
+  const guardFileDrop = useCallback((event) => {
+    if (hasFileDrag(event.dataTransfer)) event.preventDefault()
+  }, [])
+
   // 用捕获阶段的原生 dblclick，避免 React Flow pane 拦截事件冒泡。
   const dblClickRef = useRef(handleCanvasDoubleClick)
   dblClickRef.current = handleCanvasDoubleClick
@@ -368,6 +413,7 @@ function Editor() {
       const copy = createGraphNode(getNodeDef(src.data.type, src.data.op), { x: src.position.x + 40, y: src.position.y + 40 })
       copy.data.params = JSON.parse(JSON.stringify(src.data.params || {}))
       if (src.data.commonParams) copy.data.commonParams = JSON.parse(JSON.stringify(src.data.commonParams))
+      if (src.data.image) copy.data.image = JSON.parse(JSON.stringify(src.data.image))
       copy.data.label = src.data.label
       return nds.concat(copy)
     })
@@ -440,8 +486,17 @@ function Editor() {
     window.addEventListener('mouseup', onUp)
   }, [previewSide])
 
+  const updateNodeParams = useCallback((id, patch) => {
+    setNodes(nds => nds.map(n => (n.id === id ? { ...n, data: { ...n.data, params: { ...n.data.params, ...patch } } } : n)))
+    dirtyRef.current = true
+  }, [setNodes])
+
   const updateNodeParam = useCallback((id, name, value) => {
-    setNodes(nds => nds.map(n => (n.id === id ? { ...n, data: { ...n.data, params: { ...n.data.params, [name]: value } } } : n)))
+    updateNodeParams(id, { [name]: value })
+  }, [updateNodeParams])
+
+  const updateNodeImage = useCallback((id, image) => {
+    setNodes(nds => nds.map(n => (n.id === id ? { ...n, data: { ...n.data, image } } : n)))
     dirtyRef.current = true
   }, [setNodes])
 
@@ -503,16 +558,20 @@ function Editor() {
   const displayNodes = useMemo(() => {
     const paramTargets = new Set(edges.filter(e => e.targetHandle?.startsWith('param:')).map(e => e.target))
     const hasPreview = nodes.some(n => isPreviewData(n.data))
-    if (paramTargets.size === 0 && !hasPreview) return nodes
+    const hasImageNode = nodes.some(n => n.data.type === 'image')
+    if (paramTargets.size === 0 && !hasPreview && !hasImageNode) return nodes
     return nodes.map(n => {
       let data = n.data
       if (paramTargets.has(n.id) && !data.hasParamEdge) data = { ...data, hasParamEdge: true }
       if (isPreviewData(n.data)) {
         data = { ...data, onParamChange: (name, value) => updateNodeParam(n.id, name, value) }
       }
+      if (n.data.type === 'image') {
+        data = { ...data, onImageChange: image => updateNodeImage(n.id, image) }
+      }
       return data === n.data ? n : { ...n, data }
     })
-  }, [nodes, edges, updateNodeParam])
+  }, [nodes, edges, updateNodeParam, updateNodeImage])
 
   const selectedNode = nodes.find(n => n.id === selectedId) || null
   const selectedDef = selectedNode ? getNodeDef(selectedNode.data.type, selectedNode.data.op) : null
@@ -525,7 +584,7 @@ function Editor() {
   )
 
   return (
-    <div className="nc-editor">
+    <div className="nc-editor" onDragOver={guardFileDrop} onDrop={guardFileDrop}>
       <div className="nc-toolbar">
         <span className="nc-brand">节点混合面板</span>
         <input className="nc-name" value={graphName} onChange={e => setGraphName(e.target.value)} />
@@ -584,7 +643,7 @@ function Editor() {
       </div>
 
       <div className="nc-main">
-        <div className="nc-canvas-wrap" ref={canvasWrapRef} onDoubleClick={handleCanvasDoubleClick}>
+        <div className="nc-canvas-wrap" ref={canvasWrapRef} onDoubleClick={handleCanvasDoubleClick} onDragOver={handleCanvasDragOver} onDrop={handleCanvasDrop}>
           <ReactFlow
             nodes={displayNodes}
             edges={edges}
@@ -630,6 +689,7 @@ function Editor() {
             store={selectedStore}
             overridden={overridden}
             onChange={(name, value) => selectedId && updateNodeParam(selectedId, name, value)}
+            onChangeMany={patch => selectedId && updateNodeParams(selectedId, patch)}
             onDelete={deleteSelected}
             canDelete={selectedNode?.data.type !== 'output'}
             captureNode={captureNodePreview}

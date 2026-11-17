@@ -57,6 +57,7 @@ function serializeNode(node) {
     if (node.op != null) out.op = node.op
     out.params = clone(node.params) || {}
   }
+  if (node.type === 'image' && node.image) out.image = clone(node.image)
   return out
 }
 
@@ -111,6 +112,17 @@ function deserializeNode(rawNode, options, warnings) {
     node.op = def?.op ?? rawNode.op
     const defaults = def ? getDefaultParams(def) : {}
     node.params = { ...defaults, ...(clone(rawNode.params) || {}) }
+  }
+
+  if (rawNode.type === 'image' && typeof rawNode.image?.src === 'string') {
+    const width = Number(rawNode.image.width)
+    const height = Number(rawNode.image.height)
+    node.image = {
+      src: rawNode.image.src,
+      width: Number.isFinite(width) && width > 0 ? width : 1,
+      height: Number.isFinite(height) && height > 0 ? height : 1,
+      name: rawNode.image.name,
+    }
   }
 
   if (!def) node.error = true

@@ -15,6 +15,7 @@ export function toGraphModel(nodes, edges, meta) {
       position: n.position,
       params: n.data.params,
       commonParams: n.data.commonParams,
+      image: n.data.image,
     })),
     edges: edges.map(e => ({
       id: e.id,
@@ -34,6 +35,7 @@ export function graphToRF(graph) {
       data: {
         type: n.type, op: n.op, noiseName: n.noiseName, label: n.label,
         params: n.params, commonParams: n.commonParams, error: n.error,
+        image: n.image,
       },
     })),
     edges: graph.edges.map(toRFEdge),
